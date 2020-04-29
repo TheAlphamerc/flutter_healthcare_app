@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
+import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -14,6 +16,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<DoctorModel> doctorDataList;
+  @override
+  void initState() { 
+    doctorDataList = doctorMapList.map((x)=> DoctorModel.fromJson(x)).toList();
+    super.initState();
+  }
   Widget _appBar() {
     return AppBar(
       elevation: 0,
@@ -109,11 +117,11 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              _categoryCard(
+              _categoryCard("Chemist & Drugist", "350 + Stores",
                   color: LightColor.green, lightColor: LightColor.lightGreen),
-              _categoryCard(
+              _categoryCard("Covid - 19 Specilist", "899 Doctors",
                   color: LightColor.skyBlue, lightColor: LightColor.lightBlue),
-              _categoryCard(
+              _categoryCard("Cardiologists Specilist", "500 + Doctors",
                   color: LightColor.orange, lightColor: LightColor.lightOrange)
             ],
           ),
@@ -122,7 +130,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _categoryCard({Color color, Color lightColor}) {
+  Widget _categoryCard(String title, String subtitle,{Color color, Color lightColor}) {
+     TextStyle titleStyle = TextStyles.title.bold.white;
+     TextStyle subtitleStyle = TextStyles.body.bold.white;
+     if(AppTheme.fullWidth(context) < 392){
+       titleStyle = TextStyles.body.bold.white;
+       subtitleStyle = TextStyles.bodySm.bold.white;
+     }
     return AspectRatio(
       aspectRatio: 6 / 8,
       child: Container(
@@ -158,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Flexible(
                       child: Text(
-                        "Chemist & Drugist",
-                        style: TextStyles.title.bold.white,
+                        title,
+                        style: titleStyle
                       ).hP8,
                     ),
                     SizedBox(
@@ -167,8 +181,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Flexible(
                       child: Text(
-                        "350 + Stores",
-                        style: TextStyles.body.bold.white,
+                        subtitle,
+                        style: subtitleStyle,
                       ).hP8,
                     ),
                   ],
@@ -198,20 +212,21 @@ class _HomePageState extends State<HomePage> {
               // .p(12).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(20))),
             ],
           ).hP16,
-          _doctorTile("assets/doctor.png"),
-          _doctorTile("assets/doctor_1.png"),
-          _doctorTile("assets/doctor_3.png"),
-          _doctorTile("assets/doctor_4.png"),
-          _doctorTile("assets/doctor_3.png"),
-          _doctorTile("assets/doctor.png"),
-          _doctorTile("assets/doctor_4.png"),
-          _doctorTile("assets/doctor_3.png"),
+          getdoctorWidgetList()
+          
+          
         ],
       ),
     );
   }
-
-  Widget _doctorTile(String imagePath) {
+  Widget getdoctorWidgetList(){
+     return Column(
+       children: doctorDataList.map((x){
+            return  _doctorTile(x);
+          }).toList()
+     );
+  }
+  Widget _doctorTile(DoctorModel model) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
@@ -244,16 +259,16 @@ class _HomePageState extends State<HomePage> {
                 color: randomColor(),
               ),
               child: Image.asset(
-                imagePath,
+                model.image,
                 height: 50,
                 width: 50,
                 fit: BoxFit.contain,
               ),
             ),
           ),
-          title: Text("Dr David Kemp", style: TextStyles.title.bold),
+          title: Text(model.name, style: TextStyles.title.bold),
           subtitle: Text(
-            "Heart Surgeon",
+           model.type,
             style: TextStyles.bodySm.subTitleColor.bold,
           ),
           trailing: Icon(
@@ -262,7 +277,9 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).primaryColor,
           ),
         ),
-      ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(20))),
+      ).ripple(() {
+        Navigator.pushNamed(context, "/DetailPage", arguments: model);
+      }, borderRadius: BorderRadius.all(Radius.circular(20))),
     );
   }
 

@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Health Care',
       theme: AppTheme.lightTheme,
       routes: Routes.getRoute(),
+        onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
       debugShowCheckedModeBanner: false,
     );
   }
