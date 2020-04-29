@@ -55,11 +55,7 @@ class _SplashPageState extends State<SplashPage> {
                   flex: 2,
                   child: SizedBox(),
                 ),
-                Icon(
-                  Icons.favorite_border,
-                  size: 100,
-                  color: Colors.white,
-                ),
+                Image.asset("assets/heartbeat.png", color: Colors.white,height: 100,),
                 Text(
                   "Time Health",
                   style: TextStyles.h1Style.white,
