@@ -44,11 +44,10 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-     TextStyle titleStyle =TextStyles.title.copyWith(fontSize: 25).bold;
-     if(AppTheme.fullWidth(context) < 393){
-       titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
-     }
-    print(AppTheme.fullWidth(context));
+    TextStyle titleStyle = TextStyles.title.copyWith(fontSize: 25).bold;
+    if (AppTheme.fullWidth(context) < 393) {
+      titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
+    }
     return Scaffold(
       backgroundColor: LightColor.extraLightBlue,
       body: SafeArea(
@@ -63,7 +62,7 @@ class _DetailPageState extends State<DetailPage> {
               builder: (context, scrollController) {
                 return Container(
                   height: AppTheme.fullHeight(context) * .5,
-                  padding: EdgeInsets.symmetric(horizontal: 19, vertical: 16),
+                  padding: EdgeInsets.only(left:19,right:19,top: 16),//symmetric(horizontal: 19, vertical: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -71,6 +70,7 @@ class _DetailPageState extends State<DetailPage> {
                     color: Colors.white,
                   ),
                   child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
                     controller: scrollController,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,9 @@ class _DetailPageState extends State<DetailPage> {
                                 model.name,
                                 style: titleStyle,
                               ),
-                              SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                               Icon(Icons.check_circle,
                                   size: 18,
                                   color: Theme.of(context).primaryColor),
@@ -135,14 +137,48 @@ class _DetailPageState extends State<DetailPage> {
                           thickness: .3,
                           color: LightColor.grey,
                         ),
-                        Text(
-                          "About",
-                          style:titleStyle
-                        ).vP16,
+                        Text("About", style: titleStyle).vP16,
                         Text(
                           model.description,
                           style: TextStyles.body.subTitleColor,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: LightColor.grey.withAlpha(150)
+                              ),
+                              child: Icon(Icons.call, color: Colors.white,),
+                            ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: LightColor.grey.withAlpha(150)
+                              ),
+                              child: Icon(Icons.chat_bubble, color: Colors.white,),
+                            ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            FlatButton(
+                              color: Theme.of(context).primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)
+                              ),
+                              onPressed: () {},
+                              child: Text("Make an appointment", style: TextStyles.titleNormal.white,).p(10),
+                            ),
+                          ],
+                        ).vP16
                       ],
                     ),
                   ),
