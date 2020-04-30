@@ -5,7 +5,8 @@
 
 Healthcare app is a design implementaion of [Healthcare Mobile App](https://www.uplabs.com/posts/healthcare-mobile-app-d9081ded-e7b3-4705-8990-82ead42c22da) designed by [Chirag Chauhan](https://www.uplabs.com/chirag_designer2610)
 
-
+## Download App ![GitHub All Releases](https://img.shields.io/github/downloads/Thealphamerc/flutter_healthcare_app/total?color=green)
+<a href="https://github.com/TheAlphamerc/flutter_healthcare_app/releases/download/v1.0.0/app-release.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 <img src="https://github.com/TheAlphamerc/flutter_healthcare_app/blob/master/screenshots/HealthcareMobileApp.png?raw=true"  /> 
 
 ## Android Screenshots
