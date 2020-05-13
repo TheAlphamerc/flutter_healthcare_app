@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       routes: Routes.getRoute(),
         onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
       debugShowCheckedModeBanner: false,
+      initialRoute: "SplashPage",
     );
   }
 }
