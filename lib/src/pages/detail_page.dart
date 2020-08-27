@@ -137,6 +137,18 @@ class _DetailPageState extends State<DetailPage> {
                           thickness: .3,
                           color: LightColor.grey,
                         ),
+                        Text("Education", style: TextStyles.bodynormal).vP16,
+                        Text(
+                          model.name,
+                          style: TextStyles.body,
+                        ),
+
+                        Divider(
+                          thickness: .3,
+                          color: LightColor.grey,
+                        ),
+
+
                         Text("About", style: titleStyle).vP16,
                         Text(
                           model.description,
@@ -150,9 +162,9 @@ class _DetailPageState extends State<DetailPage> {
                               width: 45,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: LightColor.grey.withAlpha(150)
+                                color: LightColor.grey.withAlpha(50)
                               ),
-                              child: Icon(Icons.call, color: Colors.white,),
+                              child: Icon(Icons.call, color: LightColor.themered,),
                             ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
                             SizedBox(
                               width: 10,
@@ -162,15 +174,15 @@ class _DetailPageState extends State<DetailPage> {
                               width: 45,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: LightColor.grey.withAlpha(150)
+                                color: LightColor.grey.withAlpha(50)
                               ),
-                              child: Icon(Icons.chat_bubble, color: Colors.white,),
+                              child: Icon(Icons.chat_bubble, color: LightColor.themered,),
                             ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
                             SizedBox(
                               width: 10,
                             ),
                             FlatButton(
-                              color: Theme.of(context).primaryColor,
+                              color: LightColor.themered,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)
                               ),

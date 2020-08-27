@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/home_page.dart';
+import 'package:flutter_healthcare_app/src/pages/login_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
@@ -15,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
      Future.delayed(Duration(seconds: 2)).then((_) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
     });
     super.initState();
   }
@@ -57,11 +58,11 @@ class _SplashPageState extends State<SplashPage> {
                 ),
                 Image.asset("assets/heartbeat.png", color: Colors.white,height: 100,),
                 Text(
-                  "Time Health",
+                  "Your health",
                   style: TextStyles.h1Style.white,
                 ),
                 Text(
-                  "By healthcare Evolution",
+                  "By pakiza technovation",
                   style: TextStyles.bodySm.white.bold,
                 ),
                 Expanded(

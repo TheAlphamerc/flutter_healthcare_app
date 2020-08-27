@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 class DoctorModel {
     String name;
     String type;
@@ -10,6 +12,7 @@ class DoctorModel {
     double satisfaction;
     bool isfavourite;
     String image;
+    String education;
 
     DoctorModel({
         this.name,
@@ -21,6 +24,7 @@ class DoctorModel {
         this.satisfaction,
         this.isfavourite,
         this.image,
+        this.education,
     });
 
     DoctorModel copyWith({
@@ -33,6 +37,7 @@ class DoctorModel {
         double satisfaction,
         bool isfavourite,
         String image,
+        String education,
     }) => 
         DoctorModel(
             name: name ?? this.name,
@@ -44,6 +49,7 @@ class DoctorModel {
             satisfaction: satisfaction ?? this.satisfaction,
             isfavourite: isfavourite ?? this.isfavourite,
             image: image ?? this.image,
+            education: education ?? this.education,
         );
 
     factory DoctorModel.fromRawJson(String str) => DoctorModel.fromJson(json.decode(str));
@@ -60,6 +66,7 @@ class DoctorModel {
         satisfaction: json["satisfaction"] == null ? null : json["satisfaction"].toDouble(),
         isfavourite: json["isfavourite"] == null ? null : json["isfavourite"],
         image: json["image"] == null ? null : json["image"],
+        education: json["education"]== null ?null :json["education"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -72,5 +79,6 @@ class DoctorModel {
         "satisfaction": satisfaction == null ? null : satisfaction,
         "isfavourite": isfavourite == null ? null : isfavourite,
         "image": image == null ? null : image,
+        "education": education == null ? null : education,
     };
 }

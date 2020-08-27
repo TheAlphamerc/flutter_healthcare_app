@@ -8,6 +8,7 @@ final doctorMapList = [
     "satisfaction": 85.2,
     "isfavourite": true,
     "image":"assets/doctor.png",
+    "education": "MBBS",
     "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
   },
   {
@@ -19,6 +20,7 @@ final doctorMapList = [
     "satisfaction": 89.2,
     "isfavourite": false,
     "image":"assets/doctor_4.png",
+    "education": "MBBS",
     "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
   },
   {
@@ -30,6 +32,7 @@ final doctorMapList = [
     "satisfaction": 78.2,
     "isfavourite": false,
     "image":"assets/doctor_3.png",
+    "education": "MBBS",
     "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
   },
   {
@@ -41,6 +44,7 @@ final doctorMapList = [
     "satisfaction": 84.2,
     "isfavourite": true,
     "image":"assets/doctor_1.png",
+    "education": "MBBS",
     "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
   }
 ];

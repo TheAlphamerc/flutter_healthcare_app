@@ -8,6 +8,10 @@ import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 
+import '../theme/light_color.dart';
+import '../theme/light_color.dart';
+import '../theme/light_color.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
@@ -17,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<DoctorModel> doctorDataList;
+  String selected = "";
   @override
   void initState() { 
     doctorDataList = doctorMapList.map((x)=> DoctorModel.fromJson(x)).toList();
@@ -57,9 +62,69 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text("Hello,", style: TextStyles.title.subTitleColor),
-        Text("Peter Parker", style: TextStyles.h1Style),
+        Text("Peter Parker", style: TextStyles.title,),
       ],
     ).p16;
+  }
+  Widget _navLinks() {
+    return Wrap (
+
+      direction: Axis.horizontal,
+      alignment: WrapAlignment.center,
+      spacing: 20.0,
+      children: <Widget>[
+        GestureDetector(
+              onTap: () {
+            // do what you need to do when "Click here" gets clicked
+            setState(() {
+              selected = 'DOCTOR';
+              print("DOCTOR");
+            });
+          },
+
+            child: Text("DOCTOR", style: TextStyle(decoration: TextDecoration.none,
+              color: selected == 'DOCTOR' ? Colors.redAccent : Colors.black54,
+              fontSize: 14, )),
+
+        ).vP8,
+        GestureDetector(
+              onTap: () {
+          // do what you need to do when "Click here" gets clicked
+          selected = 'LAB TEST';
+          print("LAB TEST");
+          },
+
+            child: Text("LAB TEST", style: TextStyle(decoration: TextDecoration.none,
+                color: selected == 'LAB TEST' ? Colors.redAccent : Colors.black54, fontSize: 14)),
+
+        ).vP8,
+        GestureDetector(
+            onTap: () {
+            // do what you need to do when "Click here" gets clicked
+            selected = 'MEDICINE';
+            print("MEDICINE");
+            },
+
+            child: Text("MEDICINE", style: TextStyle(decoration: TextDecoration.none,
+                color: selected == 'MEDICINE' ? Colors.redAccent : Colors.black54, fontSize: 14)),
+
+        ).vP8,
+        GestureDetector(
+    onTap: () {
+    // do what you need to do when "Click here" gets clicked
+    selected = 'E-SHOP';
+    print("E-SHOP");
+    },
+            child: Text("E-SHOP", style: TextStyle(decoration: TextDecoration.none,
+                color: selected == 'E-SHOP' ? Colors.redAccent : Colors.black54, fontSize: 14)),
+
+        ).vP8
+      ],
+
+
+    );
+
+
   }
 
   Widget _searchField() {
@@ -72,7 +137,7 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.all(Radius.circular(13)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: LightColor.grey.withOpacity(.3),
+            color: LightColor.themered.withOpacity(.3),
             blurRadius: 15,
             offset: Offset(5, 5),
           )
@@ -86,7 +151,7 @@ class _HomePageState extends State<HomePage> {
           hintStyle: TextStyles.body.subTitleColor,
           suffixIcon: SizedBox(
               width: 50,
-              child: Icon(Icons.search, color: LightColor.purple)
+              child: Icon(Icons.search, color: LightColor.themered)
                   .alignCenter
                   .ripple(() {}, borderRadius: BorderRadius.circular(13))),
         ),
@@ -106,7 +171,7 @@ class _HomePageState extends State<HomePage> {
               Text(
                 "See All",
                 style: TextStyles.titleNormal
-                    .copyWith(color: Theme.of(context).primaryColor),
+                    .copyWith(color: LightColor.themered),
               ).p(8).ripple(() {})
             ],
           ),
@@ -117,12 +182,14 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              _categoryCard("Chemist & Drugist", "350 + Stores",
+              _categoryCard("Cardiologists", "50+ doctors",
                   color: LightColor.green, lightColor: LightColor.lightGreen),
-              _categoryCard("Covid - 19 Specilist", "899 Doctors",
+              _categoryCard("Dermatologists", "99+ Doctors",
                   color: LightColor.skyBlue, lightColor: LightColor.lightBlue),
-              _categoryCard("Cardiologists Specilist", "500 + Doctors",
-                  color: LightColor.orange, lightColor: LightColor.lightOrange)
+              _categoryCard("Gastroenterologists", "50+ Doctors",
+                  color: LightColor.orange, lightColor: LightColor.lightOrange),
+              _categoryCard("Anesthesiologists", "15+ Doctors",
+                  color: LightColor.purple, lightColor: LightColor.purpleLight)
             ],
           ),
         ),
@@ -131,18 +198,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _categoryCard(String title, String subtitle,{Color color, Color lightColor}) {
-     TextStyle titleStyle = TextStyles.title.bold.white;
-     TextStyle subtitleStyle = TextStyles.body.bold.white;
+     TextStyle titleStyle = TextStyles.bodynormal.bold.white;
+     TextStyle subtitleStyle = TextStyles.bodynormal.white;
      if(AppTheme.fullWidth(context) < 392){
-       titleStyle = TextStyles.body.bold.white;
-       subtitleStyle = TextStyles.bodySm.bold.white;
+       titleStyle = TextStyles.body.white;
+       subtitleStyle = TextStyles.bodynormal.white;
      }
     return AspectRatio(
       aspectRatio: 6 / 8,
       child: Container(
         height: 280,
         width: AppTheme.fullWidth(context) * .3,
-        margin: EdgeInsets.only(left: 10, right: 10, bottom: 20, top: 10),
+        margin: EdgeInsets.only(left: 10, right: 10, bottom: 20, top: 5),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -206,7 +273,7 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                   icon: Icon(
                     Icons.sort,
-                    color: Theme.of(context).primaryColor,
+                    color: LightColor.themered,
                   ),
                   onPressed: () {})
               // .p(12).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -274,7 +341,7 @@ class _HomePageState extends State<HomePage> {
           trailing: Icon(
             Icons.keyboard_arrow_right,
             size: 30,
-            color: Theme.of(context).primaryColor,
+            color: LightColor.themered,
           ),
         ),
       ).ripple(() {
@@ -313,6 +380,8 @@ class _HomePageState extends State<HomePage> {
             delegate: SliverChildListDelegate(
               [
                 _header(),
+                _navLinks(),
+
                 _searchField(),
                 _category(),
               ],

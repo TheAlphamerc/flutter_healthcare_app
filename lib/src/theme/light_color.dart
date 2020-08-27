@@ -25,4 +25,5 @@ class LightColor {
 
   static const Color black = Color(0xff20262C);
   static const Color lightblack = Color(0xff5F5F60);
+  static const Color themered = Color(0xffff5A79); //FF5A79
 }
