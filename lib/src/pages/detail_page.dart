@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -200,7 +201,10 @@ class _DetailPageState extends State<DetailPage> {
                                   color: LightColor.themered,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (BuildContext context) => BookAppointmentPage(model)));
+                                  },
                                   child: Text(
                                     "Make an appointment",
                                     style: TextStyles.titleNormal.white,
