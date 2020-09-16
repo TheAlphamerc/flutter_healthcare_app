@@ -21,12 +21,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<DoctorModel> doctorDataList;
-  String selected = "";
+  var selected = 'DOCTOR';
+  var selectedField = 'Near by';
+  var isSelectFilter = false;
+
   @override
-  void initState() { 
-    doctorDataList = doctorMapList.map((x)=> DoctorModel.fromJson(x)).toList();
+  void initState() {
+    doctorDataList = doctorMapList.map((x) => DoctorModel.fromJson(x)).toList();
     super.initState();
   }
+
   Widget _appBar() {
     return AppBar(
       elevation: 0,
@@ -62,69 +66,84 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text("Hello,", style: TextStyles.title.subTitleColor),
-        Text("Peter Parker", style: TextStyles.title,),
+        Text(
+          "Peter Parker",
+          style: TextStyles.title,
+        ),
       ],
     ).p16;
   }
-  Widget _navLinks() {
-    return Wrap (
 
+  Widget _navLinks() {
+    return Wrap(
       direction: Axis.horizontal,
       alignment: WrapAlignment.center,
       spacing: 20.0,
       children: <Widget>[
         GestureDetector(
-              onTap: () {
+          onTap: () {
             // do what you need to do when "Click here" gets clicked
             setState(() {
               selected = 'DOCTOR';
               print("DOCTOR");
             });
           },
-
-            child: Text("DOCTOR", style: TextStyle(decoration: TextDecoration.none,
-              color: selected == 'DOCTOR' ? Colors.redAccent : Colors.black54,
-              fontSize: 14, )),
-
+          child: Text("DOCTOR",
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                color: selected == 'DOCTOR' ? Colors.redAccent : Colors.black54,
+                fontSize: 14,
+              )),
         ).vP8,
         GestureDetector(
-              onTap: () {
-          // do what you need to do when "Click here" gets clicked
-          selected = 'LAB TEST';
-          print("LAB TEST");
-          },
-
-            child: Text("LAB TEST", style: TextStyle(decoration: TextDecoration.none,
-                color: selected == 'LAB TEST' ? Colors.redAccent : Colors.black54, fontSize: 14)),
-
-        ).vP8,
-        GestureDetector(
-            onTap: () {
+          onTap: () {
             // do what you need to do when "Click here" gets clicked
-            selected = 'MEDICINE';
-            print("MEDICINE");
-            },
-
-            child: Text("MEDICINE", style: TextStyle(decoration: TextDecoration.none,
-                color: selected == 'MEDICINE' ? Colors.redAccent : Colors.black54, fontSize: 14)),
-
+            setState(() {
+              selected = 'LAB TEST';
+            });
+            print("LAB TEST");
+          },
+          child: Text("LAB TEST",
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: selected == 'LAB TEST'
+                      ? Colors.redAccent
+                      : Colors.black54,
+                  fontSize: 14)),
         ).vP8,
         GestureDetector(
-    onTap: () {
-    // do what you need to do when "Click here" gets clicked
-    selected = 'E-SHOP';
-    print("E-SHOP");
-    },
-            child: Text("E-SHOP", style: TextStyle(decoration: TextDecoration.none,
-                color: selected == 'E-SHOP' ? Colors.redAccent : Colors.black54, fontSize: 14)),
-
+          onTap: () {
+            // do what you need to do when "Click here" gets clicked
+            setState(() {
+              selected = 'MEDICINE';
+            });
+            print("MEDICINE");
+          },
+          child: Text("MEDICINE",
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: selected == 'MEDICINE'
+                      ? Colors.redAccent
+                      : Colors.black54,
+                  fontSize: 14)),
+        ).vP8,
+        GestureDetector(
+          onTap: () {
+            // do what you need to do when "Click here" gets clicked
+            setState(() {
+              selected = 'E-SHOP';
+            });
+            print("E-SHOP");
+          },
+          child: Text("E-SHOP",
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color:
+                      selected == 'E-SHOP' ? Colors.redAccent : Colors.black54,
+                  fontSize: 14)),
         ).vP8
       ],
-
-
     );
-
-
   }
 
   Widget _searchField() {
@@ -137,24 +156,55 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.all(Radius.circular(13)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: LightColor.themered.withOpacity(.3),
+            color: LightColor.lightblack.withOpacity(.3),
             blurRadius: 15,
             offset: Offset(5, 5),
           )
         ],
       ),
-      child: TextField(
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          border: InputBorder.none,
-          hintText: "Search",
-          hintStyle: TextStyles.body.subTitleColor,
-          suffixIcon: SizedBox(
-              width: 50,
-              child: Icon(Icons.search, color: LightColor.themered)
-                  .alignCenter
-                  .ripple(() {}, borderRadius: BorderRadius.circular(13))),
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 120,
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                border: InputBorder.none,
+                hintText: "Search",
+                hintStyle: TextStyles.body.subTitleColor,
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (isSelectFilter == true) {
+                        isSelectFilter = false;
+                      } else {
+                        isSelectFilter = true;
+                      }
+                    });
+                    print(isSelectFilter);
+                  },
+                  child: Icon(Icons.filter_list, color: LightColor.themered)
+
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Icon(Icons.search, color: LightColor.themered)
+                    .alignCenter
+                    .ripple(() {}, borderRadius: BorderRadius.circular(13)),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -170,8 +220,8 @@ class _HomePageState extends State<HomePage> {
               Text("Category", style: TextStyles.title.bold),
               Text(
                 "See All",
-                style: TextStyles.titleNormal
-                    .copyWith(color: LightColor.themered),
+                style:
+                    TextStyles.titleNormal.copyWith(color: LightColor.themered),
               ).p(8).ripple(() {})
             ],
           ),
@@ -197,13 +247,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _categoryCard(String title, String subtitle,{Color color, Color lightColor}) {
-     TextStyle titleStyle = TextStyles.bodynormal.bold.white;
-     TextStyle subtitleStyle = TextStyles.bodynormal.white;
-     if(AppTheme.fullWidth(context) < 392){
-       titleStyle = TextStyles.body.white;
-       subtitleStyle = TextStyles.bodynormal.white;
-     }
+  Widget _categoryCard(String title, String subtitle,
+      {Color color, Color lightColor}) {
+    TextStyle titleStyle = TextStyles.bodynormal.bold.white;
+    TextStyle subtitleStyle = TextStyles.bodynormal.white;
+    if (AppTheme.fullWidth(context) < 392) {
+      titleStyle = TextStyles.body.white;
+      subtitleStyle = TextStyles.bodynormal.white;
+    }
     return AspectRatio(
       aspectRatio: 6 / 8,
       child: Container(
@@ -238,10 +289,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Flexible(
-                      child: Text(
-                        title,
-                        style: titleStyle
-                      ).hP8,
+                      child: Text(title, style: titleStyle).hP8,
                     ),
                     SizedBox(
                       height: 10,
@@ -280,19 +328,18 @@ class _HomePageState extends State<HomePage> {
             ],
           ).hP16,
           getdoctorWidgetList()
-          
-          
         ],
       ),
     );
   }
-  Widget getdoctorWidgetList(){
-     return Column(
-       children: doctorDataList.map((x){
-            return  _doctorTile(x);
-          }).toList()
-     );
+
+  Widget getdoctorWidgetList() {
+    return Column(
+        children: doctorDataList.map((x) {
+      return _doctorTile(x);
+    }).toList());
   }
+
   Widget _doctorTile(DoctorModel model) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -335,7 +382,7 @@ class _HomePageState extends State<HomePage> {
           ),
           title: Text(model.name, style: TextStyles.title.bold),
           subtitle: Text(
-           model.type,
+            model.type,
             style: TextStyles.bodySm.subTitleColor.bold,
           ),
           trailing: Icon(
@@ -348,6 +395,83 @@ class _HomePageState extends State<HomePage> {
         Navigator.pushNamed(context, "/DetailPage", arguments: model);
       }, borderRadius: BorderRadius.all(Radius.circular(20))),
     );
+  }
+
+  Widget _basedOnField() {
+    return isSelectFilter
+        ? Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
+            spacing: 20.0,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  // do what you need to do when "Click here" gets clicked
+                  setState(() {
+                    selectedField = 'Near by';
+                    print("Near by");
+                  });
+                },
+                child: Text("Near by",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: selectedField == 'Near by'
+                          ? Colors.redAccent
+                          : Colors.black54,
+                      fontSize: 14,
+                    )),
+              ).vP8,
+              GestureDetector(
+                onTap: () {
+                  // do what you need to do when "Click here" gets clicked
+                  setState(() {
+                    selectedField = 'Gender';
+                  });
+                  print("Gender");
+                },
+                child: Text("Gender",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: selectedField == 'Gender'
+                            ? Colors.redAccent
+                            : Colors.black54,
+                        fontSize: 14)),
+              ).vP8,
+              GestureDetector(
+                onTap: () {
+                  // do what you need to do when "Click here" gets clicked
+                  setState(() {
+                    selectedField = 'Rating';
+                  });
+                  print("Rating");
+                },
+                child: Text("Rating",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: selectedField == 'Rating'
+                            ? Colors.redAccent
+                            : Colors.black54,
+                        fontSize: 14)),
+              ).vP8,
+              GestureDetector(
+                onTap: () {
+                  // do what you need to do when "Click here" gets clicked
+                  setState(() {
+                    selectedField = 'Experience';
+                  });
+                  print("Experience");
+                },
+                child: Text("Experience",
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        color: selectedField == 'Experience'
+                            ? Colors.redAccent
+                            : Colors.black54,
+                        fontSize: 14)),
+              ).vP8
+            ],
+          )
+        : Text('');
   }
 
   Color randomColor() {
@@ -383,7 +507,8 @@ class _HomePageState extends State<HomePage> {
                 _navLinks(),
 
                 _searchField(),
-                _category(),
+                _basedOnField(),
+                //_category(),
               ],
             ),
           ),
