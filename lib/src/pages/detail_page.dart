@@ -17,6 +17,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   DoctorModel model;
+
   @override
   void initState() {
     model = widget.model;
@@ -62,7 +63,8 @@ class _DetailPageState extends State<DetailPage> {
               builder: (context, scrollController) {
                 return Container(
                   height: AppTheme.fullHeight(context) * .5,
-                  padding: EdgeInsets.only(left:19,right:19,top: 16),//symmetric(horizontal: 19, vertical: 16),
+                  padding: EdgeInsets.only(left: 19, right: 19, top: 16),
+                  //symmetric(horizontal: 19, vertical: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -105,50 +107,41 @@ class _DetailPageState extends State<DetailPage> {
                           thickness: .3,
                           color: LightColor.grey,
                         ),
-                        Row(
-                          children: <Widget>[
-                            ProgressWidget(
-                                value: model.goodReviews,
-                                totalValue: 100,
-                                activeColor: LightColor.purpleExtraLight,
-                                backgroundColor:
-                                    LightColor.grey.withOpacity(.3),
-                                title: "Good Review",
-                                durationTime: 500),
-                            ProgressWidget(
-                                value: model.totalScore,
-                                totalValue: 100,
-                                activeColor: LightColor.purpleLight,
-                                backgroundColor:
-                                    LightColor.grey.withOpacity(.3),
-                                title: "Total Score",
-                                durationTime: 300),
-                            ProgressWidget(
-                                value: model.satisfaction,
-                                totalValue: 100,
-                                activeColor: LightColor.purple,
-                                backgroundColor:
-                                    LightColor.grey.withOpacity(.3),
-                                title: "Satisfaction",
-                                durationTime: 800),
-                          ],
-                        ),
-                        Divider(
-                          thickness: .3,
-                          color: LightColor.grey,
-                        ),
-                        Text("Education", style: TextStyles.bodynormal).vP16,
                         Text(
-                          model.name,
-                          style: TextStyles.body,
+                          'Available on',
+                          style: titleStyle,
                         ),
-
+                        SizedBox(
+                          height: 85,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              showSchduleWidget(context, 'Sat', '10am', '10pm'),
+                              showSchduleWidget(context, 'Sun', '10am', '10pm'),
+                              showSchduleWidget(context, 'Mon', '10am', '10pm'),
+                              showSchduleWidget(context, 'Tue', '10am', '10pm'),
+                              showSchduleWidget(context, 'Wed', '10am', '10pm'),
+                              showSchduleWidget(context, 'Thu', '10am', '10pm'),
+                              showSchduleWidget(context, 'Fri', '10am', '10pm'),
+                            ],
+                          ),
+                        ),
                         Divider(
                           thickness: .3,
                           color: LightColor.grey,
                         ),
-
-
+                        Text(
+                          'Education',
+                          style: titleStyle,
+                        ),
+                        Text(
+                          model.education,
+                          style: TextStyles.body,
+                        ).vP4,
+                        Divider(
+                          thickness: .3,
+                          color: LightColor.grey,
+                        ),
                         Text("About", style: titleStyle).vP16,
                         Text(
                           model.description,
@@ -157,37 +150,64 @@ class _DetailPageState extends State<DetailPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: LightColor.grey.withAlpha(50)
-                              ),
-                              child: Icon(Icons.call, color: LightColor.themered,),
-                            ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: LightColor.grey.withAlpha(50)),
+                                  child: Icon(
+                                    Icons.call,
+                                    color: LightColor.themered,
+                                  ),
+                                ).ripple(
+                                  () {},
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                Text('')
+                              ],
+                            ),
                             SizedBox(
                               width: 10,
                             ),
-                            Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: LightColor.grey.withAlpha(50)
-                              ),
-                              child: Icon(Icons.chat_bubble, color: LightColor.themered,),
-                            ).ripple((){}, borderRadius:BorderRadius.circular(10), ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: LightColor.grey.withAlpha(50)),
+                                  child: Icon(
+                                    Icons.chat_bubble,
+                                    color: LightColor.themered,
+                                  ),
+                                ).ripple(
+                                  () {},
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                Text('')
+                              ],
+                            ),
                             SizedBox(
                               width: 10,
                             ),
-                            FlatButton(
-                              color: LightColor.themered,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)
-                              ),
-                              onPressed: () {},
-                              child: Text("Make an appointment", style: TextStyles.titleNormal.white,).p(10),
+                            Column(
+                              children: [
+                                FlatButton(
+                                  color: LightColor.themered,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Make an appointment",
+                                    style: TextStyles.titleNormal.white,
+                                  ).p(10),
+                                ),
+                                Text('consultation fee : \$ ${model.constFee} / hour')
+                              ],
                             ),
                           ],
                         ).vP16
@@ -198,6 +218,34 @@ class _DetailPageState extends State<DetailPage> {
               },
             ),
             _appbar(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget showSchduleWidget(BuildContext context, day, start, end) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: Column(
+          children: [
+            Text(
+              day,
+              style: TextStyles.titleMedium,
+            ).vP4,
+            Text(
+              start,
+              style: TextStyles.bodySm,
+            ),
+            Text(
+              'to',
+              style: TextStyles.bodySm,
+            ),
+            Text(
+              end,
+              style: TextStyles.bodySm,
+            ),
           ],
         ),
       ),
