@@ -7,6 +7,7 @@ import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
+import 'package:flutter_healthcare_app/src/widgets/DrawerWidget.dart';
 
 import '../theme/light_color.dart';
 import '../theme/light_color.dart';
@@ -25,6 +26,9 @@ class _HomePageState extends State<HomePage> {
   var selectedField = 'Near by';
   var isSelectFilter = false;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey_home =
+  new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     doctorDataList = doctorMapList.map((x) => DoctorModel.fromJson(x)).toList();
@@ -35,10 +39,15 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       elevation: 0,
       backgroundColor: Theme.of(context).backgroundColor,
-      leading: Icon(
-        Icons.short_text,
-        size: 30,
-        color: Colors.black,
+      leading: GestureDetector(
+        onTap: (){
+          _scaffoldKey_home.currentState.openDrawer();
+        },
+        child: Icon(
+          Icons.short_text,
+          size: 30,
+          color: Colors.black,
+        ),
       ),
       actions: <Widget>[
         Icon(
@@ -513,6 +522,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _appBar(),
       backgroundColor: Theme.of(context).backgroundColor,
+        key: _scaffoldKey_home,
+        drawer: DrawerWidget(
+          scaffoldKey: _scaffoldKey_home,
+        ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(
