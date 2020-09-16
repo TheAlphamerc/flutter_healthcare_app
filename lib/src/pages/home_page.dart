@@ -381,10 +381,25 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           title: Text(model.name, style: TextStyles.title.bold),
-          subtitle: Text(
-            model.type,
-            style: TextStyles.bodySm.subTitleColor.bold,
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                model.type,
+                style: TextStyles.body.subTitleColor.bold,
+              ),
+              Text(
+                model.location,
+                style: TextStyles.bodySm.subTitleColor,
+              ),
+              Text(
+                ('\$${model.constFee}'),
+                style: TextStyles.bodySm.subTitleColor,
+              ),
+
+            ],
           ),
+
           trailing: Icon(
             Icons.keyboard_arrow_right,
             size: 30,
