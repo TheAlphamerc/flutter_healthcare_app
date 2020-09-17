@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/bottomNavigation/doctor_dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/home_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       password = passValueHolder.text;
       print(user + password);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => DashboardScreen()));
+          context, MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
     });
   }
 

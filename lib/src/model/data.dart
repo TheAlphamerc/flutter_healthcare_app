@@ -56,3 +56,47 @@ final doctorMapList = [
     "constFee":"1000"
   }
 ];
+
+final appointmentList = [
+  {
+    "name": "Jone",
+    "date": "16",
+    "time": "6.30 pm",
+    "age":"22",
+    "gender": "Male",
+    "appointmentId": "2340187"
+  },
+  {
+    "name": "Kabir",
+    "date": "16",
+    "time": "6.30 pm",
+    "age":"22",
+    "gender": "Male",
+    "appointmentId": "2340187"
+  },
+  {
+    "name": "Ali",
+    "date": "16",
+    "time": "6.30 pm",
+    "age":"37",
+    "gender": "Male",
+    "appointmentId": "2340187"
+  },
+  {
+    "name": "Maria",
+    "date": "16",
+    "time": "6.30 pm",
+    "age":"22",
+    "gender": "Female",
+    "appointmentId": "2340187"
+  },
+  {
+    "name": "Jone",
+    "date": "16",
+    "time": "6.30 pm",
+    "age":"27",
+    "gender": "Male",
+    "appointmentId": "2340187"
+  }
+
+];
