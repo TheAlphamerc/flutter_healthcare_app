@@ -8,6 +8,8 @@ import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/widgets/DrawerWidget.dart';
+import 'package:group_radio_button/group_radio_button.dart';
+import 'package:rating_bar/rating_bar.dart';
 
 import '../theme/light_color.dart';
 import '../theme/light_color.dart';
@@ -25,9 +27,14 @@ class _HomePageState extends State<HomePage> {
   var selected = 'DOCTOR';
   var selectedField = 'Near by';
   var isSelectFilter = false;
+  var gender = 'Male';
+  double _rating = 5;
 
   final GlobalKey<ScaffoldState> _scaffoldKey_home =
-  new GlobalKey<ScaffoldState>();
+      new GlobalKey<ScaffoldState>();
+
+
+  List<String> _genderList = ["Male", "Female"];
 
   @override
   void initState() {
@@ -40,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 0,
       backgroundColor: Theme.of(context).backgroundColor,
       leading: GestureDetector(
-        onTap: (){
+        onTap: () {
           _scaffoldKey_home.currentState.openDrawer();
         },
         child: Icon(
@@ -191,19 +198,17 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (isSelectFilter == true) {
-                        isSelectFilter = false;
-                      } else {
-                        isSelectFilter = true;
-                      }
-                    });
-                    print(isSelectFilter);
-                  },
-                  child: Icon(Icons.filter_list, color: LightColor.themered)
-
-                ),
+                    onTap: () {
+                      setState(() {
+                        if (isSelectFilter == true) {
+                          isSelectFilter = false;
+                        } else {
+                          isSelectFilter = true;
+                        }
+                      });
+                      print(isSelectFilter);
+                    },
+                    child: Icon(Icons.filter_list, color: LightColor.themered)),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
@@ -405,10 +410,8 @@ class _HomePageState extends State<HomePage> {
                 ('\$${model.constFee}'),
                 style: TextStyles.bodySm.subTitleColor,
               ),
-
             ],
           ),
-
           trailing: Icon(
             Icons.keyboard_arrow_right,
             size: 30,
@@ -435,6 +438,7 @@ class _HomePageState extends State<HomePage> {
                     selectedField = 'Near by';
                     print("Near by");
                   });
+                  openNearByDialog(context);
                 },
                 child: Text("Near by",
                     style: TextStyle(
@@ -451,6 +455,7 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     selectedField = 'Gender';
                   });
+                  openGenderDialog(context);
                   print("Gender");
                 },
                 child: Text("Gender",
@@ -467,6 +472,7 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     selectedField = 'Rating';
                   });
+                  openRatingDialog(context);
                   print("Rating");
                 },
                 child: Text("Rating",
@@ -483,6 +489,7 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                     selectedField = 'Experience';
                   });
+                  openExperienceDialog(context);
                   print("Experience");
                 },
                 child: Text("Experience",
@@ -522,10 +529,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _appBar(),
       backgroundColor: Theme.of(context).backgroundColor,
-        key: _scaffoldKey_home,
-        drawer: DrawerWidget(
-          scaffoldKey: _scaffoldKey_home,
-        ),
+      key: _scaffoldKey_home,
+      drawer: DrawerWidget(
+        scaffoldKey: _scaffoldKey_home,
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(
@@ -544,5 +551,312 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  void openExperienceDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (contex, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: LightColor.themered,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Input the year of experience',
+                          style: TextStyle(color: LightColor.white,
+                          fontSize: 18),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              child: TextField(
+                                maxLength: 2,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: LightColor.white),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: LightColor.white),
+                                  ),
+                                  border: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: LightColor.white),
+                                  ),
+                                  counterText: '',
+                                  contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+
+                                ),
+                              ),
+                            ),
+                            Text('Years',
+                            style: TextStyle(
+                              color: LightColor.white,
+                              fontSize: 16
+                            ),)
+                          ],
+
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'OK',
+                            style: TextStyle(
+                                fontWeight:FontWeight.bold,
+                                color: LightColor.white,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void openRatingDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (contex, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: LightColor.themered,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Input the rating',
+                          style: TextStyle(color: LightColor.white,
+                              fontSize: 18),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: RatingBar(
+                          initialRating: _rating,
+                          onRatingChanged: (rating) => setState(() => _rating = rating),
+                          filledIcon: Icons.star,
+                          emptyIcon: Icons.star_border,
+                          halfFilledIcon: Icons.star_half,
+                          isHalfAllowed: true,
+                          filledColor: LightColor.white,
+                          emptyColor: LightColor.white,
+                          halfFilledColor: LightColor.white,
+                          size: 24,
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'OK',
+                            style: TextStyle(
+                                fontWeight:FontWeight.bold,
+                                color: LightColor.white,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void openGenderDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (contex, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: LightColor.themered,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Select your gender',
+                          style: TextStyle(color: LightColor.white,
+                              fontSize: 18),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Theme(
+                          data: ThemeData(
+                            primarySwatch: LightColor.MATERIAL_WHITE
+                          ),
+                          child: RadioGroup<String>.builder(
+                            direction: Axis.horizontal,
+                            groupValue: gender,
+                            onChanged: (value) => setState(() {
+                              gender = value;
+                            }),
+                            items: _genderList,
+
+                            itemBuilder: (item) => RadioButtonBuilder(
+                              item,
+                            ),
+                          ),
+                        ),
+                      ),
+
+
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'OK',
+                            style: TextStyle(
+                                fontWeight:FontWeight.bold,
+                                color: LightColor.white,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void openNearByDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (contex, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: LightColor.themered,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Input the year of experience',
+                          style: TextStyle(color: LightColor.white,
+                              fontSize: 18),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left:10.0,right: 10),
+                                child: TextField(
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: LightColor.white),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: LightColor.white),
+                                    ),
+                                    border: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: LightColor.white),
+                                    ),
+                                    counterText: '',
+                                    contentPadding:
+                                    EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right:10.0),
+                              child: Icon(Icons.gps_fixed,
+                              size: 24,
+                              color: LightColor.white,),
+                            )
+                          ],
+
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'OK',
+                            style: TextStyle(
+                                fontWeight:FontWeight.bold,
+                                color: LightColor.white,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+
   }
 }
