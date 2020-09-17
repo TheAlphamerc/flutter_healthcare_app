@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:intl/intl.dart';
 
 class BookAppointmentPage extends StatefulWidget {
   DoctorModel doctorModel;
@@ -13,8 +14,11 @@ class BookAppointmentPage extends StatefulWidget {
 }
 
 class _BookAppointmentPageState extends State<BookAppointmentPage> {
+  TextEditingController _problemController = TextEditingController();
+
   var cashpayment = false;
-  var selectDate = 'Sat';
+  var selectDate = 'Saturday';
+  var time= '00:00 AM';
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       appBar: AppBar(
         backgroundColor: LightColor.themered,
         elevation: 0,
-        leading: Icon(Icons.keyboard_backspace),
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+            child: Icon(Icons.keyboard_backspace)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -193,7 +201,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                             ]),
                         child: Center(
                           child: Text(
-                            '6.40 PM',
+                            '$time',
                             style:
                                 TextStyle(color: LightColor.black, fontSize: 20),
                           ),
@@ -232,6 +240,18 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(
                       color: LightColor.lightblack.withOpacity(0.5), width: 2)),
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                cursorColor: LightColor.black,
+                controller: _problemController,
+
+                decoration: InputDecoration(
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  border: InputBorder.none,
+                ),
+              ),
             ),
           )
         ],
@@ -340,6 +360,17 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   }
 
   void openTimePicker(BuildContext context) {
+    DatePicker.showTime12hPicker(context,
+        showTitleActions: true,
+        onChanged: (date) {
+          setState(() {
+            time = DateFormat('hh:mm aa').format(date);
+          });
+        }, onConfirm: (date) {
+          setState(() {
+            time = DateFormat('hh:mm aa').format(date);
+          });
+        }, currentTime: DateTime.now(), locale: LocaleType.en);
 
 
   }
