@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/appointment_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor/all_patient_details.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor/patient_details_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
 class DoctorHomePage extends StatefulWidget {
@@ -261,138 +263,135 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
     return SliverList(
         delegate: SliverChildBuilderDelegate(
       (context, index) {
-        return getAppointmnetList();
-      },
-      childCount: 1,
-    ));
-  }
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => ALlPatientDetails(appointmentDataList,index)));
 
-  Widget getAppointmnetList() {
-    return Column(
-        children: appointmentDataList.map((x) {
-      return _appointmentTile(x);
-    }).toList());
-  }
-
-  Widget _appointmentTile(Appointment appointment) {
-    return Container(
-      decoration: BoxDecoration(
-        color: LightColor.white,
-      ),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: LightColor.white,
+            ),
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    Row(
                       children: [
-                        Text('Today',
-                        style: TextStyle(
-                          color: LightColor.grey,
-                          fontSize: 14,
-                        ),),
                         Padding(
-                          padding: const EdgeInsets.only(top:10.0,bottom: 10.0),
-                          child: Text(appointment.date,
-                            style: TextStyle(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            children: [
+                              Text('Today',
+                                style: TextStyle(
+                                  color: LightColor.grey,
+                                  fontSize: 14,
+                                ),),
+                              Padding(
+                                padding: const EdgeInsets.only(top:10.0,bottom: 10.0),
+                                child: Text(appointmentDataList[index].date,
+                                  style: TextStyle(
+                                      color: LightColor.themered,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                              ),
+                              Text(appointmentDataList[index].time,
+                                style: TextStyle(
+                                  color: LightColor.black,
+                                  fontSize: 12,
+                                ),)
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 1,
+                          height: 60,
+                          color: LightColor.lightblack.withOpacity(0.2),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left:10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(appointmentDataList[index].name,
+                                  style: TextStyle(
+                                    color: LightColor.black,
+                                    fontSize: 18,
+                                  ),),
+                                Text('#${appointmentDataList[index].appointmentId}',
+                                  style: TextStyle(
+                                    color: LightColor.themered,
+                                    fontSize: 14,
+                                  ),),
+                                Text('${appointmentDataList[index].gender}. ${appointmentDataList[index].age} years',
+                                  style: TextStyle(
+                                    color: LightColor.grey,
+                                    fontSize: 14,
+                                  ),),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom:10.0),
+                                  child: Text('Reason to get appointed',
+                                    style: TextStyle(
+                                      color: LightColor.black,
+                                      fontSize: 14,
+                                    ),),
+                                ),
+
+                              ],),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 5,
+                      width: MediaQuery.of(context).size.width,
+                      color: LightColor.lightblack.withOpacity(0.1),
+                    ),
+
+                  ],
+                ),
+                Positioned(
+                  right: 5,
+                  top: 5,
+                  child: Text('New',style: TextStyle(
+                      color:LightColor.themered,
+                      fontSize: 14
+                  ),),
+                ),
+                Positioned(
+                  bottom: 5,
+                  right: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom:10.0,),
+                    child: Row(
+                      children: [
+                        Text('CANCEL',
+                          style: TextStyle(
                               color: LightColor.themered,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
+                              fontSize: 12
+                          ),),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Text('RE-SCHEDULE',
+                            style: TextStyle(
+                                color: LightColor.lightblack,
+                                fontSize: 12
                             ),),
                         ),
-                        Text(appointment.time,
-                          style: TextStyle(
-                            color: LightColor.black,
-                            fontSize: 12,
-                          ),)
                       ],
                     ),
                   ),
-                  Container(
-                    width: 1,
-                    height: 60,
-                    color: LightColor.lightblack.withOpacity(0.2),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left:10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                        Text(appointment.name,
-                          style: TextStyle(
-                            color: LightColor.black,
-                            fontSize: 18,
-                          ),),
-                        Text('#${appointment.appointmentId}',
-                          style: TextStyle(
-                            color: LightColor.themered,
-                            fontSize: 14,
-                          ),),
-                        Text('${appointment.gender}. ${appointment.age} years',
-                          style: TextStyle(
-                            color: LightColor.grey,
-                            fontSize: 14,
-                          ),),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom:10.0),
-                            child: Text('Reason to get appointed',
-                              style: TextStyle(
-                                color: LightColor.black,
-                                fontSize: 14,
-                              ),),
-                          ),
-
-                      ],),
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                height: 5,
-                width: MediaQuery.of(context).size.width,
-                color: LightColor.lightblack.withOpacity(0.1),
-              ),
-
-            ],
-          ),
-          Positioned(
-            right: 5,
-            top: 5,
-            child: Text('New',style: TextStyle(
-              color:LightColor.themered,
-              fontSize: 14
-            ),),
-          ),
-          Positioned(
-            bottom: 5,
-            right: 5,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom:10.0,),
-              child: Row(
-                children: [
-                  Text('CANCEL',
-                    style: TextStyle(
-                        color: LightColor.themered,
-                        fontSize: 12
-                    ),),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text('RE-SCHEDULE',
-                      style: TextStyle(
-                          color: LightColor.lightblack,
-                          fontSize: 12
-                      ),),
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
-    );
+          ),
+        );
+      },
+      childCount: appointmentDataList.length,
+    ));
   }
+
 }

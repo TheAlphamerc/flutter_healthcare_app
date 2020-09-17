@@ -64,7 +64,8 @@ final appointmentList = [
     "time": "6.30 pm",
     "age":"22",
     "gender": "Male",
-    "appointmentId": "2340187"
+    "appointmentId": "2340187",
+    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Kabir",
@@ -72,7 +73,8 @@ final appointmentList = [
     "time": "6.30 pm",
     "age":"22",
     "gender": "Male",
-    "appointmentId": "2340187"
+    "appointmentId": "2340187",
+    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Ali",
@@ -80,7 +82,9 @@ final appointmentList = [
     "time": "6.30 pm",
     "age":"37",
     "gender": "Male",
-    "appointmentId": "2340187"
+    "appointmentId": "2340187",
+    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+
   },
   {
     "name": "Maria",
@@ -88,7 +92,9 @@ final appointmentList = [
     "time": "6.30 pm",
     "age":"22",
     "gender": "Female",
-    "appointmentId": "2340187"
+    "appointmentId": "2340187",
+    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+
   },
   {
     "name": "Jone",
@@ -96,7 +102,9 @@ final appointmentList = [
     "time": "6.30 pm",
     "age":"27",
     "gender": "Male",
-    "appointmentId": "2340187"
+    "appointmentId": "2340187",
+    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+
   }
 
 ];

@@ -31,28 +31,28 @@ class _DoctorDashboardScreenState extends State<DoctorDashboardScreen> {
     return Scaffold(
       body: _children[currentPage],
       bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.business_center,
+            icon: Icon(Icons.home,
             size: 24,),
-            title: Text('Service '),
+            title: Text(''),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.date_range,
+            icon: Icon(Icons.access_alarm,
             size: 24,),
-            title: Text('Appoinment'),
+            title: Text(''),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.description,
+            icon: Icon(Icons.message,
             size: 24,),
-            title: Text('History'),
+            title: Text(''),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box,
             size: 24,),
-            title: Text('Profile'),
+            title: Text(''),
           ),
         ],
         currentIndex: currentPage,

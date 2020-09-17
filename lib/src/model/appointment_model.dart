@@ -12,6 +12,7 @@ class Appointment {
     this.age,
     this.gender,
     this.appointmentId,
+    this.reason
   });
 
   String name;
@@ -20,6 +21,7 @@ class Appointment {
   String age;
   String gender;
   String appointmentId;
+  String reason;
 
   factory Appointment.fromJson(Map<String, dynamic> json) => Appointment(
     name: json["name"],
@@ -28,6 +30,8 @@ class Appointment {
     age: json["age"],
     gender: json["gender"],
     appointmentId: json["appointmentId"],
+      reason: json["reason"]
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -37,5 +41,7 @@ class Appointment {
     "age": age,
     "gender": gender,
     "appointmentId": appointmentId,
+    "reason":reason
+
   };
 }
