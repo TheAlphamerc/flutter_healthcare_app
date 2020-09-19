@@ -4,6 +4,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:intl/intl.dart';
@@ -186,89 +187,95 @@ class _EshopHomePageState extends State<EshopHomePage> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: LightColor.themered,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                boxShadow: [
-                  BoxShadow(
-                    color: LightColor.black.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 15,
-                    offset: Offset(0, 1), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: Image.asset(
-                      'assets/medicine_box.jpg',
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => EshopDetailPage(medicineListdata[index])));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: LightColor.themered,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: LightColor.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
                     ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10)),
-                          color: LightColor.themered.withOpacity(0.7)),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top:5.0),
-                            child: Text(
-                              '${medicineListdata[index].medicineName}',
-                              style: TextStyle(
-                                  color: LightColor.white, fontSize: 16,fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Text(
-                            '${medicineListdata[index].companyName}',
-                            style: TextStyle(
-                                color: LightColor.white, fontSize: 16),
-                          ),
-                          Text(
-                            '${medicineListdata[index].genericName}',
-                            style: TextStyle(
-                                color: LightColor.white, fontSize: 16),
-                          ),
-                          Divider(
-                            thickness: 1,
-                            color: LightColor.white,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10,bottom:5.0),
-                                child: Text(
-                                  '10 pices',
-                                  style: TextStyle(
-                                      color: LightColor.white, fontSize: 16),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right:15.0,bottom: 5),
-                                child: Text(
-                                  '\$${medicineListdata[index].price}',
-                                  style: TextStyle(
-                                      color: LightColor.white, fontSize: 16),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                  ],
+                ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      child: Image.asset(
+                        'assets/medicine_box.jpg',
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10)),
+                            color: LightColor.themered.withOpacity(0.7)),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:5.0),
+                              child: Text(
+                                '${medicineListdata[index].medicineName}',
+                                style: TextStyle(
+                                    color: LightColor.white, fontSize: 16,fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              '${medicineListdata[index].companyName}',
+                              style: TextStyle(
+                                  color: LightColor.white, fontSize: 16),
+                            ),
+                            Text(
+                              '${medicineListdata[index].genericName}',
+                              style: TextStyle(
+                                  color: LightColor.white, fontSize: 16),
+                            ),
+                            Divider(
+                              thickness: 1,
+                              color: LightColor.white,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10,bottom:5.0),
+                                  child: Text(
+                                    '10 pices',
+                                    style: TextStyle(
+                                        color: LightColor.white, fontSize: 16),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right:15.0,bottom: 5),
+                                  child: Text(
+                                    '\$${medicineListdata[index].price}',
+                                    style: TextStyle(
+                                        color: LightColor.white, fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
