@@ -3,6 +3,7 @@ import 'package:flutter_healthcare_app/src/pages/user/appointment_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/home_Page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     HomePage(),
     AppointmentPage(),
     HistoryPage(),
-    HomePage(),
+    UserProfilePage(),
   ];
 
   @override
