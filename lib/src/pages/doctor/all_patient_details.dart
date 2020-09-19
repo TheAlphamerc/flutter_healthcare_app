@@ -21,7 +21,7 @@ class _ALlPatientDetailsState extends State<ALlPatientDetails> {
         itemCount: widget.appointmentDataList.length,
         controller: PageController(initialPage: widget.index, keepPage: true, viewportFraction: 1),
         itemBuilder: (BuildContext context, int itemIndex) {
-          return PatientDetailsPage(widget.appointmentDataList[widget.index]);
+          return PatientDetailsPage(widget.appointmentDataList[itemIndex]);
         },
       ),
     );
