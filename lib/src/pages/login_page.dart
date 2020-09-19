@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/doctor_dashboard_screen.dart';
-import 'package:flutter_healthcare_app/src/pages/home_page.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
@@ -10,7 +10,7 @@ import '../theme/light_color.dart';
 import '../theme/light_color.dart';
 import '../theme/theme.dart';
 import '../theme/theme.dart';
-import 'home_page.dart';
+import 'doctor_consultant_page.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {

@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 
 class LabTestPage extends StatefulWidget {
 
-
   @override
   _LabTestPageState createState() => _LabTestPageState();
 }
@@ -85,51 +84,49 @@ class _LabTestPageState extends State<LabTestPage> {
 
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
-            child: Expanded(
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: LightColor.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: LightColor.black.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 15,
-                        offset:
-                        Offset(0, 1), // changes position of shadow
-                      ),
-                    ]),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:10.0),
-                    child: DropdownButton(
-                      hint: Text(
-                        selectTestCategory,
-                        style: TextStyle(color: LightColor.black,
-                            fontSize: 16),
-                      ),
-                      isExpanded: true,
-                      iconSize: 30.0,
-                      underline: Text(''),
-                      style: TextStyle(color: LightColor.black,fontSize: 18),
-                      items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
-                            (val) {
-                          return DropdownMenuItem<String>(
-                            value: val,
-                            child: Text(val),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (val) {
-                        setState(
-                              () {
-                            selectTestCategory = val;
-                          },
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: LightColor.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: LightColor.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset:
+                      Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left:10.0),
+                  child: DropdownButton(
+                    hint: Text(
+                      selectTestCategory,
+                      style: TextStyle(color: LightColor.black,
+                          fontSize: 16),
+                    ),
+                    isExpanded: true,
+                    iconSize: 30.0,
+                    underline: Text(''),
+                    style: TextStyle(color: LightColor.black,fontSize: 18),
+                    items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
+                          (val) {
+                        return DropdownMenuItem<String>(
+                          value: val,
+                          child: Text(val),
                         );
                       },
-                    ),
+                    ).toList(),
+                    onChanged: (val) {
+                      setState(
+                            () {
+                          selectTestCategory = val;
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
@@ -148,51 +145,49 @@ class _LabTestPageState extends State<LabTestPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
-            child: Expanded(
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: LightColor.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: LightColor.black.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 15,
-                        offset:
-                        Offset(0, 1), // changes position of shadow
-                      ),
-                    ]),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:10.0),
-                    child: DropdownButton(
-                      hint: Text(
-                        selectTest,
-                        style: TextStyle(color: LightColor.black,
-                            fontSize: 16),
-                      ),
-                      isExpanded: true,
-                      iconSize: 30.0,
-                      underline: Text(''),
-                      style: TextStyle(color: LightColor.black,fontSize: 18),
-                      items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
-                            (val) {
-                          return DropdownMenuItem<String>(
-                            value: val,
-                            child: Text(val),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (val) {
-                        setState(
-                              () {
-                            selectTest = val;
-                          },
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: LightColor.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: LightColor.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset:
+                      Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left:10.0),
+                  child: DropdownButton(
+                    hint: Text(
+                      selectTest,
+                      style: TextStyle(color: LightColor.black,
+                          fontSize: 16),
+                    ),
+                    isExpanded: true,
+                    iconSize: 30.0,
+                    underline: Text(''),
+                    style: TextStyle(color: LightColor.black,fontSize: 18),
+                    items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
+                          (val) {
+                        return DropdownMenuItem<String>(
+                          value: val,
+                          child: Text(val),
                         );
                       },
-                    ),
+                    ).toList(),
+                    onChanged: (val) {
+                      setState(
+                            () {
+                          selectTest = val;
+                        },
+                      );
+                    },
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_healthcare_app/src/pages/home_page.dart';
+import 'package:flutter_healthcare_app/src/pages/home_Page.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
 class DashboardScreen extends StatefulWidget {

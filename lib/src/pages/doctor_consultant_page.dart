@@ -15,14 +15,14 @@ import '../theme/light_color.dart';
 import '../theme/light_color.dart';
 import '../theme/light_color.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+class DoctorConsultantPage extends StatefulWidget {
+  DoctorConsultantPage({Key key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _DoctorConsultantPageState createState() => _DoctorConsultantPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   List<DoctorModel> doctorDataList;
   var selected = 'DOCTOR';
   var selectedField = 'Near by';

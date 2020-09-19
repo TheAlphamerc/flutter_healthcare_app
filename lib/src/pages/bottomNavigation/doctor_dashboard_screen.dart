@@ -3,7 +3,7 @@ import 'package:flutter_healthcare_app/src/model/appointment_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor/doctor_home_Page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor/my_account_page.dart';
-import 'package:flutter_healthcare_app/src/pages/home_page.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/pages/medication_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
