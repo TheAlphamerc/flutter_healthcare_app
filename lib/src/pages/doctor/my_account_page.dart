@@ -205,7 +205,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Education'
-                            ? Colors.redAccent
+                            ? LightColor.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -223,7 +223,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Location'
-                            ? Colors.redAccent
+                            ? LightColor.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -241,7 +241,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Availibilty'
-                            ? Colors.redAccent
+                            ? LightColor.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -259,7 +259,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'V.Consultancy'
-                            ? Colors.redAccent
+                            ? LightColor.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
