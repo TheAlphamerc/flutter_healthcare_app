@@ -30,6 +30,7 @@ dependencies:
   rating_bar: ^0.2.0
   group_radio_button: ^1.0.1
   file_picker: ^2.0.0
+  responsive_grid: ^1.2.1+1
 
 dev_dependencies:
   flutter_test:

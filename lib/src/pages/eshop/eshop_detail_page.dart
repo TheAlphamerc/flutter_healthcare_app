@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
 import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
+import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -64,26 +65,33 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  color: LightColor.white,
-                  borderRadius: BorderRadius.all(Radius.circular(100)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: LightColor.lightblack.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => CartPage()));
+
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    color: LightColor.white,
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: LightColor.lightblack.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 15,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.add_shopping_cart,
+                      color: LightColor.themered,
+                      size: 20,
                     ),
-                  ],
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.add_shopping_cart,
-                    color: LightColor.themered,
-                    size: 20,
                   ),
                 ),
               ),
@@ -257,6 +265,25 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             ),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: LightColor.themered,
+              borderRadius: BorderRadius.all(Radius.circular(10
+              ))
+            ),
+            child: Center(
+              child: Text('Add to cart',
+              style: TextStyle(
+                color: LightColor.white,
+                fontSize: 16
+              ),),
+            ),
+          ),
+        )
       ],
     );
   }
