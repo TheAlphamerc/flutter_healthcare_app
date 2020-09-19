@@ -7,11 +7,12 @@ final doctorMapList = [
     "totalScore": 93.2,
     "satisfaction": 85.2,
     "isfavourite": true,
-    "image":"assets/doctor.png",
+    "image": "assets/doctor.png",
     "education": "MBBS",
-    "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
-    "location":"Dhaka",
-    "constFee":"1000"
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
   },
   {
     "name": "Dr. katthy Mathews",
@@ -21,11 +22,12 @@ final doctorMapList = [
     "totalScore": 72.2,
     "satisfaction": 89.2,
     "isfavourite": false,
-    "image":"assets/doctor_4.png",
+    "image": "assets/doctor_4.png",
     "education": "MBBS",
-    "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
-    "location":"Dhaka",
-    "constFee":"1000"
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
   },
   {
     "name": "DR. Morris",
@@ -35,11 +37,12 @@ final doctorMapList = [
     "totalScore": 93.94,
     "satisfaction": 78.2,
     "isfavourite": false,
-    "image":"assets/doctor_3.png",
+    "image": "assets/doctor_3.png",
     "education": "MBBS",
-    "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
-    "location":"Dhaka",
-    "constFee":"1000"
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
   },
   {
     "name": "Dr. Bruce Banner",
@@ -49,11 +52,12 @@ final doctorMapList = [
     "totalScore": 75.2,
     "satisfaction": 84.2,
     "isfavourite": true,
-    "image":"assets/doctor_1.png",
+    "image": "assets/doctor_1.png",
     "education": "MBBS",
-    "description": "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
-    "location":"Dhaka",
-    "constFee":"1000"
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
   }
 ];
 
@@ -62,49 +66,85 @@ final appointmentList = [
     "name": "Jone",
     "date": "16",
     "time": "6.30 pm",
-    "age":"22",
+    "age": "22",
     "gender": "Male",
     "appointmentId": "2340187",
-    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+    "reason":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Kabir",
     "date": "16",
     "time": "6.30 pm",
-    "age":"22",
+    "age": "22",
     "gender": "Male",
     "appointmentId": "2340187",
-    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+    "reason":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Ali",
     "date": "16",
     "time": "6.30 pm",
-    "age":"37",
+    "age": "37",
     "gender": "Male",
     "appointmentId": "2340187",
-    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
-
+    "reason":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Maria",
     "date": "16",
     "time": "6.30 pm",
-    "age":"22",
+    "age": "22",
     "gender": "Female",
     "appointmentId": "2340187",
-    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
-
+    "reason":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   },
   {
     "name": "Jone",
     "date": "16",
     "time": "6.30 pm",
-    "age":"27",
+    "age": "27",
     "gender": "Male",
     "appointmentId": "2340187",
-    "reason":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
-
+    "reason":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
   }
+];
 
+final medicineList = [
+  {
+    "id":"1",
+    "medicineName": "Medicine Name",
+    "companyName": "Comapny Name",
+    "price": "6",
+    "genericName": "Napa",
+    "image": "",
+  },
+  {
+    "id":"2",
+    "medicineName": "Medicine Name",
+    "companyName": "Comapny Name",
+    "price": "6",
+    "genericName": "Napa",
+    "image": "",
+  },
+  {
+    "id":"3",
+    "medicineName": "Medicine Name",
+    "companyName": "Comapny Name",
+    "price": "6",
+    "genericName": "Napa",
+    "image": "",
+  },
+  {
+    "id":"4",
+    "medicineName": "Medicine Name",
+    "companyName": "Comapny Name",
+    "price": "6",
+    "genericName": "Napa",
+    "image": "",
+  },
 ];

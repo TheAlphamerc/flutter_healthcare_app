@@ -37,8 +37,17 @@ class _LoginPageState extends State<LoginPage> {
       user = userValueHolder.text;
       password = passValueHolder.text;
       print(user + password);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
+
+      if(userValueHolder.text == 'doc' && passValueHolder.text =='doc'){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
+      }
+      if(userValueHolder.text == 'user' && passValueHolder.text =='user'){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => DashboardScreen()));
+      }
+
+
     });
   }
 

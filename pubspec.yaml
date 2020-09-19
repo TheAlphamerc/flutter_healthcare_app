@@ -29,6 +29,7 @@ dependencies:
   intl: ^0.16.1
   rating_bar: ^0.2.0
   group_radio_button: ^1.0.1
+  file_picker: ^2.0.0
 
 dev_dependencies:
   flutter_test:
