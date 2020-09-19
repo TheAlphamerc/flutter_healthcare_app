@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_healthcare_app/src/pages/home_Page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/appointment_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/home_Page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
@@ -13,8 +15,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   var currentPage = 0;
   final List<Widget> _children = [
     HomePage(),
-    HomePage(),
-    HomePage(),
+    AppointmentPage(),
+    HistoryPage(),
     HomePage(),
   ];
 

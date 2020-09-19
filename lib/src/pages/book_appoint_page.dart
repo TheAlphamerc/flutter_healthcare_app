@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
+import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:intl/intl.dart';
 
@@ -112,9 +113,15 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                         ],
                       ),
                     ),
-                    Icon(
-                      Icons.repeat,
-                      color: LightColor.black,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => DoctorConsultantPage()));
+                      },
+                      child: Icon(
+                        Icons.repeat,
+                        color: LightColor.black,
+                      ),
                     )
                   ],
                 ),
