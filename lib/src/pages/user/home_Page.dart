@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor/doctor_home_Page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/lab_test_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
@@ -221,7 +222,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => DoctorConsultantPage()));
+                    MaterialPageRoute(builder: (_) => EshopHomePage()));
               },
               child: Padding(
                 padding: const EdgeInsets.only(

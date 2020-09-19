@@ -250,7 +250,7 @@ class _MedicationPageState extends State<MedicationPage> {
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     child: Image.asset(
-                      'assets/medicine.jpg',
+                      'assets/medicine_box.jpg',
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       fit: BoxFit.cover,
