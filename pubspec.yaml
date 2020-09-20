@@ -31,6 +31,7 @@ dependencies:
   group_radio_button: ^1.0.1
   file_picker: ^2.0.0
   responsive_grid: ^1.2.1+1
+  flutter_slidable: ^0.5.7
 
 dev_dependencies:
   flutter_test:

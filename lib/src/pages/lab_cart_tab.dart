@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class LabTab extends StatefulWidget {
   @override
@@ -15,6 +16,27 @@ class _LabTabState extends State<LabTab> {
         height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.only(left:15.0,top: 15.0,right: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              cartItem(context),
+              cartItem(context),
+              swapText(context),
+              chargeBox(context)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget cartItem(BuildContext context) {
+    return Slidable(
+      actionPane: SlidableDrawerActionPane(),
+      actionExtentRatio: 0.25,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom:10.0),
+        child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,7 +62,7 @@ class _LabTabState extends State<LabTab> {
                       style: TextStyle(
                           color: LightColor.themered,
                           fontSize: 16,
-                        fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold
                       ),),
                   ),
                 ],
@@ -53,6 +75,78 @@ class _LabTabState extends State<LabTab> {
             ],
           ),
         ),
+      ),
+      secondaryActions: <Widget>[
+
+        IconSlideAction(
+          onTap: (){},
+          color: Colors.transparent,
+          iconWidget: Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              color: LightColor.white,
+              borderRadius: BorderRadius.all(Radius.circular(100)),
+              boxShadow: [
+                BoxShadow(
+                  color: LightColor.lightblack.withOpacity(0.3),
+                  spreadRadius: 1,
+                  blurRadius: 15,
+                  offset: Offset(0, 1), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Center(
+              child: Icon(
+                Icons.clear,
+                color: LightColor.themered,
+                size: 20,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget swapText(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top:10.0,bottom: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Icon(Icons.keyboard_backspace,
+          color: LightColor.grey,),
+          Text('Drag and swap left to remove',
+          style: TextStyle(
+            color: LightColor.grey
+          ),)
+        ],
+      ),
+    );
+  }
+
+  Widget chargeBox(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        height: 100,
+        width: MediaQuery.of(context).size.width * 0.7,
+        decoration: BoxDecoration(
+          color: LightColor.white,
+          border: Border.all(color: LightColor.themered,width: 2)
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width * 0.7,
+              color: LightColor.themered,
+              child: Text(''),
+            )
+          ],
+        ),
+
       ),
     );
   }
