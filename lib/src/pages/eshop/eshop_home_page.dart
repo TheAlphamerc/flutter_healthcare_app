@@ -5,6 +5,7 @@ import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
+import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:intl/intl.dart';
@@ -57,11 +58,17 @@ class _EshopHomePageState extends State<EshopHomePage> {
                     ),
                   ],
                 ),
-                child: Center(
-                  child: Icon(
-                    Icons.notifications_none,
-                    color: LightColor.themered,
-                    size: 20,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => NotificationPage()));
+                  },
+                  child: Center(
+                    child: Icon(
+                      Icons.notifications_none,
+                      color: LightColor.themered,
+                      size: 20,
+                    ),
                   ),
                 ),
               ),

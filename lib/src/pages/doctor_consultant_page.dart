@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
+import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -57,10 +58,16 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
         ),
       ),
       actions: <Widget>[
-        Icon(
-          Icons.notifications_none,
-          size: 30,
-          color: LightColor.grey,
+        GestureDetector(
+          onTap: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => NotificationPage()));
+          },
+          child: Icon(
+            Icons.notifications_none,
+            size: 30,
+            color: LightColor.grey,
+          ),
         ),
         ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(13)),
