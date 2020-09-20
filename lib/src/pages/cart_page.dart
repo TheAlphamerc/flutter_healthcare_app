@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top:25.0,left: 15),
+                          padding: const EdgeInsets.only(top:30.0,left: 15),
                           child: Icon(Icons.keyboard_backspace,
                             size: 20,
                             color: LightColor.white,),
@@ -63,8 +63,8 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                                   width: MediaQuery.of(context).size.width,
                                   child: TabBar(
                                     indicatorWeight: 3,
-                                    unselectedLabelColor: Colors.grey.shade400,
-                                    labelColor: Colors.black87,
+                                    unselectedLabelColor: LightColor.grey,
+                                    labelColor: Colors.white,
                                     tabs: [
                                       new Tab(
                                         text: "Lab",),
@@ -83,7 +83,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                     ),
                   ),
                   Positioned(
-                    top: 140,
+                    top: 145,
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       color: Colors.white,

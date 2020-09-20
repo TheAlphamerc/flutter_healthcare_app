@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/pages/checkout_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -130,10 +131,10 @@ class _LabTabState extends State<LabTab> {
     return Align(
       alignment: Alignment.topRight,
       child: Container(
-        height: 100,
         width: MediaQuery.of(context).size.width * 0.7,
         decoration: BoxDecoration(
           color: LightColor.white,
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15)),
           border: Border.all(color: LightColor.themered,width: 2)
         ),
         child: Column(
@@ -142,8 +143,120 @@ class _LabTabState extends State<LabTab> {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.7,
               color: LightColor.themered,
-              child: Text(''),
-            )
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right:10.0),
+                  child: Text(
+                      'Service charge \$ 5.00',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: LightColor.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:8.0,right: 8,top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Lab test',
+                  style: TextStyle(
+                    color: LightColor.lightblack,
+                    fontSize: 18
+                  ),),
+                  Text('20.26 \$',
+                    style: TextStyle(
+                        color: LightColor.lightblack,
+                        fontSize: 18
+                    ),),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:8.0,right: 8,top: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Medicine',
+                    style: TextStyle(
+                        color: LightColor.lightblack,
+                        fontSize: 18
+                    ),),
+                  Text('50.04 \$',
+                    style: TextStyle(
+                        color: LightColor.lightblack,
+                        fontSize: 18
+                    ),),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:8.0,right: 8,top: 8,bottom: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('E-shop',
+                    style: TextStyle(
+                        color: LightColor.lightblack,
+                        fontSize: 18
+                    ),),
+                  Text('20.40 \$',
+                    style: TextStyle(
+                        color: LightColor.lightblack,
+                        fontSize: 18
+                    ),),
+                ],
+              ),
+            ),
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width * 0.7,
+              decoration: BoxDecoration(
+                color: LightColor.themered,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Text('\$ 33.90',
+                    style: TextStyle(
+                      color: LightColor.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.arrow_upward,
+                    size: 25,
+                    color: LightColor.white,),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => CheckoutPage()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:8.0),
+                      child: Text('Checkout',
+                        style: TextStyle(
+                            color: LightColor.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold
+                        ),),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
           ],
         ),
 
