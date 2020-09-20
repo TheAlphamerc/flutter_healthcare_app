@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/doctor_dashboard_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/delivery/delivery_page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -45,6 +46,10 @@ class _LoginPageState extends State<LoginPage> {
       if(userValueHolder.text == 'user' && passValueHolder.text =='user'){
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => DashboardScreen()));
+      }
+      if(userValueHolder.text == 'delivery' && passValueHolder.text =='delivery'){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => DeliveryHomePage()));
       }
 
 
