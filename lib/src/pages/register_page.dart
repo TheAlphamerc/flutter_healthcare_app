@@ -426,7 +426,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(IconData(0xe900, fontFamily: 'Man'),
+                              Icon(Icons.accessibility,
                               size: 24,
                                 color: gender == 'Male'? Colors.white : Colors.black,
                               ),
@@ -461,7 +461,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(IconData(0xe900, fontFamily: 'Woman'),
+                              Icon(Icons.pregnant_woman,
                                 size: 24,
                                 color: gender == 'Female'? Colors.white : Colors.black,
                               ),
