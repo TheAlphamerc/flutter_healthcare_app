@@ -3,6 +3,7 @@ import 'package:flutter_healthcare_app/src/pages/user/appointment_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/home_Page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/user_profile_menus.dart';
 import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
@@ -18,7 +19,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     HomePage(),
     AppointmentPage(),
     HistoryPage(),
-    UserProfilePage(),
+    //UserProfilePage(),
+    UserProfileMenu(),
   ];
 
   @override
@@ -30,9 +32,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         showUnselectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.business_center,
+            icon: Icon(Icons.home,
             size: 24,),
-            title: Text('Service '),
+            title: Text('Home '),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.date_range,

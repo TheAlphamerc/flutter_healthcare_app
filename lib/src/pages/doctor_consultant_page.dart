@@ -546,7 +546,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             delegate: SliverChildListDelegate(
               [
                 _header(),
-                _navLinks(),
+              //  _navLinks(),
 
                 _searchField(),
                 _basedOnField(),
@@ -800,7 +800,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                       Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'Input the year of experience',
+                          'Input your location',
                           style: TextStyle(color: LightColor.white,
                               fontSize: 18),
                         ),

@@ -10,6 +10,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor:  LightColor.themered,
+        elevation: 0,
+        leading: Icon(Icons.arrow_back_ios, color: Colors.white,),
+        title:  Text('Profile', style: TextStyle (color: Colors.white, fontSize: 14),),
+        centerTitle: true,
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -17,23 +24,18 @@ class _UserProfilePageState extends State<UserProfilePage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 150,
+              height: 50,
               color: LightColor.themered,
-              child: Center(
-                child: Text(
-                  'profile',
-                  style: TextStyle(color: LightColor.white, fontSize: 18),
-                ),
-              ),
+
             ),
             Positioned(
-              top: 150,
+              top: 50,
               child: body(context),
             ),
             Positioned(
               left: MediaQuery.of(context).size.width/2 - 50,
               right: MediaQuery.of(context).size.width/2 - 50,
-              top: 100,
+              top: 0,
               child: profileImage(context),
             )
           ],

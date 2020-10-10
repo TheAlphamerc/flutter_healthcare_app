@@ -113,7 +113,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: titleStyle,
                         ),
                         SizedBox(
-                          height: 85,
+                          height: 100,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
