@@ -131,14 +131,43 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(
                           height: 100,
-                          child: ListView.builder(
-                            itemCount: availableList != null ? availableList.length:0,
+                          child: availableList != null && availableList.length > 0 ? ListView(
                             scrollDirection: Axis.horizontal,
-                            itemBuilder: (context,index){
-                             List<String> timeList = availableList[index].times.split("-");
-                              return showSchduleWidget(context, availableList[index].days.substring(0,3), timeList[0].trim(), timeList[1].trim());
-                            },
-                          ),
+                            children: [
+                              showSchduleWidget(context, 'Sun',
+                                  availableList[0].sunday.isNotEmpty? availableList[0].sunday.split('-')[0].trim():'',
+                                  availableList[0].sunday.isNotEmpty? availableList[0].sunday.split('-')[1].trim():'',
+                                  availableList[0].sunday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Mon',
+                                  availableList[0].monday.isNotEmpty? availableList[0].monday.split('-')[0].trim():'',
+                                  availableList[0].monday.isNotEmpty? availableList[0].monday.split('-')[1].trim():'',
+                                  availableList[0].monday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Tue',
+                                  availableList[0].tuesday.isNotEmpty? availableList[0].tuesday.split('-')[0].trim():'',
+                                  availableList[0].tuesday.isNotEmpty? availableList[0].tuesday.split('-')[1].trim():'',
+                                  availableList[0].tuesday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Wed',
+                                  availableList[0].wednesday.isNotEmpty? availableList[0].wednesday.split('-')[0].trim():'',
+                                  availableList[0].wednesday.isNotEmpty? availableList[0].wednesday.split('-')[1].trim():'',
+                                  availableList[0].wednesday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Thu',
+                                  availableList[0].thursday.isNotEmpty? availableList[0].thursday.split('-')[0].trim():'',
+                                  availableList[0].thursday.isNotEmpty? availableList[0].thursday.split('-')[1].trim():'',
+                                  availableList[0].thursday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Fri',
+                                  availableList[0].friday.isNotEmpty? availableList[0].friday.split('-')[0].trim():'',
+                                  availableList[0].friday.isNotEmpty? availableList[0].friday.split('-')[1].trim():'',
+                                  availableList[0].friday.isNotEmpty?'to':'-'),
+                              showSchduleWidget(context, 'Sat',
+                                  availableList[0].saturday.isNotEmpty? availableList[0].saturday.split('-')[0].trim():'',
+                                  availableList[0].saturday.isNotEmpty? availableList[0].saturday.split('-')[1].trim():'',
+                                  availableList[0].saturday.isNotEmpty?'to':'-'),
+
+
+
+
+                            ],
+                          ):Text(''),
                         ),
                         Divider(
                           thickness: .3,
@@ -241,7 +270,7 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  Widget showSchduleWidget(BuildContext context, day, start, end) {
+  Widget showSchduleWidget(BuildContext context, day, start, end, String checkvalue) {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(right: 20.0),
@@ -256,7 +285,7 @@ class _DetailPageState extends State<DetailPage> {
               style: TextStyles.bodySm,
             ),
             Text(
-              'to',
+              checkvalue,
               style: TextStyles.bodySm,
             ),
             Text(
