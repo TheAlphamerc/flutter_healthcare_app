@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/doctor_view_model.dart';
+import 'package:flutter_healthcare_app/src/model/available.dart';
+import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
@@ -7,22 +10,28 @@ import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/widgets/progress_widget.dart';
 import 'package:flutter_healthcare_app/src/widgets/rating_start.dart';
+import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
-  DetailPage({Key key, this.model}) : super(key: key);
-  final DoctorModel model;
+  final Doctor doctor;
+  DetailPage({Key key, this.doctor}) : super(key: key);
+  
 
   @override
   _DetailPageState createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
-  DoctorModel model;
+  Doctor model;
+  DoctorViewModel doctorViewModel;
+  var isFirst = true;
+  List<Available> availableList;
 
   @override
   void initState() {
-    model = widget.model;
+    model = widget.doctor;
     super.initState();
+    availableList = new List();
   }
 
   Widget _appbar() {
@@ -30,16 +39,16 @@ class _DetailPageState extends State<DetailPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         BackButton(color: Theme.of(context).primaryColor),
-        IconButton(
-            icon: Icon(
-              model.isfavourite ? Icons.favorite : Icons.favorite_border,
-              color: model.isfavourite ? Colors.red : LightColor.grey,
-            ),
-            onPressed: () {
-              setState(() {
-                model.isfavourite = !model.isfavourite;
-              });
-            })
+//        IconButton(
+//            icon: Icon(
+//              model.isfavourite ? Icons.favorite : Icons.favorite_border,
+//              color: model.isfavourite ? Colors.red : LightColor.grey,
+//            ),
+//            onPressed: () {
+//              setState(() {
+//                model.isfavourite = !model.isfavourite;
+//              });
+//            })
       ],
     );
   }
@@ -50,13 +59,24 @@ class _DetailPageState extends State<DetailPage> {
     if (AppTheme.fullWidth(context) < 393) {
       titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
     }
+    doctorViewModel = Provider.of<DoctorViewModel>(context);
+    if(isFirst){
+      getAvailableTime(widget.doctor.id);
+      setState(() {
+        isFirst = false;
+      });
+    }
+
     return Scaffold(
       backgroundColor: LightColor.extraLightBlue,
       body: SafeArea(
         bottom: false,
         child: Stack(
           children: <Widget>[
-            Image.asset(model.image),
+            Image.network('http://172.16.61.221:8059${model.photo}',
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height/2,
+            fit: BoxFit.fill,),
             DraggableScrollableSheet(
               maxChildSize: .8,
               initialChildSize: .6,
@@ -94,13 +114,10 @@ class _DetailPageState extends State<DetailPage> {
                                   size: 18,
                                   color: Theme.of(context).primaryColor),
                               Spacer(),
-                              RatingStar(
-                                rating: model.rating,
-                              )
                             ],
                           ),
                           subtitle: Text(
-                            model.type,
+                            model.specialist,
                             style: TextStyles.bodySm.subTitleColor.bold,
                           ),
                         ),
@@ -114,17 +131,13 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(
                           height: 100,
-                          child: ListView(
+                          child: ListView.builder(
+                            itemCount: availableList != null ? availableList.length:0,
                             scrollDirection: Axis.horizontal,
-                            children: [
-                              showSchduleWidget(context, 'Sat', '10am', '10pm'),
-                              showSchduleWidget(context, 'Sun', '10am', '10pm'),
-                              showSchduleWidget(context, 'Mon', '10am', '10pm'),
-                              showSchduleWidget(context, 'Tue', '10am', '10pm'),
-                              showSchduleWidget(context, 'Wed', '10am', '10pm'),
-                              showSchduleWidget(context, 'Thu', '10am', '10pm'),
-                              showSchduleWidget(context, 'Fri', '10am', '10pm'),
-                            ],
+                            itemBuilder: (context,index){
+                             List<String> timeList = availableList[index].times.split("-");
+                              return showSchduleWidget(context, availableList[index].days.substring(0,3), timeList[0].trim(), timeList[1].trim());
+                            },
                           ),
                         ),
                         Divider(
@@ -145,7 +158,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         Text("About", style: titleStyle).vP16,
                         Text(
-                          model.description,
+                          model.about,
                           style: TextStyles.body.subTitleColor,
                         ),
                         Row(
@@ -210,7 +223,7 @@ class _DetailPageState extends State<DetailPage> {
                                     style: TextStyles.titleNormal.white,
                                   ).p(10),
                                 ),
-                                Text('consultation fee : \$ ${model.constFee} / hour')
+                                Text('consultation fee : \$ ${model.fees} / hour')
                               ],
                             ),
                           ],
@@ -254,5 +267,23 @@ class _DetailPageState extends State<DetailPage> {
         ),
       ),
     );
+  }
+
+  void getAvailableTime(String id)async {
+    List<Available> availables = await doctorViewModel.getAvailibility(id);
+
+    if(availables != null){
+      if(availableList != null){
+        availableList.clear();
+      }
+
+      for (Available available in availables) {
+        availableList.add(available);
+      }
+      setState(() {
+        availableList;
+      });
+    }
+
   }
 }

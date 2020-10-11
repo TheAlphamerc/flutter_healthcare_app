@@ -23,14 +23,16 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
   }
 
-  final userValueHolder = TextEditingController();
+  final firstNameValueHolder = TextEditingController();
+  final lastNameValueHolder = TextEditingController();
   final passValueHolder = TextEditingController();
   final phoneValueHolder = TextEditingController();
   final emailValueHolder = TextEditingController();
   final locationValueHolder = TextEditingController();
   final ageValueHolder = TextEditingController();
   final sexValueHolder = TextEditingController();
-  String user = "";
+  String firstName = "";
+  String lastName = "";
   String password = "";
   String phone = "";
   String email = "";
@@ -43,14 +45,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   getTextInputData() {
     setState(() {
-      user = userValueHolder.text;
+      firstName = firstNameValueHolder.text;
+      lastName = lastNameValueHolder.text;
       password = passValueHolder.text;
       phone = phoneValueHolder.text;
       email = emailValueHolder.text;
       location = locationValueHolder.text;
       age = ageValueHolder.text;
       sex = sexValueHolder.text;
-      print(user + password);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => LoginPage()));
     });
@@ -104,59 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
           ]);
     }
 
-    Widget _userSelection() {
-      return Wrap(
-        direction: Axis.horizontal,
-        alignment: WrapAlignment.center,
-        spacing: 10.0,
-        children: <Widget>[
-          Text(
-            "I am a",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              color: LightColor.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ).vP8,
-          GestureDetector(
-            onTap: () {
-              // do what you need to do when "Click here" gets clicked
-              setState(() {
-                print("general user select");
-                usertype = "General user";
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => RegisterPage()));
-              });
-            },
-            child: Text("General user",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: usertype == "General user" ? LightColor.themered :LightColor.iconColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                )),
-          ).vP8,
-          Text("/").vP8,
-          GestureDetector(
-            onTap: () {
-              // do what you need to do when "Click here" gets clicked
-              setState(() {
-                print("Doctor user select");
-                usertype = "Doctor";
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => RegisterPage()));
-              });
-            },
-            child: Text("Doctor",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: usertype == "Doctor" ? LightColor.themered :LightColor.iconColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                )),
-          ).vP8,
-        ],
-      );
-    }
 
     Widget _LoginInputs() {
       return Container(
@@ -181,12 +130,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
               child: TextField(
-                controller: userValueHolder,
+                controller: firstNameValueHolder,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   border: InputBorder.none,
-                  hintText: "User name",
+                  hintText: "First name",
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
@@ -195,6 +144,39 @@ class _RegisterPageState extends State<RegisterPage> {
                               .alignCenter
                               .ripple(() {},
                                   borderRadius: BorderRadius.circular(13))),
+                ),
+              ),
+            ),
+            Container(
+              height: 55,
+              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(13)),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: LightColor.grey.withOpacity(.3),
+                    blurRadius: 15,
+                    offset: Offset(3, 3),
+                  )
+                ],
+              ),
+              child: TextField(
+                controller: lastNameValueHolder,
+                decoration: InputDecoration(
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  border: InputBorder.none,
+                  hintText: "Last name",
+                  hintStyle: TextStyles.body.subTitleColor,
+                  suffixIcon: SizedBox(
+                      width: 55,
+                      child:
+                      Icon(Icons.account_circle, color: LightColor.themered)
+                          .alignCenter
+                          .ripple(() {},
+                          borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -525,7 +507,6 @@ class _RegisterPageState extends State<RegisterPage> {
               [
                 _Sgap(),
                 _head(),
-                _userSelection(),
                 _LoginInputs(),
                 _Sgap(),
                 _helpText(),

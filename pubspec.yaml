@@ -34,6 +34,8 @@ dependencies:
   flutter_slidable: ^0.5.7
   sticky_headers: ^0.1.8
   smart_select: ^4.2.1
+  http: ^0.12.1
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:

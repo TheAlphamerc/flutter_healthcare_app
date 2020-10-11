@@ -58,7 +58,1403 @@ final doctorMapList = [
         "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
     "location": "Dhaka",
     "constFee": "1000"
-  }
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+  {
+    "name": "Dr. Bruce Banner",
+    "type": "Heart Sergeon",
+    "rating": 1.5,
+    "goodReviews": 12.2,
+    "totalScore": 75.2,
+    "satisfaction": 84.2,
+    "isfavourite": true,
+    "image": "assets/doctor_1.png",
+    "education": "MBBS",
+    "description":
+        "A doctor can be found in several settings, including public health organization, group practices and  hospitals They have some of the most diverse and challenging careears available and part of a universally well-respected profession",
+    "location": "Dhaka",
+    "constFee": "1000"
+  },
+
 ];
 
 final appointmentList = [

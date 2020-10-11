@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
+import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:intl/intl.dart';
 
 class BookAppointmentPage extends StatefulWidget {
-  DoctorModel doctorModel;
+  Doctor doctor;
 
-  BookAppointmentPage(this.doctorModel);
+  BookAppointmentPage(this.doctor);
 
   @override
   _BookAppointmentPageState createState() => _BookAppointmentPageState();
@@ -97,14 +98,14 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${widget.doctorModel.name}',
+                            '${widget.doctor.name}',
                             style: TextStyle(
                               color: LightColor.black,
                               fontSize: 18,
                             ),
                           ),
                           Text(
-                            '${widget.doctorModel.type}',
+                            '${widget.doctor.specialist}',
                             style: TextStyle(
                               color: LightColor.lightblack,
                               fontSize: 16,

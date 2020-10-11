@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/doctor_view_model.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
+import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
@@ -10,6 +12,7 @@ import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/widgets/DrawerWidget.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:provider/provider.dart';
 import 'package:rating_bar/rating_bar.dart';
 
 import '../theme/light_color.dart';
@@ -24,23 +27,63 @@ class DoctorConsultantPage extends StatefulWidget {
 }
 
 class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
-  List<DoctorModel> doctorDataList;
+  DoctorViewModel doctorViewModel;
+
+  List<Doctor> doctorDataList;
+
   var selected = 'DOCTOR';
   var selectedField = 'Near by';
   var isSelectFilter = false;
   var gender = 'Male';
+  var isFirst = true;
   double _rating = 5;
 
   final GlobalKey<ScaffoldState> _scaffoldKey_home =
       new GlobalKey<ScaffoldState>();
 
-
   List<String> _genderList = ["Male", "Female"];
 
   @override
   void initState() {
-    doctorDataList = doctorMapList.map((x) => DoctorModel.fromJson(x)).toList();
     super.initState();
+    doctorDataList = new List();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    doctorViewModel = Provider.of<DoctorViewModel>(context);
+    if (isFirst) {
+      getDoctor(context);
+      setState(() {
+        isFirst = false;
+      });
+    }
+
+    return Scaffold(
+      appBar: _appBar(),
+      backgroundColor: Theme.of(context).backgroundColor,
+      key: _scaffoldKey_home,
+      drawer: DrawerWidget(
+        scaffoldKey: _scaffoldKey_home,
+      ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                _header(),
+                //  _navLinks(),
+
+                _searchField(),
+                _basedOnField(),
+                //_category(),
+              ],
+            ),
+          ),
+          _doctorsList()
+        ],
+      ),
+    );
   }
 
   Widget _appBar() {
@@ -59,9 +102,9 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       ),
       actions: <Widget>[
         GestureDetector(
-          onTap: (){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (_) => NotificationPage()));
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => NotificationPage()));
           },
           child: Icon(
             Icons.notifications_none,
@@ -355,13 +398,20 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   }
 
   Widget getdoctorWidgetList() {
-    return Column(
-        children: doctorDataList.map((x) {
-      return _doctorTile(x);
-    }).toList());
+    return doctorDataList != null
+        ? SizedBox(
+            height: MediaQuery.of(context).size.height - 300,
+            child: ListView.builder(
+                itemCount: doctorDataList.length,
+                itemBuilder: (context, index) {
+                  print(doctorDataList.length);
+                  return _doctorTile(doctorDataList[index]);
+                }),
+          )
+        : SizedBox(height: 100, width: 100, child: CircularProgressIndicator());
   }
 
-  Widget _doctorTile(DoctorModel model) {
+  Widget _doctorTile(Doctor model) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
@@ -391,13 +441,12 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               width: 55,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: randomColor(),
               ),
-              child: Image.asset(
-                model.image,
+              child: Image.network(
+                'http://172.16.61.221:8059${model.photo}',
                 height: 50,
                 width: 50,
-                fit: BoxFit.contain,
+                fit: BoxFit.fill,
               ),
             ),
           ),
@@ -406,15 +455,15 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                model.type,
+                model.department,
                 style: TextStyles.body.subTitleColor.bold,
               ),
               Text(
-                model.location,
+                model.education,
                 style: TextStyles.bodySm.subTitleColor,
               ),
               Text(
-                ('\$${model.constFee}'),
+                ('\$${model.fees}'),
                 style: TextStyles.bodySm.subTitleColor,
               ),
             ],
@@ -531,35 +580,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
     return color;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appBar(),
-      backgroundColor: Theme.of(context).backgroundColor,
-      key: _scaffoldKey_home,
-      drawer: DrawerWidget(
-        scaffoldKey: _scaffoldKey_home,
-      ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _header(),
-              //  _navLinks(),
-
-                _searchField(),
-                _basedOnField(),
-                //_category(),
-              ],
-            ),
-          ),
-          _doctorsList()
-        ],
-      ),
-    );
-  }
-
   void openExperienceDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -582,8 +602,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input the year of experience',
-                          style: TextStyle(color: LightColor.white,
-                          fontSize: 18),
+                          style:
+                              TextStyle(color: LightColor.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -599,38 +619,39 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: LightColor.white),
+                                    borderSide:
+                                        BorderSide(color: LightColor.white),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: LightColor.white),
+                                    borderSide:
+                                        BorderSide(color: LightColor.white),
                                   ),
                                   border: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: LightColor.white),
+                                    borderSide:
+                                        BorderSide(color: LightColor.white),
                                   ),
                                   counterText: '',
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 16),
                                 ),
                               ),
                             ),
-                            Text('Years',
-                            style: TextStyle(
-                              color: LightColor.white,
-                              fontSize: 16
-                            ),)
+                            Text(
+                              'Years',
+                              style: TextStyle(
+                                  color: LightColor.white, fontSize: 16),
+                            )
                           ],
-
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'OK',
                             style: TextStyle(
-                                fontWeight:FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                                 color: LightColor.white,
                                 fontSize: 20),
                           ),
@@ -667,15 +688,16 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input the rating',
-                          style: TextStyle(color: LightColor.white,
-                              fontSize: 18),
+                          style:
+                              TextStyle(color: LightColor.white, fontSize: 18),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: RatingBar(
                           initialRating: _rating,
-                          onRatingChanged: (rating) => setState(() => _rating = rating),
+                          onRatingChanged: (rating) =>
+                              setState(() => _rating = rating),
                           filledIcon: Icons.star,
                           emptyIcon: Icons.star_border,
                           halfFilledIcon: Icons.star_half,
@@ -686,15 +708,14 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                           size: 24,
                         ),
                       ),
-
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'OK',
                             style: TextStyle(
-                                fontWeight:FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                                 color: LightColor.white,
                                 fontSize: 20),
                           ),
@@ -731,16 +752,15 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Select your gender',
-                          style: TextStyle(color: LightColor.white,
-                              fontSize: 18),
+                          style:
+                              TextStyle(color: LightColor.white, fontSize: 18),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Theme(
                           data: ThemeData(
-                            primarySwatch: LightColor.MATERIAL_WHITE
-                          ),
+                              primarySwatch: LightColor.MATERIAL_WHITE),
                           child: RadioGroup<String>.builder(
                             direction: Axis.horizontal,
                             groupValue: gender,
@@ -748,23 +768,20 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                               gender = value;
                             }),
                             items: _genderList,
-
                             itemBuilder: (item) => RadioButtonBuilder(
                               item,
                             ),
                           ),
                         ),
                       ),
-
-
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'OK',
                             style: TextStyle(
-                                fontWeight:FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                                 color: LightColor.white,
                                 fontSize: 20),
                           ),
@@ -801,8 +818,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input your location',
-                          style: TextStyle(color: LightColor.white,
-                              fontSize: 18),
+                          style:
+                              TextStyle(color: LightColor.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -813,45 +830,49 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.only(left:10.0,right: 10),
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, right: 10),
                                 child: TextField(
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: LightColor.white),
+                                      borderSide:
+                                          BorderSide(color: LightColor.white),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: LightColor.white),
+                                      borderSide:
+                                          BorderSide(color: LightColor.white),
                                     ),
                                     border: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: LightColor.white),
+                                      borderSide:
+                                          BorderSide(color: LightColor.white),
                                     ),
                                     counterText: '',
-                                    contentPadding:
-                                    EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 16, vertical: 16),
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right:10.0),
-                              child: Icon(Icons.gps_fixed,
-                              size: 24,
-                              color: LightColor.white,),
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(
+                                Icons.gps_fixed,
+                                size: 24,
+                                color: LightColor.white,
+                              ),
                             )
                           ],
-
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top:20.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'OK',
                             style: TextStyle(
-                                fontWeight:FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                                 color: LightColor.white,
                                 fontSize: 20),
                           ),
@@ -864,6 +885,21 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             );
           });
         });
+  }
 
+  void getDoctor(BuildContext context) async {
+    List<Doctor> doctors = await doctorViewModel.getAllDoctor();
+    if (doctorDataList != null) {
+      doctorDataList.clear;
+    }
+
+    if (doctors != null) {
+      for (Doctor doctor in doctors) {
+        doctorDataList.add(doctor);
+      }
+      setState(() {
+        doctorDataList;
+      });
+    }
   }
 }
