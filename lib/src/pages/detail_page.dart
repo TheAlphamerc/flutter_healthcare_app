@@ -4,12 +4,9 @@ import 'package:flutter_healthcare_app/src/model/available.dart';
 import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
-import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
-import 'package:flutter_healthcare_app/src/widgets/progress_widget.dart';
-import 'package:flutter_healthcare_app/src/widgets/rating_start.dart';
 import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
