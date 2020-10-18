@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/service.dart';
 
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/service_view_model.dart';
+import 'package:provider/provider.dart';
 
 class ServicePage extends StatefulWidget {
   @override
@@ -8,6 +11,11 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
+  var isFirst = true;
+  var isLoading = true;
+  List<Service> serviceList = new List();
+  ServiceViewModel serviceViewModel;
+
   List<String> getListElements() {
     var item = List<String>.generate(100, (index) => "Service ${index}");
     return item;
@@ -21,13 +29,22 @@ class _ServicePageState extends State<ServicePage> {
 
   @override
   Widget build(BuildContext context) {
+    serviceViewModel = Provider.of<ServiceViewModel>(context);
+    if (isFirst) {
+      getAllServices(context);
+
+      setState(() {
+        isFirst = false;
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
         leading: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
             child: Icon(Icons.arrow_back, color: LightColor.themered)),
@@ -36,41 +53,90 @@ class _ServicePageState extends State<ServicePage> {
           style: TextStyle(color: LightColor.themered),
         ),
       ),
-      body: getMenus(),
+      body: Stack(
+        children: [
+          getMenus(),
+          loading(context)
+
+        ],
+      ),
     );
   }
 
-  /*serviceList(BuildContext context) {
-    return SafeArea(
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: Container(
-        height: MediaQuery.of(context).size.height - 60,
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('Menu 1'),
-              getMenus (),
-            ],
+        color: LightColor.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: LightColor.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: LightColor.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ),
-    );
-  }*/
-
+    )
+        : Text('');
+  }
 
   Widget getMenus() {
     var listmenu = getListElements();
     var listview = ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => Divider( thickness: 1, color: LightColor.themered,),
-        itemCount: listmenu.length,
+        separatorBuilder: (BuildContext context, int index) => Divider(
+              thickness: 1,
+              color: LightColor.themered,
+            ),
+        itemCount: serviceList != null ?serviceList.length :0,
         itemBuilder: (context, index) {
-      return ListTile(
-        title: Text('${listmenu[index]}'),
-        leading: Icon(Icons.star),
-        trailing: Icon(Icons.arrow_forward_ios, color: LightColor.themered,),
-      );
-      Divider();
-    });
+          return ListTile(
+            title: Text('${serviceList[index].name}'),
+            leading: Icon(Icons.star),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: LightColor.themered,
+            ),
+          );
+          Divider();
+        });
     return listview;
+  }
+
+  void getAllServices(BuildContext context) async {
+    List<Service> services = await serviceViewModel.getAllService();
+
+    if (services != null) {
+      setState(() {
+        services.forEach((item) {
+          serviceList.add(item);
+        });
+        isLoading = false;
+      });
+    }
   }
 }
