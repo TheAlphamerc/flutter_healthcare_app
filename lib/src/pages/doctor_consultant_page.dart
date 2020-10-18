@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_healthcare_app/src/doctor_view_model.dart';
+import 'package:flutter_healthcare_app/src/viewModel/doctor_view_model.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/doctor.dart';

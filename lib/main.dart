@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/config/route.dart';
-import 'package:flutter_healthcare_app/src/doctor_view_model.dart';
+import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
+import 'package:flutter_healthcare_app/src/viewModel/doctor_view_model.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,9 @@ void main() {
     providers: [
       ChangeNotifierProvider(
         create: (context) => DoctorViewModel(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => AuthViewModel(),
       ),
 
     ],

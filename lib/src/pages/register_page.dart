@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/registration.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
+import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:provider/provider.dart';
 
 import '../theme/light_color.dart';
 import 'login_page.dart';
@@ -16,7 +20,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  static GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   Position _currentPosition;
+  AuthViewModel authViewModel;
 
   @override
   void initState() {
@@ -41,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String sex = "";
   String usertype = "General user";
   var gender = 'Male';
-
+  var isLoading = false;
 
   getTextInputData() {
     setState(() {
@@ -53,13 +59,58 @@ class _RegisterPageState extends State<RegisterPage> {
       location = locationValueHolder.text;
       age = ageValueHolder.text;
       sex = sexValueHolder.text;
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => LoginPage()));
+
+      checkValue(context);
+
+
     });
+  }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              color: LightColor.white.withOpacity(0.3),
+              child: Center(
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: LightColor.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: LightColor.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
+        : Text('');
   }
 
   @override
   Widget build(BuildContext context) {
+    authViewModel = Provider.of<AuthViewModel>(context);
     // TODO: implement build
     Widget _Bgap() {
       return Container(height: 120.0, color: Colors.white);
@@ -106,7 +157,6 @@ class _RegisterPageState extends State<RegisterPage> {
           ]);
     }
 
-
     Widget _LoginInputs() {
       return Container(
         alignment: Alignment.center,
@@ -131,6 +181,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextField(
                 controller: firstNameValueHolder,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -164,19 +215,20 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextField(
                 controller: lastNameValueHolder,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   border: InputBorder.none,
                   hintText: "Last name",
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
                       child:
-                      Icon(Icons.account_circle, color: LightColor.themered)
-                          .alignCenter
-                          .ripple(() {},
-                          borderRadius: BorderRadius.circular(13))),
+                          Icon(Icons.account_circle, color: LightColor.themered)
+                              .alignCenter
+                              .ripple(() {},
+                                  borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -198,6 +250,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextField(
                 controller: phoneValueHolder,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -231,6 +284,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextField(
                 controller: emailValueHolder,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -264,7 +318,8 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextField(
                 controller: passValueHolder,
-                obscureText: false,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -331,6 +386,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         .findAddressesFromCoordinates(coordinates);
                     var first = addresses.first;
                     print("${first.featureName} : ${first.addressLine}");
+                    locationValueHolder.text = '${first.addressLine}';
                     print(
                         "LAT: ${_currentPosition.latitude}, LNG: ${_currentPosition.longitude}");
                   }).catchError((e) {
@@ -361,7 +417,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   border: InputBorder.none,
-                  hintText: "Age",
+                  hintText: "dd/mm/yyyy",
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
@@ -393,7 +449,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             gender = 'Male';
                           });
@@ -401,24 +457,32 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                           height: double.maxFinite,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft:Radius.circular(13),bottomLeft:Radius.circular(13)),
-                            color:gender == 'Male'? Colors.black : Colors.white
-                          ),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(13),
+                                  bottomLeft: Radius.circular(13)),
+                              color: gender == 'Male'
+                                  ? Colors.black
+                                  : Colors.white),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.accessibility,
-                              size: 24,
-                                color: gender == 'Male'? Colors.white : Colors.black,
+                              Icon(
+                                Icons.accessibility,
+                                size: 24,
+                                color: gender == 'Male'
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left:5.0),
+                                padding: const EdgeInsets.only(left: 5.0),
                                 child: Text(
                                   'Male',
                                   style: TextStyle(
-                                    color: gender == 'Male'? Colors.white : Colors.black,
-                                  fontSize: 14),
+                                      color: gender == 'Male'
+                                          ? Colors.white
+                                          : Colors.black,
+                                      fontSize: 14),
                                 ),
                               ),
                             ],
@@ -428,7 +492,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             gender = 'Female';
                           });
@@ -436,21 +500,29 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                           height: double.maxFinite,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(topRight:Radius.circular(13),bottomRight:Radius.circular(13)),
-                              color: gender == 'Female'? Colors.black : Colors.white
-                          ),
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(13),
+                                  bottomRight: Radius.circular(13)),
+                              color: gender == 'Female'
+                                  ? Colors.black
+                                  : Colors.white),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.pregnant_woman,
+                              Icon(
+                                Icons.pregnant_woman,
                                 size: 24,
-                                color: gender == 'Female'? Colors.white : Colors.black,
+                                color: gender == 'Female'
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                               Text(
                                 'Female',
                                 style: TextStyle(
-                                    color: gender == 'Female'? Colors.white : Colors.black,
+                                    color: gender == 'Female'
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontSize: 14),
                               ),
                             ],
@@ -499,24 +571,88 @@ class _RegisterPageState extends State<RegisterPage> {
 
     // TODO: implement build
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _Sgap(),
-                _head(),
-                _LoginInputs(),
-                _Sgap(),
-                _helpText(),
-                //  _loginForm(),
-              ],
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          children: [
+            Container(
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        _Sgap(),
+                        _head(),
+                        _LoginInputs(),
+                        _Sgap(),
+                        _helpText(),
+                        //  _loginForm(),
+                      ],
+                    ),
+                  ),
+                  //_doctorsList()
+                ],
+              ),
             ),
-          ),
-          //_doctorsList()
-        ],
+            loading(context),
+          ],
+        ),
       ),
     );
+  }
+
+  void checkValue(BuildContext context) {
+    if (firstName.toString().isEmpty) {
+      showSnakbar(context, 'Enter first name');
+    } else if (email.toString().isEmpty) {
+      showSnakbar(context, 'Enter your email');
+    } else if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email)) {
+      showSnakbar(context, 'Enter valid email');
+    } else if (phone.toString().isEmpty) {
+      showSnakbar(context, 'Enter your phone');
+    } else if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(phone)) {
+      showSnakbar(context, 'Enter valid phone number');
+    } else if (password.toString().isEmpty) {
+      showSnakbar(context, 'Enter your password');
+    } else if (password.length < 6) {
+      showSnakbar(context, 'Enter at least 6 digit password');
+    } else if (location.toString().isEmpty) {
+      showSnakbar(context, 'Enter location');
+    } else if (age.toString().isEmpty) {
+      showSnakbar(context, 'Enter your age');
+    }else{
+      sendDatatoDb();
+    }
+  }
+
+  void showSnakbar(BuildContext context, String message) {
+    print('lkasda');
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+        backgroundColor: LightColor.themered,
+        content: new Text(
+          message,
+          style: TextStyle(color: LightColor.white),
+        )));
+  }
+
+  void sendDatatoDb() async{
+    setState(() {
+      isLoading = true;
+    });
+    
+    RegistrationResponse response = await authViewModel.saveRegistration(new Registration('$firstName $lastName', firstName, lastName, email, phone, password, location, gender, age));
+    if(response != null){
+      showSnakbar(context, '${response.message}');
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => LoginPage()));
+    }
   }
 }
