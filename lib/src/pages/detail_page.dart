@@ -23,6 +23,7 @@ class _DetailPageState extends State<DetailPage> {
   DoctorViewModel doctorViewModel;
   var isFirst = true;
   List<Available> availableList;
+  RegExp exp = RegExp(r"\r\n", multiLine: true, caseSensitive: true);
 
   @override
   void initState() {
@@ -114,7 +115,7 @@ class _DetailPageState extends State<DetailPage> {
                             ],
                           ),
                           subtitle: Text(
-                            model.specialist,
+                            model.specialist.replaceAll(exp,', '),
                             style: TextStyles.bodySm.subTitleColor.bold,
                           ),
                         ),
@@ -240,7 +241,7 @@ class _DetailPageState extends State<DetailPage> {
                                       borderRadius: BorderRadius.circular(10)),
                                   onPressed: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (BuildContext context) => BookAppointmentPage(model)));
+                                        builder: (BuildContext context) => BookAppointmentPage(model,availableList)));
                                   },
                                   child: Text(
                                     "Make an appointment",

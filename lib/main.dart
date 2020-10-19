@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/config/route.dart';
+import 'package:flutter_healthcare_app/src/model/appointment_model.dart';
+import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart';
 import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
 import 'package:flutter_healthcare_app/src/viewModel/doctor_view_model.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
@@ -18,6 +20,10 @@ void main() {
       ChangeNotifierProvider(
         create: (context) => ServiceViewModel(),
       ),
+      ChangeNotifierProvider(
+        create: (context) => AppointmentViewModel(),
+      ),
+
 
     ],
     child: MyApp(),
