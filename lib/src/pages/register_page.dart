@@ -647,12 +647,15 @@ class _RegisterPageState extends State<RegisterPage> {
     
     RegistrationResponse response = await authViewModel.saveRegistration(new Registration('$firstName $lastName', firstName, lastName, email, phone, password, location, gender, age));
     if(response != null){
-      showSnakbar(context, '${response.message}');
       setState(() {
         isLoading = false;
       });
+      showSnakbar(context, '${response.message}');
+      if(response.success){
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => LoginPage()));
+
+      }
     }
   }
 }

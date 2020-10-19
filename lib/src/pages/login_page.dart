@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/login_response.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/doctor_dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/delivery/delivery_page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
+import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../theme/light_color.dart';
 import '../theme/light_color.dart';
@@ -22,6 +25,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  AuthViewModel authViewModel;
+
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +44,8 @@ class _LoginPageState extends State<LoginPage> {
       user = userValueHolder.text;
       password = passValueHolder.text;
       print(user + password);
+
+      checkUser(user,password);
 
       if(userValueHolder.text == 'doc' && passValueHolder.text =='doc'){
         Navigator.pushReplacement(
@@ -58,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    authViewModel = Provider.of<AuthViewModel>(context);
     Widget _Bgap() {
       return Container(height: 120.0, color: Colors.white);
     }
@@ -217,5 +226,15 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
     );
+  }
+
+  void checkUser(String user, String password) async {
+    List<LoginResponse> loginResponse = await authViewModel.getlogin(user, password);
+
+    if(loginResponse != null){
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => DashboardScreen()));
+    }
+
   }
 }

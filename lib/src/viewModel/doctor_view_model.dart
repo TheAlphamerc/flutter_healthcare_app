@@ -6,7 +6,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class DoctorViewModel extends ChangeNotifier {
-  List<Doctor> allDoctor = new List();
 
   Future<List<Doctor>> getAllDoctor() async {
     final response =
@@ -17,13 +16,6 @@ class DoctorViewModel extends ChangeNotifier {
 
       Iterable list = json.decode(response.body);
       doctors = list.map((model) => Doctor.fromJson(model)).toList();
-      if(allDoctor != null){
-        allDoctor.clear();
-      }
-      allDoctor.addAll(doctors);
-      notifyListeners();
-      print(doctors);
-
       return doctors;
     } else {
       throw Exception('Exception: ${response.statusCode}');

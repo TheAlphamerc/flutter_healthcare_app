@@ -1,12 +1,8 @@
-// To parse this JSON data, do
-//
-//     final availbility = availbilityFromJson(jsonString);
-
 import 'dart:convert';
 
-List<Available> availbilityFromJson(String str) => List<Available>.from(json.decode(str).map((x) => Available.fromJson(x)));
+List<Available> availableaFromJson(String str) => List<Available>.from(json.decode(str).map((x) => Available.fromJson(x)));
 
-String availbilityToJson(List<Available> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String availableaToJson(List<Available> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Available {
   Available({
@@ -21,19 +17,13 @@ class Available {
     this.updatedtime,
     this.queryFlag,
     this.getTimeByDay,
-    this.sunday,
-    this.monday,
-    this.tuesday,
-    this.wednesday,
-    this.thursday,
-    this.friday,
-    this.saturday,
+    this.timeList,
   });
 
-  dynamic id;
+  String id;
   dynamic doctorid;
-  dynamic days;
-  dynamic times;
+  String days;
+  String times;
   dynamic isactive;
   dynamic createdby;
   dynamic createdtime;
@@ -41,19 +31,13 @@ class Available {
   dynamic updatedtime;
   dynamic queryFlag;
   bool getTimeByDay;
-  String sunday;
-  String monday;
-  String tuesday;
-  String wednesday;
-  String thursday;
-  String friday;
-  String saturday;
+  List<Available> timeList;
 
   factory Available.fromJson(Map<String, dynamic> json) => Available(
-    id: json["Id"],
+    id: json["Id"] == null ? null : json["Id"],
     doctorid: json["Doctorid"],
-    days: json["Days"],
-    times: json["Times"],
+    days: json["Days"] == null ? null : json["Days"],
+    times: json["Times"] == null ? null : json["Times"],
     isactive: json["Isactive"],
     createdby: json["Createdby"],
     createdtime: json["Createdtime"],
@@ -61,20 +45,14 @@ class Available {
     updatedtime: json["Updatedtime"],
     queryFlag: json["QueryFlag"],
     getTimeByDay: json["GetTimeByDay"],
-    sunday: json["Sunday"],
-    monday: json["Monday"],
-    tuesday: json["Tuesday"],
-    wednesday: json["Wednesday"],
-    thursday: json["Thursday"],
-    friday: json["Friday"],
-    saturday: json["Saturday"],
+    timeList: json["TimeList"] == null ? null : List<Available>.from(json["TimeList"].map((x) => Available.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "Id": id,
+    "Id": id == null ? null : id,
     "Doctorid": doctorid,
-    "Days": days,
-    "Times": times,
+    "Days": days == null ? null : days,
+    "Times": times == null ? null : times,
     "Isactive": isactive,
     "Createdby": createdby,
     "Createdtime": createdtime,
@@ -82,12 +60,6 @@ class Available {
     "Updatedtime": updatedtime,
     "QueryFlag": queryFlag,
     "GetTimeByDay": getTimeByDay,
-    "Sunday": sunday,
-    "Monday": monday,
-    "Tuesday": tuesday,
-    "Wednesday": wednesday,
-    "Thursday": thursday,
-    "Friday": friday,
-    "Saturday": saturday,
+    "TimeList": timeList == null ? null : List<dynamic>.from(timeList.map((x) => x.toJson())),
   };
 }

@@ -128,42 +128,40 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(
                           height: 100,
-                          child: availableList != null && availableList.length > 0 ? ListView(
+                          child: availableList != null && availableList.length > 0 ? ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            children: [
-                              showSchduleWidget(context, 'Sun',
-                                  availableList[0].sunday.isNotEmpty? availableList[0].sunday.split('-')[0].trim():'',
-                                  availableList[0].sunday.isNotEmpty? availableList[0].sunday.split('-')[1].trim():'',
-                                  availableList[0].sunday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Mon',
-                                  availableList[0].monday.isNotEmpty? availableList[0].monday.split('-')[0].trim():'',
-                                  availableList[0].monday.isNotEmpty? availableList[0].monday.split('-')[1].trim():'',
-                                  availableList[0].monday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Tue',
-                                  availableList[0].tuesday.isNotEmpty? availableList[0].tuesday.split('-')[0].trim():'',
-                                  availableList[0].tuesday.isNotEmpty? availableList[0].tuesday.split('-')[1].trim():'',
-                                  availableList[0].tuesday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Wed',
-                                  availableList[0].wednesday.isNotEmpty? availableList[0].wednesday.split('-')[0].trim():'',
-                                  availableList[0].wednesday.isNotEmpty? availableList[0].wednesday.split('-')[1].trim():'',
-                                  availableList[0].wednesday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Thu',
-                                  availableList[0].thursday.isNotEmpty? availableList[0].thursday.split('-')[0].trim():'',
-                                  availableList[0].thursday.isNotEmpty? availableList[0].thursday.split('-')[1].trim():'',
-                                  availableList[0].thursday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Fri',
-                                  availableList[0].friday.isNotEmpty? availableList[0].friday.split('-')[0].trim():'',
-                                  availableList[0].friday.isNotEmpty? availableList[0].friday.split('-')[1].trim():'',
-                                  availableList[0].friday.isNotEmpty?'to':'-'),
-                              showSchduleWidget(context, 'Sat',
-                                  availableList[0].saturday.isNotEmpty? availableList[0].saturday.split('-')[0].trim():'',
-                                  availableList[0].saturday.isNotEmpty? availableList[0].saturday.split('-')[1].trim():'',
-                                  availableList[0].saturday.isNotEmpty?'to':'-'),
-
-
-
-
-                            ],
+                            itemCount: availableList.length,
+                            itemBuilder: (context,index){
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        availableList[index].days,
+                                        style: TextStyles.titleMedium,
+                                      ),
+                                      Expanded(
+                                        child: ListView.builder(
+                                            shrinkWrap: true,
+                                            itemCount: availableList[index].timeList.length,
+                                            physics: NeverScrollableScrollPhysics(),
+                                            itemBuilder: (context,index){
+                                          return Padding(
+                                            padding: const EdgeInsets.only(top:4.0),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                                child: Text('${availableList[index].timeList[0].times}')),
+                                          );
+                                        }),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           ):Text(''),
                         ),
                         Divider(
