@@ -9,6 +9,7 @@ import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/light_color.dart';
 import '../theme/light_color.dart';
@@ -232,9 +233,19 @@ class _LoginPageState extends State<LoginPage> {
     List<LoginResponse> loginResponse = await authViewModel.getlogin(user, password);
 
     if(loginResponse != null){
+      saveDataIntoSharedPref(loginResponse[0]);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => DashboardScreen()));
     }
+
+  }
+
+  void saveDataIntoSharedPref(LoginResponse loginResponse) async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    customerInfo.setString('id', loginResponse.id);
+    customerInfo.setString('firstName', loginResponse.firstName);
+    customerInfo.setString('lastName', loginResponse.lastName);
+
 
   }
 }

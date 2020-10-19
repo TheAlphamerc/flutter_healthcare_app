@@ -36,6 +36,7 @@ dependencies:
   smart_select: ^4.2.1
   http: ^0.12.1
   provider: ^4.3.2+2
+  shared_preferences: ^0.5.8
 
 dev_dependencies:
   flutter_test:

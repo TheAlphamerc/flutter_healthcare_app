@@ -2,12 +2,18 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_healthcare_app/src/model/appointment.dart';
 import 'package:flutter_healthcare_app/src/model/available.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/doctor.dart';
+import 'package:flutter_healthcare_app/src/model/registration.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BookAppointmentPage extends StatefulWidget {
   Doctor doctor;
@@ -23,17 +29,28 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   TextEditingController _problemController = TextEditingController();
   static GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
+  AppointmentViewModel appointmentViewModel;
   var cashpayment = false;
   var selectDay = 'Day';
   var showDate = 'Select appointment date';
   var time = 'Schdule';
   var isFirst = true;
+  var isLoading = false;
   List<String> availableDays = new List();
   List<String> availableTimes = new List();
   RegExp exp = RegExp(r"\r\n", multiLine: true, caseSensitive: true);
+  var id;
+
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCustomerInfo(context);
+  }
+  @override
   Widget build(BuildContext context) {
+    appointmentViewModel = Provider.of<AppointmentViewModel>(context);
     if (isFirst) {
       creatDateList();
       setState(() {
@@ -52,15 +69,20 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             },
             child: Icon(Icons.keyboard_backspace)),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            headerpart(context),
-            tellProblem(context),
-            payment(context),
-            bookAppointmentButton(context),
-          ],
-        ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                headerpart(context),
+                tellProblem(context),
+                payment(context),
+                bookAppointmentButton(context),
+              ],
+            ),
+          ),
+          loading(context)
+        ],
       ),
     );
   }
@@ -411,7 +433,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
           height: 50,
           width: MediaQuery.of(context).size.width,
           child: RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+
+              checkValue(context);
+
+            },
             color: LightColor.themered,
             child: Text(
               'Book appointment',
@@ -483,5 +509,86 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
           message,
           style: TextStyle(color: LightColor.white),
         )));
+  }
+
+  void checkValue(BuildContext context) {
+    if(showDate == 'Select appointment date'){
+      showSnakbar(context, 'Select appointment date');
+    }else if(_problemController.text.isEmpty){
+      showSnakbar(context, 'Tell your problem');
+    }else if(!cashpayment){
+      showSnakbar(context, 'Select payment method');
+    }else{
+      setState(() {
+        isLoading = true;
+      });
+      Appointment appointment = new Appointment(id,widget.doctor.id,showDate,'bf9e2ab6-f137-47a9-9380-91acc8f899d2',_problemController.text,
+      'Money');
+      sendAppointmentRequest(context,appointment);
+    }
+  }
+
+  void sendAppointmentRequest(BuildContext context, Appointment appointment) async{
+
+
+    RegistrationResponse response = await appointmentViewModel.saveAppointment(appointment);
+    if(response != null){
+      setState(() {
+        isLoading = false;
+      });
+      if(!response.success){
+        showSnakbar(context, response.message);
+      }else{
+        showSnakbar(context, response.message);
+      }
+    }
+
+  }
+
+  void getCustomerInfo(BuildContext context) async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    customerInfo.getString('id');
+  }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: LightColor.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: LightColor.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: LightColor.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
   }
 }
