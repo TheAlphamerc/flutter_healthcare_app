@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 150,
-              color: LightColor.themered,
+              color: ColorResources.themered,
               child: Center(
                 child: Text(
                   'Welcome, Arafat',
-                  style: TextStyle(color: LightColor.white, fontSize: 18),
+                  style: TextStyle(color: ColorResources.white, fontSize: 18),
                 ),
               ),
             ),
@@ -53,11 +53,11 @@ class _HomePageState extends State<HomePage> {
       height: 70,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: LightColor.white,
+          color: ColorResources.white,
           borderRadius: BorderRadius.all(Radius.circular(10)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: LightColor.lightblack.withOpacity(.3),
+              color: ColorResources.lightblack.withOpacity(.3),
               blurRadius: 15,
               offset: Offset(5, 5),
             )
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                     width: 40,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: LightColor.lightblack.withOpacity(0.2),
+                            color: ColorResources.lightblack.withOpacity(0.2),
                             width: 2),
                         borderRadius: BorderRadius.all(Radius.circular(130))),
                     child: Center(
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(4.0),
                         child: Icon(
                           Icons.shopping_cart,
-                          color: LightColor.themered,
+                          color: ColorResources.themered,
                           size: 20,
                         ),
                       ),
@@ -97,12 +97,12 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Cart',
                           style: TextStyle(
-                              color: LightColor.lightblack, fontSize: 14),
+                              color: ColorResources.lightblack, fontSize: 14),
                         ),
                         Text(
                           '\$ 00.00',
                           style: TextStyle(
-                              color: LightColor.lightblack, fontSize: 14),
+                              color: ColorResources.lightblack, fontSize: 14),
                         )
                       ],
                     ),
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     width: 40,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: LightColor.lightblack.withOpacity(0.2),
+                            color: ColorResources.lightblack.withOpacity(0.2),
                             width: 2),
                         borderRadius: BorderRadius.all(Radius.circular(130))),
                     child: Center(
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(4.0),
                         child: Icon(
                           Icons.date_range,
-                          color: LightColor.themered,
+                          color: ColorResources.themered,
                           size: 20,
                         ),
                       ),
@@ -144,12 +144,12 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Appointments',
                           style: TextStyle(
-                              color: LightColor.lightblack, fontSize: 14),
+                              color: ColorResources.lightblack, fontSize: 14),
                         ),
                         Text(
                           '9+',
                           style: TextStyle(
-                              color: LightColor.lightblack, fontSize: 14),
+                              color: ColorResources.lightblack, fontSize: 14),
                         )
                       ],
                     ),
@@ -187,11 +187,11 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 30,
                             decoration: BoxDecoration(
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                    color: LightColor.lightblack.withOpacity(.3),
+                                    color: ColorResources.lightblack.withOpacity(.3),
                                     blurRadius: 15,
                                     offset: Offset(5, 5),
                                   )
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   'DOCTOR CONSULTAION',
                                   style:
-                                      TextStyle(color: LightColor.themered, fontSize: 18),
+                                      TextStyle(color: ColorResources.themered, fontSize: 18),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                                     'Find  a doctor and get appoinment for health care professional for your condition',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: LightColor.lightblack.withOpacity(0.6),
+                                        color: ColorResources.lightblack.withOpacity(0.6),
                                         fontSize: 14),
                                   ),
                                 )
@@ -239,11 +239,11 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 30,
                             decoration: BoxDecoration(
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                    color: LightColor.lightblack.withOpacity(.3),
+                                    color: ColorResources.lightblack.withOpacity(.3),
                                     blurRadius: 15,
                                     offset: Offset(5, 5),
                                   )
@@ -262,7 +262,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   'MARKETPLACE',
                                   style:
-                                      TextStyle(color: LightColor.themered, fontSize: 18),
+                                      TextStyle(color: ColorResources.themered, fontSize: 18),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -271,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                                     'Browse through our wide range of health products and services',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: LightColor.lightblack.withOpacity(0.6),
+                                        color: ColorResources.lightblack.withOpacity(0.6),
                                         fontSize: 14),
                                   ),
                                 )
@@ -290,11 +290,11 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 30,
                             decoration: BoxDecoration(
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                    color: LightColor.lightblack.withOpacity(.3),
+                                    color: ColorResources.lightblack.withOpacity(.3),
                                     blurRadius: 15,
                                     offset: Offset(5, 5),
                                   )
@@ -313,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   'LAB TEST',
                                   style:
-                                  TextStyle(color: LightColor.themered, fontSize: 18),
+                                  TextStyle(color: ColorResources.themered, fontSize: 18),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
                                     'Browse through our wide range of lab test for checkup your healt condition',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: LightColor.lightblack.withOpacity(0.6),
+                                        color: ColorResources.lightblack.withOpacity(0.6),
                                         fontSize: 14),
                                   ),
                                 )
@@ -341,11 +341,11 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 30,
                             decoration: BoxDecoration(
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                    color: LightColor.lightblack.withOpacity(.3),
+                                    color: ColorResources.lightblack.withOpacity(.3),
                                     blurRadius: 15,
                                     offset: Offset(5, 5),
                                   )
@@ -364,7 +364,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   'SERVICES',
                                   style:
-                                  TextStyle(color: LightColor.themered, fontSize: 18),
+                                  TextStyle(color: ColorResources.themered, fontSize: 18),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -373,7 +373,7 @@ class _HomePageState extends State<HomePage> {
                                     'Browse through our wide range of services for quick response by the provider',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: LightColor.lightblack.withOpacity(0.6),
+                                        color: ColorResources.lightblack.withOpacity(0.6),
                                         fontSize: 14),
                                   ),
                                 )

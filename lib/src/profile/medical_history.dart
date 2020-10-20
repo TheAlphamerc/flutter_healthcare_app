@@ -19,7 +19,7 @@ class _MedicalHistoryState extends State<MedicalHistory> {
             onTap: () => Navigator.pop(context),
             child: Icon(
               Icons.arrow_back_ios,
-              color: LightColor.themered,
+              color: ColorResources.themered,
             )),
         centerTitle: true,
         elevation: 0,
@@ -48,14 +48,14 @@ class _MedicalHistoryState extends State<MedicalHistory> {
                 'Medical History\n',
                 style: TextStyle(
                     fontSize: 18,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     fontWeight: FontWeight.bold),
               ),
               Text(
                 'If you have any chronic illness, please choose them below or skip',
                 style: TextStyle(
                     fontSize: 14,
-                    color: LightColor.black,
+                    color: ColorResources.black,
                     fontWeight: FontWeight.normal),
               ),
               new Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -144,7 +144,7 @@ class _MedicalHistoryState extends State<MedicalHistory> {
 
                       padding: const EdgeInsets.all(13),
                       decoration: BoxDecoration(
-                          color: LightColor.themered,
+                          color: ColorResources.themered,
                         //  border: Border.all(width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(5.0))
                       ),
@@ -178,7 +178,7 @@ class _MedicalHistoryState extends State<MedicalHistory> {
 
                       padding: const EdgeInsets.all(13),
                       decoration: BoxDecoration(
-                          color: LightColor.themered,
+                          color: ColorResources.themered,
                           //  border: Border.all(width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(5.0))
                       ),
@@ -198,7 +198,7 @@ class _MedicalHistoryState extends State<MedicalHistory> {
                       side: BorderSide(color: Colors.white),
                     ),
                     onPressed: () => print("Button Pressed"),
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     child: Text('Save +',
                         style: TextStyle(fontSize: 20, color: Colors.white)),
                   ),

@@ -53,8 +53,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
         currentIndex: currentPage,
-        selectedItemColor: LightColor.themered,
-        unselectedItemColor: LightColor.lightblack.withOpacity(0.5),
+        selectedItemColor: ColorResources.themered,
+        unselectedItemColor: ColorResources.lightblack.withOpacity(0.5),
         type: BottomNavigationBarType.fixed,
         onTap: (position) {
           setState(() {

@@ -16,13 +16,13 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
         backgroundColor: Theme.of(context).backgroundColor,
         leading: Icon(
           Icons.menu,
-          color: LightColor.lightblack.withOpacity(0.7),
+          color: ColorResources.lightblack.withOpacity(0.7),
         ),
         centerTitle: true,
         title: Text(
           'Home',
           style: TextStyle(
-              color: LightColor.lightblack.withOpacity(0.7), fontSize: 18),
+              color: ColorResources.lightblack.withOpacity(0.7), fontSize: 18),
         ),
       ),
       body: Container(
@@ -35,7 +35,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
               padding: const EdgeInsets.only(left: 15.0, top: 15),
               child: Text(
                 'Hello',
-                style: TextStyle(color: LightColor.grey, fontSize: 14),
+                style: TextStyle(color: ColorResources.grey, fontSize: 14),
               ),
             ),
             Padding(
@@ -43,7 +43,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
               child: Text(
                 'Mr. Peter',
                 style: TextStyle(
-                    color: LightColor.lightblack,
+                    color: ColorResources.lightblack,
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
               ),
@@ -64,7 +64,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
           child: Text(
             'Delivery request',
             style: TextStyle(
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 fontSize: 16,
                 fontWeight: FontWeight.bold),
           ),
@@ -80,11 +80,11 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: LightColor.white,
+                        color: ColorResources.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                            color: LightColor.lightblack.withOpacity(.3),
+                            color: ColorResources.lightblack.withOpacity(.3),
                             blurRadius: 15,
                             offset: Offset(5, 5),
                           )
@@ -99,7 +99,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                               Text(
                                 'Medicine item',
                                 style: TextStyle(
-                                    color: LightColor.lightblack, fontSize: 18),
+                                    color: ColorResources.lightblack, fontSize: 18),
                               ),
                               Padding(
                                 padding:
@@ -108,14 +108,14 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                   height: 30,
                                   width: 30,
                                   decoration: BoxDecoration(
-                                    color: LightColor.white,
+                                    color: ColorResources.white,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(100)),
                                     border:
-                                        Border.all(color: LightColor.themered),
+                                        Border.all(color: ColorResources.themered),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: LightColor.lightblack
+                                        color: ColorResources.lightblack
                                             .withOpacity(0.3),
                                         spreadRadius: 1,
                                         blurRadius: 15,
@@ -127,7 +127,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                   child: Center(
                                     child: Icon(
                                       Icons.visibility,
-                                      color: LightColor.themered,
+                                      color: ColorResources.themered,
                                       size: 20,
                                     ),
                                   ),
@@ -136,7 +136,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                               Text(
                                 '#12367894',
                                 style: TextStyle(
-                                    color: LightColor.lightblack,
+                                    color: ColorResources.lightblack,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -162,7 +162,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                         'Pickup',
                                         style: TextStyle(
                                             fontSize: 16,
-                                            color: LightColor.lightblack),
+                                            color: ColorResources.lightblack),
                                       ),
                                     )
                                   ],
@@ -172,7 +172,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                 child: Text(
                                   'Delivery',
                                   style: TextStyle(
-                                      fontSize: 16, color: LightColor.lightblack),
+                                      fontSize: 16, color: ColorResources.lightblack),
                                 ),
                               )
                             ],
@@ -189,7 +189,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       color:
-                                          LightColor.lightblack.withOpacity(0.6)),
+                                          ColorResources.lightblack.withOpacity(0.6)),
                                 ),
                               ),
                               Expanded(
@@ -198,7 +198,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       color:
-                                          LightColor.lightblack.withOpacity(0.6)),
+                                          ColorResources.lightblack.withOpacity(0.6)),
                                 ),
                               )
                             ],
@@ -211,14 +211,14 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(10),
                                   bottomRight: Radius.circular(10)),
-                              color: LightColor.themered),
+                              color: ColorResources.themered),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
                                 'Decline',
                                 style: TextStyle(
-                                    color: LightColor.black,
+                                    color: ColorResources.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -228,7 +228,7 @@ class _DeliveryHomePageState extends State<DeliveryHomePage> {
                                 child: Text(
                                   'Accept',
                                   style: TextStyle(
-                                      color: LightColor.white,
+                                      color: ColorResources.white,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),

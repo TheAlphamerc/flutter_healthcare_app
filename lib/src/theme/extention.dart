@@ -6,7 +6,7 @@ import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 extension TextStyleHelpers on TextStyle {
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
   TextStyle get white => copyWith(color: Colors.white);
-  TextStyle get subTitleColor => copyWith(color: LightColor.subTitleTextColor);
+  TextStyle get subTitleColor => copyWith(color: ColorResources.subTitleTextColor);
 }
 
 extension PaddingHelper on Widget {

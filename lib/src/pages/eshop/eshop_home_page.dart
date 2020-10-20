@@ -32,11 +32,11 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         elevation: 0,
         leading: Icon(
           Icons.menu,
-          color: LightColor.white,
+          color: ColorResources.white,
         ),
         actions: [
           Padding(
@@ -47,11 +47,11 @@ class _EshopHomePageState extends State<EshopHomePage> {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(100)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.lightblack.withOpacity(0.3),
+                      color: ColorResources.lightblack.withOpacity(0.3),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -66,7 +66,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                   child: Center(
                     child: Icon(
                       Icons.notifications_none,
-                      color: LightColor.themered,
+                      color: ColorResources.themered,
                       size: 20,
                     ),
                   ),
@@ -89,7 +89,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget headerpart(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.themered,
+      color: ColorResources.themered,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -98,7 +98,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
             child: Text(
               'E-shop',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 20,
               ),
             ),
@@ -112,7 +112,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                 child: Text(
                   'Categories',
                   style: TextStyle(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     fontSize: 20,
                   ),
                 ),
@@ -120,7 +120,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
               Padding(
                 padding: const EdgeInsets.only(right:15,bottom: 10),
                 child: Icon(Icons.more_vert,
-                color: LightColor.white,
+                color: ColorResources.white,
                 size: 25,),
               )
             ],
@@ -138,11 +138,11 @@ class _EshopHomePageState extends State<EshopHomePage> {
                       child: Container(
                         width: 100,
                         decoration: BoxDecoration(
-                          color: LightColor.white,
+                          color: ColorResources.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                color: LightColor.lightblack.withOpacity(.3),
+                                color: ColorResources.lightblack.withOpacity(.3),
                                 blurRadius: 15,
                                 offset: Offset(5, 5),
                               )
@@ -151,7 +151,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                         child: Center(child: Text('Cancer',
                         style: TextStyle(
                           fontSize: 16,
-                          color: LightColor.lightblack.withOpacity(0.7)
+                          color: ColorResources.lightblack.withOpacity(0.7)
 
                         ),)),
                       ),
@@ -177,7 +177,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
         child: Text(
           'Top medicine',
           style: TextStyle(
-            color: LightColor.lightblack.withOpacity(0.7),
+            color: ColorResources.lightblack.withOpacity(0.7),
             fontSize: 18,
           ),
         ),
@@ -201,11 +201,11 @@ class _EshopHomePageState extends State<EshopHomePage> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: LightColor.themered,
+                  color: ColorResources.themered,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.black.withOpacity(0.2),
+                      color: ColorResources.black.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -231,7 +231,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(10)),
-                            color: LightColor.themered.withOpacity(0.7)),
+                            color: ColorResources.themered.withOpacity(0.7)),
                         child: Column(
                           children: [
                             Padding(
@@ -239,22 +239,22 @@ class _EshopHomePageState extends State<EshopHomePage> {
                               child: Text(
                                 '${medicineListdata[index].medicineName}',
                                 style: TextStyle(
-                                    color: LightColor.white, fontSize: 16,fontWeight: FontWeight.bold),
+                                    color: ColorResources.white, fontSize: 16,fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
                               '${medicineListdata[index].companyName}',
                               style: TextStyle(
-                                  color: LightColor.white, fontSize: 16),
+                                  color: ColorResources.white, fontSize: 16),
                             ),
                             Text(
                               '${medicineListdata[index].genericName}',
                               style: TextStyle(
-                                  color: LightColor.white, fontSize: 16),
+                                  color: ColorResources.white, fontSize: 16),
                             ),
                             Divider(
                               thickness: 1,
-                              color: LightColor.white,
+                              color: ColorResources.white,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -264,7 +264,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                   child: Text(
                                     '10 pices',
                                     style: TextStyle(
-                                        color: LightColor.white, fontSize: 16),
+                                        color: ColorResources.white, fontSize: 16),
                                   ),
                                 ),
                                 Padding(
@@ -272,7 +272,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                   child: Text(
                                     '\$${medicineListdata[index].price}',
                                     style: TextStyle(
-                                        color: LightColor.white, fontSize: 16),
+                                        color: ColorResources.white, fontSize: 16),
                                   ),
                                 ),
                               ],

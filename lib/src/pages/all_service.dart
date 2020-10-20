@@ -47,10 +47,10 @@ class _ServicePageState extends State<ServicePage> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back, color: LightColor.themered)),
+            child: Icon(Icons.arrow_back, color: ColorResources.themered)),
         title: Text(
           'Services',
-          style: TextStyle(color: LightColor.themered),
+          style: TextStyle(color: ColorResources.themered),
         ),
       ),
       body: Stack(
@@ -69,18 +69,18 @@ class _ServicePageState extends State<ServicePage> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Container(
-        color: LightColor.white.withOpacity(0.3),
+        color: ColorResources.white.withOpacity(0.3),
         child: Center(
           child: SizedBox(
             width: 120,
             height: 120,
             child: Container(
               decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.lightBlue.withOpacity(0.2),
+                      color: ColorResources.lightBlue.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -110,7 +110,7 @@ class _ServicePageState extends State<ServicePage> {
     var listview = ListView.separated(
         separatorBuilder: (BuildContext context, int index) => Divider(
               thickness: 1,
-              color: LightColor.themered,
+              color: ColorResources.themered,
             ),
         itemCount: serviceList != null ?serviceList.length :0,
         itemBuilder: (context, index) {
@@ -119,7 +119,7 @@ class _ServicePageState extends State<ServicePage> {
             leading: Icon(Icons.star),
             trailing: Icon(
               Icons.arrow_forward_ios,
-              color: LightColor.themered,
+              color: ColorResources.themered,
             ),
           );
           Divider();

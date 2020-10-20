@@ -29,7 +29,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        BackButton(color: LightColor.lightblack),
+        BackButton(color: ColorResources.lightblack),
         Row(
           children: [
             Padding(
@@ -43,11 +43,11 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(100)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.lightblack.withOpacity(0.3),
+                      color: ColorResources.lightblack.withOpacity(0.3),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -57,7 +57,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                 child: Center(
                   child: Icon(
                     Icons.favorite_border,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     size: 20,
                   ),
                 ),
@@ -75,11 +75,11 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                   height: 30,
                   width: 30,
                   decoration: BoxDecoration(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     borderRadius: BorderRadius.all(Radius.circular(100)),
                     boxShadow: [
                       BoxShadow(
-                        color: LightColor.lightblack.withOpacity(0.3),
+                        color: ColorResources.lightblack.withOpacity(0.3),
                         spreadRadius: 1,
                         blurRadius: 15,
                         offset: Offset(0, 1), // changes position of shadow
@@ -89,7 +89,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                   child: Center(
                     child: Icon(
                       Icons.add_shopping_cart,
-                      color: LightColor.themered,
+                      color: ColorResources.themered,
                       size: 20,
                     ),
                   ),
@@ -109,7 +109,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
     }
     return Scaffold(
-      backgroundColor: LightColor.extraLightBlue,
+      backgroundColor: ColorResources.extraLightBlue,
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -123,7 +123,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                   fit: BoxFit.fill,
                 ),
                 Container(
-                  color: LightColor.themered.withOpacity(0.1),
+                  color: ColorResources.themered.withOpacity(0.1),
                   width: MediaQuery.of(context).size.width,
                   height: 300,
                 )
@@ -175,7 +175,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             '${widget.medicineListdata.price} \$',
             style: TextStyle(
                 fontSize: 20,
-                color: LightColor.lightblack.withOpacity(0.7),
+                color: ColorResources.lightblack.withOpacity(0.7),
                 fontWeight: FontWeight.bold),
           ),
         ),
@@ -185,7 +185,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             '12 / box',
             style: TextStyle(
               fontSize: 16,
-              color: LightColor.lightblack.withOpacity(0.7),
+              color: ColorResources.lightblack.withOpacity(0.7),
             ),
           ),
         )
@@ -200,7 +200,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Text(
           '${widget.medicineListdata.medicineName}',
           style: TextStyle(
-              color: LightColor.lightblack,
+              color: ColorResources.lightblack,
               fontSize: 20,
               fontWeight: FontWeight.bold),
         ),
@@ -209,7 +209,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           child: Text(
             'Category name',
             style: TextStyle(
-              color: LightColor.lightblack,
+              color: ColorResources.lightblack,
               fontSize: 18,
             ),
           ),
@@ -217,20 +217,20 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Text(
           '${widget.medicineListdata.genericName}',
           style: TextStyle(
-            color: LightColor.lightblack,
+            color: ColorResources.lightblack,
             fontSize: 18,
           ),
         ),
         Divider(
           thickness: 0.5,
-          color: LightColor.lightblack.withOpacity(0.7),
+          color: ColorResources.lightblack.withOpacity(0.7),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom:10.0),
           child: Text(
             'About',
             style: TextStyle(
-              color: LightColor.lightblack,
+              color: ColorResources.lightblack,
               fontSize: 18,
             ),
           ),
@@ -240,7 +240,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           child: Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl eros. Cras a nisi enim. Etiam vitae convallis ante. ',
             style: TextStyle(
-              color: LightColor.lightblack.withOpacity(0.5),
+              color: ColorResources.lightblack.withOpacity(0.5),
               fontSize: 14,
             ),
           ),
@@ -250,7 +250,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           child: Text(
             'Benifits',
             style: TextStyle(
-              color: LightColor.lightblack,
+              color: ColorResources.lightblack,
               fontSize: 18,
             ),
           ),
@@ -260,7 +260,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           child: Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl eros. Cras a nisi enim. Etiam vitae convallis ante. ',
             style: TextStyle(
-              color: LightColor.lightblack.withOpacity(0.5),
+              color: ColorResources.lightblack.withOpacity(0.5),
               fontSize: 14,
             ),
           ),
@@ -271,14 +271,14 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             height: 50,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: LightColor.themered,
+              color: ColorResources.themered,
               borderRadius: BorderRadius.all(Radius.circular(10
               ))
             ),
             child: Center(
               child: Text('Add to cart',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16
               ),),
             ),

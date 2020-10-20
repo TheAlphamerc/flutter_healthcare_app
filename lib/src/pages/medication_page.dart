@@ -30,7 +30,7 @@ class _MedicationPageState extends State<MedicationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         elevation: 0,
         leading: GestureDetector(
             onTap: () {
@@ -41,7 +41,7 @@ class _MedicationPageState extends State<MedicationPage> {
       floatingActionButton: new FloatingActionButton(
           elevation: 0.0,
           child: new Icon(Icons.add_shopping_cart),
-          backgroundColor: LightColor.themered,
+          backgroundColor: ColorResources.themered,
           onPressed: () {}),
       body: Column(
         children: [
@@ -56,7 +56,7 @@ class _MedicationPageState extends State<MedicationPage> {
   Widget headerpart(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.themered,
+      color: ColorResources.themered,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -65,7 +65,7 @@ class _MedicationPageState extends State<MedicationPage> {
             child: Text(
               'Lab test',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 20,
               ),
             ),
@@ -75,7 +75,7 @@ class _MedicationPageState extends State<MedicationPage> {
             child: Text(
               'Upload your prescription',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -96,11 +96,11 @@ class _MedicationPageState extends State<MedicationPage> {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     boxShadow: [
                       BoxShadow(
-                        color: LightColor.black.withOpacity(0.2),
+                        color: ColorResources.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 15,
                         offset: Offset(0, 1), // changes position of shadow
@@ -110,7 +110,7 @@ class _MedicationPageState extends State<MedicationPage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: LightColor.black,
+                          color: ColorResources.black,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               bottomLeft: Radius.circular(10))),
@@ -122,7 +122,7 @@ class _MedicationPageState extends State<MedicationPage> {
                           child: Text(
                             'Upload',
                             style: TextStyle(
-                                color: LightColor.white, fontSize: 18),
+                                color: ColorResources.white, fontSize: 18),
                           ),
                         ),
                       ),
@@ -132,7 +132,7 @@ class _MedicationPageState extends State<MedicationPage> {
                       child: Text(
                         '$fileName',
                         style: TextStyle(
-                            color: LightColor.lightblack, fontSize: 14),
+                            color: ColorResources.lightblack, fontSize: 14),
                       ),
                     )
                   ],
@@ -144,7 +144,7 @@ class _MedicationPageState extends State<MedicationPage> {
             padding: const EdgeInsets.only(left: 15.0, top: 5, bottom: 10),
             child: Text(
               'upload .jpeg, png, doc, pdf file',
-              style: TextStyle(color: LightColor.white, fontSize: 14),
+              style: TextStyle(color: ColorResources.white, fontSize: 14),
             ),
           )
         ],
@@ -164,14 +164,14 @@ class _MedicationPageState extends State<MedicationPage> {
               Text(
                 'Select Medication',
                 style: TextStyle(
-                  color: LightColor.lightblack.withOpacity(0.7),
+                  color: ColorResources.lightblack.withOpacity(0.7),
                   fontSize: 18,
                 ),
               ),
               Text(
                 'View all',
                 style: TextStyle(
-                  color: LightColor.themered,
+                  color: ColorResources.themered,
                   fontSize: 18,
                 ),
               )
@@ -193,7 +193,7 @@ class _MedicationPageState extends State<MedicationPage> {
         borderRadius: BorderRadius.all(Radius.circular(13)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: LightColor.lightblack.withOpacity(.3),
+            color: ColorResources.lightblack.withOpacity(.3),
             blurRadius: 15,
             offset: Offset(5, 5),
           )
@@ -216,7 +216,7 @@ class _MedicationPageState extends State<MedicationPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: Icon(Icons.search, color: LightColor.themered),
+            child: Icon(Icons.search, color: ColorResources.themered),
           ),
         ],
       ),
@@ -234,11 +234,11 @@ class _MedicationPageState extends State<MedicationPage> {
             padding: const EdgeInsets.all(5.0),
             child: Container(
               decoration: BoxDecoration(
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 boxShadow: [
                   BoxShadow(
-                    color: LightColor.black.withOpacity(0.2),
+                    color: ColorResources.black.withOpacity(0.2),
                     spreadRadius: 1,
                     blurRadius: 15,
                     offset: Offset(0, 1), // changes position of shadow
@@ -264,7 +264,7 @@ class _MedicationPageState extends State<MedicationPage> {
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10)),
-                          color: LightColor.themered.withOpacity(0.7)),
+                          color: ColorResources.themered.withOpacity(0.7)),
                       child: Column(
                         children: [
                           Padding(
@@ -272,20 +272,20 @@ class _MedicationPageState extends State<MedicationPage> {
                             child: Text(
                               '${medicineListdata[index].medicineName}',
                               style: TextStyle(
-                                  color: LightColor.black, fontSize: 16,fontWeight: FontWeight.bold),
+                                  color: ColorResources.black, fontSize: 16,fontWeight: FontWeight.bold),
                             ),
                           ),
                           Text(
                             '${medicineListdata[index].companyName}',
                             style: TextStyle(
-                                color: LightColor.black, fontSize: 16),
+                                color: ColorResources.black, fontSize: 16),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom:5.0),
                             child: Text(
                               '\$${medicineListdata[index].price}/each',
                               style: TextStyle(
-                                  color: LightColor.black, fontSize: 16),
+                                  color: ColorResources.black, fontSize: 16),
                             ),
                           ),
                         ],
@@ -299,12 +299,12 @@ class _MedicationPageState extends State<MedicationPage> {
                       width: 20,
                       height: 20,
                       decoration: BoxDecoration(
-                        color: LightColor.white,
+                        color: ColorResources.white,
                         borderRadius: BorderRadius.all(Radius.circular(100))
                       ),
                       child: Center(
                         child: Icon(Icons.check,
-                        color: LightColor.themered,
+                        color: ColorResources.themered,
                         size: 20,),
                       ),
                     ),

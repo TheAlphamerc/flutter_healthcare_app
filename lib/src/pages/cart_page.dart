@@ -34,7 +34,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                 children: <Widget>[
                   Container(
                     height: MediaQuery.of(context).size.height,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -42,13 +42,13 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                           padding: const EdgeInsets.only(top:30.0,left: 15),
                           child: Icon(Icons.keyboard_backspace,
                             size: 20,
-                            color: LightColor.white,),
+                            color: ColorResources.white,),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left:15,top:15.0,bottom: 10),
                           child: Text('My Cart',
                             style: TextStyle(
-                              color: LightColor.white,
+                              color: ColorResources.white,
                               fontSize: 18
                             ),
                           ),
@@ -59,11 +59,11 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                             children: [
                               ResponsiveGridCol(
                                 child: Container(
-                                  color: LightColor.themered,
+                                  color: ColorResources.themered,
                                   width: MediaQuery.of(context).size.width,
                                   child: TabBar(
                                     indicatorWeight: 3,
-                                    unselectedLabelColor: LightColor.grey,
+                                    unselectedLabelColor: ColorResources.grey,
                                     labelColor: Colors.white,
                                     tabs: [
                                       new Tab(

@@ -13,7 +13,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: LightColor.lightblack,
+          backgroundColor: ColorResources.lightblack,
           elevation: 0,
           leading: GestureDetector(
             onTap: () {
@@ -21,12 +21,12 @@ class _MyAccountPageState extends State<MyAccountPage> {
             },
             child: Icon(
               Icons.keyboard_backspace,
-              color: LightColor.white,
+              color: ColorResources.white,
             ),
           ),
           title: Text(
             'My Account',
-            style: TextStyle(color: LightColor.white),
+            style: TextStyle(color: ColorResources.white),
           ),
           centerTitle: true,
           actions: [
@@ -38,11 +38,11 @@ class _MyAccountPageState extends State<MyAccountPage> {
                   height: 30,
                   width: 30,
                   decoration: BoxDecoration(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     borderRadius: BorderRadius.all(Radius.circular(100)),
                     boxShadow: [
                       BoxShadow(
-                        color: LightColor.lightblack.withOpacity(0.3),
+                        color: ColorResources.lightblack.withOpacity(0.3),
                         spreadRadius: 1,
                         blurRadius: 15,
                         offset: Offset(0, 1), // changes position of shadow
@@ -52,7 +52,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                   child: Center(
                     child: Icon(
                       Icons.notifications_none,
-                      color: LightColor.themered,
+                      color: ColorResources.themered,
                       size: 20,
                     ),
                   ),
@@ -64,7 +64,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
         floatingActionButton: new FloatingActionButton(
             elevation: 0.0,
             child: new Icon(Icons.add),
-            backgroundColor: LightColor.themered,
+            backgroundColor: ColorResources.themered,
             onPressed: () {}),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -74,7 +74,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 80,
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
               ),
               Positioned(
                   top: 80,
@@ -90,7 +90,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                             'press + to add new speciality',
                             style: TextStyle(
                                 fontSize: 14,
-                                color: LightColor.lightblack.withOpacity(0.5)),
+                                color: ColorResources.lightblack.withOpacity(0.5)),
                           ),
                         ),
                       )
@@ -122,7 +122,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
   Widget doctorInfo(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.themered,
+      color: ColorResources.themered,
       child: Column(
         children: [
           Align(
@@ -131,7 +131,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
               padding: const EdgeInsets.all(15.0),
               child: Icon(
                 Icons.edit,
-                color: LightColor.white,
+                color: ColorResources.white,
                 size: 25,
               ),
             ),
@@ -140,21 +140,21 @@ class _MyAccountPageState extends State<MyAccountPage> {
             padding: const EdgeInsets.only(top: 30.0),
             child: Text(
               'Dr. Endru keep',
-              style: TextStyle(color: LightColor.white, fontSize: 16),
+              style: TextStyle(color: ColorResources.white, fontSize: 16),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               '+190-9898989898',
-              style: TextStyle(color: LightColor.white, fontSize: 16),
+              style: TextStyle(color: ColorResources.white, fontSize: 16),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
               'e.keep@domain.com',
-              style: TextStyle(color: LightColor.white, fontSize: 16),
+              style: TextStyle(color: ColorResources.white, fontSize: 16),
             ),
           ),
           speciality(context),
@@ -166,7 +166,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
   speciality(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.lightblack,
+      color: ColorResources.lightblack,
       height: 40,
       child: Padding(
         padding: const EdgeInsets.only(top: 5.0),
@@ -205,7 +205,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Education'
-                            ? LightColor.themered
+                            ? ColorResources.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -223,7 +223,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Location'
-                            ? LightColor.themered
+                            ? ColorResources.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -241,7 +241,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Availibilty'
-                            ? LightColor.themered
+                            ? ColorResources.themered
                             : Colors.white,
                         fontSize: 14)),
               ),
@@ -259,7 +259,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'V.Consultancy'
-                            ? LightColor.themered
+                            ? ColorResources.themered
                             : Colors.white,
                         fontSize: 14)),
               ),

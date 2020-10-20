@@ -16,7 +16,7 @@ class _ContactInfoState extends State<ContactInfo> {
             onTap: () => Navigator.pop(context),
             child: Icon(
               Icons.arrow_back_ios,
-              color: LightColor.themered,
+              color: ColorResources.themered,
             )),
         centerTitle: true,
         elevation: 0,
@@ -45,21 +45,21 @@ class _ContactInfoState extends State<ContactInfo> {
                 'Contact information\n',
                 style: TextStyle(
                     fontSize: 18,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     fontWeight: FontWeight.bold),
               ),
               Text(
                 'Please fill the below details\n',
                 style: TextStyle(
                     fontSize: 14,
-                    color: LightColor.lightblack,
+                    color: ColorResources.lightblack,
                     fontWeight: FontWeight.normal),
               ),
               Text(
                 'Our doctors can directly provide emergency service to your location, if necessary',
                 style: TextStyle(
                     fontSize: 14,
-                    color: LightColor.black,
+                    color: ColorResources.black,
                     fontWeight: FontWeight.normal),
               ),
               new Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -192,7 +192,7 @@ class _ContactInfoState extends State<ContactInfo> {
                        side: BorderSide(color: Colors.white),
                      ),
                     onPressed: () => print("Button Pressed"),
-                     color: LightColor.themered,
+                     color: ColorResources.themered,
                     child: Text(
                         'Save +',
                         style: TextStyle(fontSize: 20, color:Colors.white)

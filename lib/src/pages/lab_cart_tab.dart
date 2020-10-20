@@ -43,7 +43,7 @@ class _LabTabState extends State<LabTab> {
             children: [
               Text('Test name',
                 style: TextStyle(
-                    color: LightColor.lightblack,
+                    color: ColorResources.lightblack,
                     fontSize: 18
                 ),),
               Row(
@@ -53,7 +53,7 @@ class _LabTabState extends State<LabTab> {
                     padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
                     child: Text('Category name',
                       style: TextStyle(
-                          color: LightColor.lightblack.withOpacity(0.5),
+                          color: ColorResources.lightblack.withOpacity(0.5),
                           fontSize: 16
                       ),),
                   ),
@@ -61,7 +61,7 @@ class _LabTabState extends State<LabTab> {
                     padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
                     child: Text('10.13 \$',
                       style: TextStyle(
-                          color: LightColor.themered,
+                          color: ColorResources.themered,
                           fontSize: 16,
                           fontWeight: FontWeight.bold
                       ),),
@@ -70,7 +70,7 @@ class _LabTabState extends State<LabTab> {
               ),
               Text('15 aug 2020 1.30 am',
                 style: TextStyle(
-                    color: LightColor.lightblack.withOpacity(0.5),
+                    color: ColorResources.lightblack.withOpacity(0.5),
                     fontSize: 14
                 ),)
             ],
@@ -86,11 +86,11 @@ class _LabTabState extends State<LabTab> {
             height: 30,
             width: 30,
             decoration: BoxDecoration(
-              color: LightColor.white,
+              color: ColorResources.white,
               borderRadius: BorderRadius.all(Radius.circular(100)),
               boxShadow: [
                 BoxShadow(
-                  color: LightColor.lightblack.withOpacity(0.3),
+                  color: ColorResources.lightblack.withOpacity(0.3),
                   spreadRadius: 1,
                   blurRadius: 15,
                   offset: Offset(0, 1), // changes position of shadow
@@ -100,7 +100,7 @@ class _LabTabState extends State<LabTab> {
             child: Center(
               child: Icon(
                 Icons.clear,
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 size: 20,
               ),
             ),
@@ -117,10 +117,10 @@ class _LabTabState extends State<LabTab> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Icon(Icons.keyboard_backspace,
-          color: LightColor.grey,),
+          color: ColorResources.grey,),
           Text('Drag and swap left to remove',
           style: TextStyle(
-            color: LightColor.grey
+            color: ColorResources.grey
           ),)
         ],
       ),
@@ -133,16 +133,16 @@ class _LabTabState extends State<LabTab> {
       child: Container(
         width: MediaQuery.of(context).size.width * 0.7,
         decoration: BoxDecoration(
-          color: LightColor.white,
+          color: ColorResources.white,
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15)),
-          border: Border.all(color: LightColor.themered,width: 2)
+          border: Border.all(color: ColorResources.themered,width: 2)
         ),
         child: Column(
           children: [
             Container(
               height: 50,
               width: MediaQuery.of(context).size.width * 0.7,
-              color: LightColor.themered,
+              color: ColorResources.themered,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
@@ -151,7 +151,7 @@ class _LabTabState extends State<LabTab> {
                       'Service charge \$ 5.00',
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     fontSize: 16,
                     fontWeight: FontWeight.bold
                   ),),
@@ -165,12 +165,12 @@ class _LabTabState extends State<LabTab> {
                 children: [
                   Text('Lab test',
                   style: TextStyle(
-                    color: LightColor.lightblack,
+                    color: ColorResources.lightblack,
                     fontSize: 18
                   ),),
                   Text('20.26 \$',
                     style: TextStyle(
-                        color: LightColor.lightblack,
+                        color: ColorResources.lightblack,
                         fontSize: 18
                     ),),
                 ],
@@ -183,12 +183,12 @@ class _LabTabState extends State<LabTab> {
                 children: [
                   Text('Medicine',
                     style: TextStyle(
-                        color: LightColor.lightblack,
+                        color: ColorResources.lightblack,
                         fontSize: 18
                     ),),
                   Text('50.04 \$',
                     style: TextStyle(
-                        color: LightColor.lightblack,
+                        color: ColorResources.lightblack,
                         fontSize: 18
                     ),),
                 ],
@@ -201,12 +201,12 @@ class _LabTabState extends State<LabTab> {
                 children: [
                   Text('E-shop',
                     style: TextStyle(
-                        color: LightColor.lightblack,
+                        color: ColorResources.lightblack,
                         fontSize: 18
                     ),),
                   Text('20.40 \$',
                     style: TextStyle(
-                        color: LightColor.lightblack,
+                        color: ColorResources.lightblack,
                         fontSize: 18
                     ),),
                 ],
@@ -216,7 +216,7 @@ class _LabTabState extends State<LabTab> {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.7,
               decoration: BoxDecoration(
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10))
               ),
               child: Row(
@@ -227,7 +227,7 @@ class _LabTabState extends State<LabTab> {
                     padding: const EdgeInsets.only(left:8.0),
                     child: Text('\$ 33.90',
                     style: TextStyle(
-                      color: LightColor.white,
+                      color: ColorResources.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold
                     ),),
@@ -236,7 +236,7 @@ class _LabTabState extends State<LabTab> {
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(Icons.arrow_upward,
                     size: 25,
-                    color: LightColor.white,),
+                    color: ColorResources.white,),
                   ),
                   GestureDetector(
                     onTap: (){
@@ -247,7 +247,7 @@ class _LabTabState extends State<LabTab> {
                       padding: const EdgeInsets.only(left:8.0),
                       child: Text('Checkout',
                         style: TextStyle(
-                            color: LightColor.black,
+                            color: ColorResources.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold
                         ),),

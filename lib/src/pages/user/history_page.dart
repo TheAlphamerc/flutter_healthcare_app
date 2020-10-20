@@ -19,11 +19,11 @@ class _HistoryPageState extends State<HistoryPage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 150,
-              color: LightColor.themered,
+              color: ColorResources.themered,
               child: Center(
                 child: Text(
                   'History',
-                  style: TextStyle(color: LightColor.white, fontSize: 18),
+                  style: TextStyle(color: ColorResources.white, fontSize: 18),
                 ),
               ),
             ),
@@ -53,7 +53,7 @@ class _HistoryPageState extends State<HistoryPage> {
           Padding(
             padding: const EdgeInsets.only(bottom:10.0),
             child: Text('No history found',
-            style: TextStyle(color: LightColor.lightblack.withOpacity(0.7),
+            style: TextStyle(color: ColorResources.lightblack.withOpacity(0.7),
             fontSize: 18),),
           ),
 

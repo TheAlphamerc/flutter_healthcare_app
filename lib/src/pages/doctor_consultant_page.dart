@@ -109,7 +109,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
           child: Icon(
             Icons.notifications_none,
             size: 30,
-            color: LightColor.grey,
+            color: ColorResources.grey,
           ),
         ),
         ClipRRect(
@@ -222,7 +222,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
         borderRadius: BorderRadius.all(Radius.circular(13)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: LightColor.lightblack.withOpacity(.3),
+            color: ColorResources.lightblack.withOpacity(.3),
             blurRadius: 15,
             offset: Offset(5, 5),
           )
@@ -258,11 +258,11 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                       });
                       print(isSelectFilter);
                     },
-                    child: Icon(Icons.filter_list, color: LightColor.themered)),
+                    child: Icon(Icons.filter_list, color: ColorResources.themered)),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: Icon(Icons.search, color: LightColor.themered)
+                child: Icon(Icons.search, color: ColorResources.themered)
                     .alignCenter
                     .ripple(() {}, borderRadius: BorderRadius.circular(13)),
               ),
@@ -285,7 +285,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               Text(
                 "See All",
                 style:
-                    TextStyles.titleNormal.copyWith(color: LightColor.themered),
+                    TextStyles.titleNormal.copyWith(color: ColorResources.themered),
               ).p(8).ripple(() {})
             ],
           ),
@@ -297,13 +297,13 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               _categoryCard("Cardiologists", "50+ doctors",
-                  color: LightColor.green, lightColor: LightColor.lightGreen),
+                  color: ColorResources.green, lightColor: ColorResources.lightGreen),
               _categoryCard("Dermatologists", "99+ Doctors",
-                  color: LightColor.skyBlue, lightColor: LightColor.lightBlue),
+                  color: ColorResources.skyBlue, lightColor: ColorResources.lightBlue),
               _categoryCard("Gastroenterologists", "50+ Doctors",
-                  color: LightColor.orange, lightColor: LightColor.lightOrange),
+                  color: ColorResources.orange, lightColor: ColorResources.lightOrange),
               _categoryCard("Anesthesiologists", "15+ Doctors",
-                  color: LightColor.purple, lightColor: LightColor.purpleLight)
+                  color: ColorResources.purple, lightColor: ColorResources.purpleLight)
             ],
           ),
         ),
@@ -385,7 +385,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               IconButton(
                   icon: Icon(
                     Icons.sort,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                   ),
                   onPressed: () {})
               // .p(12).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -421,12 +421,12 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
           BoxShadow(
             offset: Offset(4, 4),
             blurRadius: 10,
-            color: LightColor.grey.withOpacity(.2),
+            color: ColorResources.grey.withOpacity(.2),
           ),
           BoxShadow(
             offset: Offset(-3, 0),
             blurRadius: 15,
-            color: LightColor.grey.withOpacity(.1),
+            color: ColorResources.grey.withOpacity(.1),
           )
         ],
       ),
@@ -471,7 +471,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
           trailing: Icon(
             Icons.keyboard_arrow_right,
             size: 30,
-            color: LightColor.themered,
+            color: ColorResources.themered,
           ),
         ),
       ).ripple(() {
@@ -565,16 +565,16 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
     var random = Random();
     final colorList = [
       Theme.of(context).primaryColor,
-      LightColor.orange,
-      LightColor.green,
-      LightColor.grey,
-      LightColor.lightOrange,
-      LightColor.skyBlue,
-      LightColor.titleTextColor,
+      ColorResources.orange,
+      ColorResources.green,
+      ColorResources.grey,
+      ColorResources.lightOrange,
+      ColorResources.skyBlue,
+      ColorResources.titleTextColor,
       Colors.red,
       Colors.brown,
-      LightColor.purpleExtraLight,
-      LightColor.skyBlue,
+      ColorResources.purpleExtraLight,
+      ColorResources.skyBlue,
     ];
     var color = colorList[random.nextInt(colorList.length)];
     return color;
@@ -592,7 +592,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -603,7 +603,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Text(
                           'Input the year of experience',
                           style:
-                              TextStyle(color: LightColor.white, fontSize: 18),
+                              TextStyle(color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -620,15 +620,15 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                                 decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: LightColor.white),
+                                        BorderSide(color: ColorResources.white),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: LightColor.white),
+                                        BorderSide(color: ColorResources.white),
                                   ),
                                   border: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: LightColor.white),
+                                        BorderSide(color: ColorResources.white),
                                   ),
                                   counterText: '',
                                   contentPadding: EdgeInsets.symmetric(
@@ -639,7 +639,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             Text(
                               'Years',
                               style: TextStyle(
-                                  color: LightColor.white, fontSize: 16),
+                                  color: ColorResources.white, fontSize: 16),
                             )
                           ],
                         ),
@@ -652,7 +652,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             'OK',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 fontSize: 20),
                           ),
                         ),
@@ -678,7 +678,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -689,7 +689,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Text(
                           'Input the rating',
                           style:
-                              TextStyle(color: LightColor.white, fontSize: 18),
+                              TextStyle(color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Padding(
@@ -702,9 +702,9 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                           emptyIcon: Icons.star_border,
                           halfFilledIcon: Icons.star_half,
                           isHalfAllowed: true,
-                          filledColor: LightColor.white,
-                          emptyColor: LightColor.white,
-                          halfFilledColor: LightColor.white,
+                          filledColor: ColorResources.white,
+                          emptyColor: ColorResources.white,
+                          halfFilledColor: ColorResources.white,
                           size: 24,
                         ),
                       ),
@@ -716,7 +716,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             'OK',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 fontSize: 20),
                           ),
                         ),
@@ -742,7 +742,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -753,14 +753,14 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Text(
                           'Select your gender',
                           style:
-                              TextStyle(color: LightColor.white, fontSize: 18),
+                              TextStyle(color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Theme(
                           data: ThemeData(
-                              primarySwatch: LightColor.MATERIAL_WHITE),
+                              primarySwatch: ColorResources.MATERIAL_WHITE),
                           child: RadioGroup<String>.builder(
                             direction: Axis.horizontal,
                             groupValue: gender,
@@ -782,7 +782,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             'OK',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 fontSize: 20),
                           ),
                         ),
@@ -808,7 +808,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -819,7 +819,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Text(
                           'Input your location',
                           style:
-                              TextStyle(color: LightColor.white, fontSize: 18),
+                              TextStyle(color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -837,15 +837,15 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: LightColor.white),
+                                          BorderSide(color: ColorResources.white),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: LightColor.white),
+                                          BorderSide(color: ColorResources.white),
                                     ),
                                     border: UnderlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: LightColor.white),
+                                          BorderSide(color: ColorResources.white),
                                     ),
                                     counterText: '',
                                     contentPadding: EdgeInsets.symmetric(
@@ -859,7 +859,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                               child: Icon(
                                 Icons.gps_fixed,
                                 size: 24,
-                                color: LightColor.white,
+                                color: ColorResources.white,
                               ),
                             )
                           ],
@@ -873,7 +873,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             'OK',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 fontSize: 20),
                           ),
                         ),

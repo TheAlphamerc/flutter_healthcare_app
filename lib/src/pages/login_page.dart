@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text("Register",
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   )),
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                   suffixIcon: SizedBox(
                       width: 55,
                       child:
-                          Icon(Icons.account_circle, color: LightColor.themered)
+                          Icon(Icons.account_circle, color: ColorResources.themered)
                               .alignCenter
                               .ripple(() {},
                                   borderRadius: BorderRadius.circular(13))),
@@ -161,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -178,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child: Icon(Icons.lock, color: LightColor.themered)
+                      child: Icon(Icons.lock, color: ColorResources.themered)
                           .alignCenter
                           .ripple(() {},
                               borderRadius: BorderRadius.circular(13))),
@@ -193,9 +193,9 @@ class _LoginPageState extends State<LoginPage> {
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: LightColor.themered)),
+                    side: BorderSide(color: ColorResources.themered)),
                 onPressed: getTextInputData,
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 textColor: Colors.white,
                 child:
                     Text("Login".toUpperCase(), style: TextStyle(fontSize: 14)),

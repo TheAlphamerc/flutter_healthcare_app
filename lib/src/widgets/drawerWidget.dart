@@ -24,14 +24,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height/4,
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height/4,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                     height: MediaQuery.of(context).size.height,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                   child: Padding(
                     padding: const EdgeInsets.only(top:70.0,left:20),
                     child: Column(
@@ -40,7 +40,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         Text(
                           'Profile',
                           style: TextStyle(
-                            color: LightColor.white,
+                            color: ColorResources.white,
                             fontSize: 25,
                           ),
                         ),
@@ -50,7 +50,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           child: Text(
                             'Appointment',
                             style: TextStyle(
-                                color: LightColor.white,
+                                color: ColorResources.white,
                                 fontSize: 25,
                             ),
                           ),
@@ -58,7 +58,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         Text(
                           'My Cart',
                           style: TextStyle(
-                              color: LightColor.white,
+                              color: ColorResources.white,
                               fontSize: 25,
                           ),
                         ),
@@ -91,7 +91,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 child: Text(
                   'Logout',
                   style: TextStyle(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     fontSize: 25,
                   ),
                 ),

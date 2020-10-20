@@ -31,7 +31,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
         elevation: 0,
         leading: Icon(
           Icons.menu,
-          color: LightColor.lightblack,
+          color: ColorResources.lightblack,
         ),
         actions: [
           Padding(
@@ -42,11 +42,11 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(100)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.lightblack.withOpacity(0.3),
+                      color: ColorResources.lightblack.withOpacity(0.3),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -56,7 +56,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                 child: Center(
                   child: Icon(
                     Icons.notifications_none,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     size: 20,
                   ),
                 ),
@@ -90,13 +90,13 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
         children: [
           Text(
             'Hello',
-            style: TextStyle(fontSize: 20, color: LightColor.grey),
+            style: TextStyle(fontSize: 20, color: ColorResources.grey),
           ),
           Text(
             'Dr. Kuneil keep',
             style: TextStyle(
               fontSize: 20,
-              color: LightColor.black,
+              color: ColorResources.black,
             ),
           )
         ],
@@ -109,7 +109,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
       padding: const EdgeInsets.only(top: 10.0, bottom: 10),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        color: LightColor.lightblack.withOpacity(0.1),
+        color: ColorResources.lightblack.withOpacity(0.1),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
           child: Wrap(
@@ -197,7 +197,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
           borderRadius: BorderRadius.all(Radius.circular(13)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: LightColor.lightblack.withOpacity(.3),
+              color: ColorResources.lightblack.withOpacity(.3),
               blurRadius: 15,
               offset: Offset(5, 5),
             )
@@ -214,7 +214,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                       EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   border: InputBorder.none,
                   hintText: "Search by appointment id",
-                  hintStyle: TextStyle(color: LightColor.grey),
+                  hintStyle: TextStyle(color: ColorResources.grey),
                 ),
               ),
             ),
@@ -225,11 +225,11 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                   child: GestureDetector(
                       onTap: () {},
                       child:
-                          Icon(Icons.filter_list, color: LightColor.themered)),
+                          Icon(Icons.filter_list, color: ColorResources.themered)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: Icon(Icons.search, color: LightColor.themered),
+                  child: Icon(Icons.search, color: ColorResources.themered),
                 ),
               ],
             ),
@@ -247,13 +247,13 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
           padding: const EdgeInsets.only(left:16.0,bottom:5),
           child: Text(
             'Today\'s appointment',
-            style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+            style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
           ),
         ),
         Container(
           height: 3,
           width: MediaQuery.of(context).size.width,
-          color: LightColor.lightblack.withOpacity(0.1),
+          color: ColorResources.lightblack.withOpacity(0.1),
         )
       ],
     );
@@ -271,7 +271,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: LightColor.white,
+              color: ColorResources.white,
             ),
             child: Stack(
               children: [
@@ -285,21 +285,21 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                             children: [
                               Text('Today',
                                 style: TextStyle(
-                                  color: LightColor.grey,
+                                  color: ColorResources.grey,
                                   fontSize: 14,
                                 ),),
                               Padding(
                                 padding: const EdgeInsets.only(top:10.0,bottom: 10.0),
                                 child: Text(appointmentDataList[index].date,
                                   style: TextStyle(
-                                      color: LightColor.themered,
+                                      color: ColorResources.themered,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),),
                               ),
                               Text(appointmentDataList[index].time,
                                 style: TextStyle(
-                                  color: LightColor.black,
+                                  color: ColorResources.black,
                                   fontSize: 12,
                                 ),)
                             ],
@@ -308,7 +308,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                         Container(
                           width: 1,
                           height: 60,
-                          color: LightColor.lightblack.withOpacity(0.2),
+                          color: ColorResources.lightblack.withOpacity(0.2),
                         ),
                         Expanded(
                           child: Padding(
@@ -318,24 +318,24 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                               children: [
                                 Text(appointmentDataList[index].name,
                                   style: TextStyle(
-                                    color: LightColor.black,
+                                    color: ColorResources.black,
                                     fontSize: 18,
                                   ),),
                                 Text('#${appointmentDataList[index].appointmentId}',
                                   style: TextStyle(
-                                    color: LightColor.themered,
+                                    color: ColorResources.themered,
                                     fontSize: 14,
                                   ),),
                                 Text('${appointmentDataList[index].gender}. ${appointmentDataList[index].age} years',
                                   style: TextStyle(
-                                    color: LightColor.grey,
+                                    color: ColorResources.grey,
                                     fontSize: 14,
                                   ),),
                                 Padding(
                                   padding: const EdgeInsets.only(bottom:10.0),
                                   child: Text('Reason to get appointed',
                                     style: TextStyle(
-                                      color: LightColor.black,
+                                      color: ColorResources.black,
                                       fontSize: 14,
                                     ),),
                                 ),
@@ -348,7 +348,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                     Container(
                       height: 5,
                       width: MediaQuery.of(context).size.width,
-                      color: LightColor.lightblack.withOpacity(0.1),
+                      color: ColorResources.lightblack.withOpacity(0.1),
                     ),
 
                   ],
@@ -357,7 +357,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                   right: 5,
                   top: 5,
                   child: Text('New',style: TextStyle(
-                      color:LightColor.themered,
+                      color:ColorResources.themered,
                       fontSize: 14
                   ),),
                 ),
@@ -370,14 +370,14 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                       children: [
                         Text('CANCEL',
                           style: TextStyle(
-                              color: LightColor.themered,
+                              color: ColorResources.themered,
                               fontSize: 12
                           ),),
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Text('RE-SCHEDULE',
                             style: TextStyle(
-                                color: LightColor.lightblack,
+                                color: ColorResources.lightblack,
                                 fontSize: 12
                             ),),
                         ),

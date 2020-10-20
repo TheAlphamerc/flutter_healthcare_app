@@ -23,7 +23,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 150,
-              color: LightColor.themered,
+              color: ColorResources.themered,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -36,7 +36,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       child: Icon(
                         Icons.keyboard_backspace,
                         size: 20,
-                        color: LightColor.white,
+                        color: ColorResources.white,
                       ),
                     ),
                   ),
@@ -45,7 +45,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         const EdgeInsets.only(left: 15, top: 20.0, bottom: 10),
                     child: Text(
                       'CheckOut',
-                      style: TextStyle(color: LightColor.white, fontSize: 18),
+                      style: TextStyle(color: ColorResources.white, fontSize: 18),
                     ),
                   ),
                 ],
@@ -63,7 +63,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       padding: const EdgeInsets.only(left: 15.0, right: 15),
                       child: Divider(
                         thickness: 1,
-                        color: LightColor.lightblack.withOpacity(0.7),
+                        color: ColorResources.lightblack.withOpacity(0.7),
                       ),
                     ),
                     payment(context),
@@ -77,7 +77,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15,5,15,5),
                   child: Row(
@@ -86,14 +86,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       Text(
                         'Print',
                         style: TextStyle(
-                            color: LightColor.white,
+                            color: ColorResources.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
                       Text(
                         'Pay Now',
                         style: TextStyle(
-                            color: LightColor.black,
+                            color: ColorResources.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
@@ -119,7 +119,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             child: Text(
               'Payment',
               style: TextStyle(
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
                 fontSize: 20,
               ),
             ),
@@ -156,7 +156,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: Divider(
               thickness: 1,
-              color: LightColor.lightblack.withOpacity(0.5),
+              color: ColorResources.lightblack.withOpacity(0.5),
             ),
           ),
           Row(
@@ -165,7 +165,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             children: [
               Checkbox(
                   value: cashpayment,
-                  activeColor: LightColor.themered,
+                  activeColor: ColorResources.themered,
                   onChanged: (bool newValue) {
                     setState(() {
                       cashpayment = newValue;
@@ -174,7 +174,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               Text(
                 'Pay with money',
                 style: TextStyle(
-                  color: LightColor.lightblack,
+                  color: ColorResources.lightblack,
                   fontSize: 20,
                 ),
               )
@@ -198,11 +198,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Labtest',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '20.26 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -215,11 +215,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Medicine',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '50.04 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -232,11 +232,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'E-shop',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '20.40 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -249,11 +249,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Vat',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '12.09 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -266,11 +266,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Tax',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '0.0 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -283,11 +283,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Service charge',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '5.00 \$',
-                  style: TextStyle(color: LightColor.lightblack, fontSize: 18),
+                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -303,14 +303,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
       child: Container(
         height: 80,
         decoration: BoxDecoration(
-            color: LightColor.lightblack.withOpacity(0.2),
+            color: ColorResources.lightblack.withOpacity(0.2),
             borderRadius: BorderRadius.all(Radius.circular(10)),
             border: Border.all(
-                color: LightColor.lightblack.withOpacity(0.5), width: 2)),
+                color: ColorResources.lightblack.withOpacity(0.5), width: 2)),
         child: TextField(
           keyboardType: TextInputType.multiline,
           maxLines: null,
-          cursorColor: LightColor.black,
+          cursorColor: ColorResources.black,
           controller: commentController,
           decoration: InputDecoration(
             hintText: 'Comment',

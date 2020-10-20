@@ -61,7 +61,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         elevation: 0,
         leading: GestureDetector(
             onTap: () {
@@ -90,7 +90,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   Widget headerpart(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.themered,
+      color: ColorResources.themered,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -99,7 +99,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             child: Text(
               'Book your appointment',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 20,
               ),
             ),
@@ -109,7 +109,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             child: Text(
               'Doctor',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -119,11 +119,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.black.withOpacity(0.2),
+                      color: ColorResources.black.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow
@@ -140,14 +140,14 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                           Text(
                             '${widget.doctor.name}',
                             style: TextStyle(
-                              color: LightColor.black,
+                              color: ColorResources.black,
                               fontSize: 18,
                             ),
                           ),
                           Text(
                             '${widget.doctor.specialist.replaceAll(exp,', ')}',
                             style: TextStyle(
-                              color: LightColor.lightblack,
+                              color: ColorResources.lightblack,
                               fontSize: 12,
                             ),
                           )
@@ -163,7 +163,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                       },
                       child: Icon(
                         Icons.repeat,
-                        color: LightColor.black,
+                        color: ColorResources.black,
                       ),
                     )
                   ],
@@ -181,11 +181,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: LightColor.white,
+                    color: ColorResources.white,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     boxShadow: [
                       BoxShadow(
-                        color: LightColor.black.withOpacity(0.2),
+                        color: ColorResources.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 15,
                         offset: Offset(0, 1), // changes position of shadow
@@ -202,7 +202,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                         ),),
                       ),
                       Icon(Icons.calendar_today_outlined,
-                      color: LightColor.lightblack,)
+                      color: ColorResources.lightblack,)
 
                     ],
                   ),
@@ -222,11 +222,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: LightColor.white,
+                          color: ColorResources.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                              color: LightColor.black.withOpacity(0.2),
+                              color: ColorResources.black.withOpacity(0.2),
                               spreadRadius: 1,
                               blurRadius: 15,
                               offset:
@@ -253,11 +253,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: LightColor.white,
+                          color: ColorResources.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                              color: LightColor.black.withOpacity(0.2),
+                              color: ColorResources.black.withOpacity(0.2),
                               spreadRadius: 1,
                               blurRadius: 15,
                               offset:
@@ -271,13 +271,13 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                             hint: Text(
                               time != null ? time : '',
                               style: TextStyle(
-                                  color: LightColor.black, fontSize: 16),
+                                  color: ColorResources.black, fontSize: 16),
                             ),
                             isExpanded: true,
                             iconSize: 30.0,
                             underline: Text(''),
                             style: TextStyle(
-                                color: LightColor.black, fontSize: 18),
+                                color: ColorResources.black, fontSize: 18),
                             items: availableTimes.map(
                               (val) {
                                 return DropdownMenuItem<String>(
@@ -316,7 +316,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             child: Text(
               'Tell your problem',
               style: TextStyle(
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
                 fontSize: 20,
               ),
             ),
@@ -328,11 +328,11 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(
-                      color: LightColor.lightblack.withOpacity(0.5), width: 2)),
+                      color: ColorResources.lightblack.withOpacity(0.5), width: 2)),
               child: TextField(
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                cursorColor: LightColor.black,
+                cursorColor: ColorResources.black,
                 controller: _problemController,
                 decoration: InputDecoration(
                   contentPadding:
@@ -358,7 +358,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             child: Text(
               'Payment',
               style: TextStyle(
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
                 fontSize: 20,
               ),
             ),
@@ -395,7 +395,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: Divider(
               thickness: 1,
-              color: LightColor.lightblack.withOpacity(0.5),
+              color: ColorResources.lightblack.withOpacity(0.5),
             ),
           ),
           Row(
@@ -404,7 +404,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             children: [
               Checkbox(
                   value: cashpayment,
-                  activeColor: LightColor.themered,
+                  activeColor: ColorResources.themered,
                   onChanged: (bool newValue) {
                     setState(() {
                       cashpayment = newValue;
@@ -413,7 +413,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               Text(
                 'Pay with money',
                 style: TextStyle(
-                  color: LightColor.lightblack,
+                  color: ColorResources.lightblack,
                   fontSize: 20,
                 ),
               )
@@ -438,10 +438,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               checkValue(context);
 
             },
-            color: LightColor.themered,
+            color: ColorResources.themered,
             child: Text(
               'Book appointment',
-              style: TextStyle(color: LightColor.white, fontSize: 18),
+              style: TextStyle(color: ColorResources.white, fontSize: 18),
             ),
           ),
         ),
@@ -454,8 +454,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
     DatePicker.showDatePicker(context,
         showTitleActions: true,
         theme: DatePickerTheme(
-            doneStyle: TextStyle(color: LightColor.themered, fontSize: 16),
-            cancelStyle: TextStyle(color: LightColor.white, fontSize: 16)),
+            doneStyle: TextStyle(color: ColorResources.themered, fontSize: 16),
+            cancelStyle: TextStyle(color: ColorResources.white, fontSize: 16)),
         minTime: DateTime.now(),
         maxTime: DateTime(2050, 12, 30),
         onChanged: (date) {}, onConfirm: (date) {
@@ -504,10 +504,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
 
   void showSnakbar(BuildContext context, String message) {
     scaffoldKey.currentState.showSnackBar(new SnackBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         content: new Text(
           message,
-          style: TextStyle(color: LightColor.white),
+          style: TextStyle(color: ColorResources.white),
         )));
   }
 
@@ -556,18 +556,18 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Container(
-        color: LightColor.white.withOpacity(0.3),
+        color: ColorResources.white.withOpacity(0.3),
         child: Center(
           child: SizedBox(
             width: 120,
             height: 120,
             child: Container(
               decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.lightBlue.withOpacity(0.2),
+                      color: ColorResources.lightBlue.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset: Offset(0, 1), // changes position of shadow

@@ -24,7 +24,7 @@ class _LabTestPageState extends State<LabTestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         elevation: 0,
         leading: GestureDetector(
           onTap: (){
@@ -47,7 +47,7 @@ class _LabTestPageState extends State<LabTestPage> {
   Widget headerpart(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: LightColor.themered,
+      color: ColorResources.themered,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,7 +56,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Lab test',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 20,
               ),
             ),
@@ -66,7 +66,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Find your test from the below',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -76,7 +76,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Test category',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -88,11 +88,11 @@ class _LabTestPageState extends State<LabTestPage> {
               height: 50,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.black.withOpacity(0.2),
+                      color: ColorResources.black.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset:
@@ -105,13 +105,13 @@ class _LabTestPageState extends State<LabTestPage> {
                   child: DropdownButton(
                     hint: Text(
                       selectTestCategory,
-                      style: TextStyle(color: LightColor.black,
+                      style: TextStyle(color: ColorResources.black,
                           fontSize: 16),
                     ),
                     isExpanded: true,
                     iconSize: 30.0,
                     underline: Text(''),
-                    style: TextStyle(color: LightColor.black,fontSize: 18),
+                    style: TextStyle(color: ColorResources.black,fontSize: 18),
                     items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
                           (val) {
                         return DropdownMenuItem<String>(
@@ -138,7 +138,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Choose Test',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -149,11 +149,11 @@ class _LabTestPageState extends State<LabTestPage> {
               height: 50,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: LightColor.white,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: LightColor.black.withOpacity(0.2),
+                      color: ColorResources.black.withOpacity(0.2),
                       spreadRadius: 1,
                       blurRadius: 15,
                       offset:
@@ -166,13 +166,13 @@ class _LabTestPageState extends State<LabTestPage> {
                   child: DropdownButton(
                     hint: Text(
                       selectTest,
-                      style: TextStyle(color: LightColor.black,
+                      style: TextStyle(color: ColorResources.black,
                           fontSize: 16),
                     ),
                     isExpanded: true,
                     iconSize: 30.0,
                     underline: Text(''),
-                    style: TextStyle(color: LightColor.black,fontSize: 18),
+                    style: TextStyle(color: ColorResources.black,fontSize: 18),
                     items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
                           (val) {
                         return DropdownMenuItem<String>(
@@ -199,7 +199,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Choose your prefered time',
               style: TextStyle(
-                color: LightColor.white,
+                color: ColorResources.white,
                 fontSize: 16,
               ),
             ),
@@ -216,11 +216,11 @@ class _LabTestPageState extends State<LabTestPage> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: LightColor.white,
+                          color: ColorResources.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                              color: LightColor.black.withOpacity(0.2),
+                              color: ColorResources.black.withOpacity(0.2),
                               spreadRadius: 1,
                               blurRadius: 15,
                               offset:
@@ -233,13 +233,13 @@ class _LabTestPageState extends State<LabTestPage> {
                           child: DropdownButton(
                             hint: Text(
                               selectDate,
-                              style: TextStyle(color: LightColor.black,
+                              style: TextStyle(color: ColorResources.black,
                               fontSize: 16),
                             ),
                             isExpanded: true,
                             iconSize: 30.0,
                             underline: Text(''),
-                            style: TextStyle(color: LightColor.black,fontSize: 18),
+                            style: TextStyle(color: ColorResources.black,fontSize: 18),
                             items: ['Saturday', 'Sunday', 'Monday','Tuesday','Wednesday','Thursday','Friday'].map(
                                   (val) {
                                 return DropdownMenuItem<String>(
@@ -272,11 +272,11 @@ class _LabTestPageState extends State<LabTestPage> {
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                            color: LightColor.white,
+                            color: ColorResources.white,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             boxShadow: [
                               BoxShadow(
-                                color: LightColor.black.withOpacity(0.2),
+                                color: ColorResources.black.withOpacity(0.2),
                                 spreadRadius: 1,
                                 blurRadius: 15,
                                 offset:
@@ -287,7 +287,7 @@ class _LabTestPageState extends State<LabTestPage> {
                           child: Text(
                             '$time',
                             style:
-                                TextStyle(color: LightColor.black, fontSize: 20),
+                                TextStyle(color: ColorResources.black, fontSize: 20),
                           ),
                         ),
                       ),
@@ -314,7 +314,7 @@ class _LabTestPageState extends State<LabTestPage> {
             child: Text(
               'Payment',
               style: TextStyle(
-                color: LightColor.lightblack,
+                color: ColorResources.lightblack,
                 fontSize: 20,
               ),
             ),
@@ -351,7 +351,7 @@ class _LabTestPageState extends State<LabTestPage> {
             padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: Divider(
               thickness: 1,
-              color: LightColor.lightblack.withOpacity(0.5),
+              color: ColorResources.lightblack.withOpacity(0.5),
             ),
           ),
           Row(
@@ -360,7 +360,7 @@ class _LabTestPageState extends State<LabTestPage> {
             children: [
               Checkbox(
                   value: cashpayment,
-                  activeColor: LightColor.themered,
+                  activeColor: ColorResources.themered,
                   onChanged: (bool newValue) {
                     setState(() {
                       cashpayment = newValue;
@@ -369,7 +369,7 @@ class _LabTestPageState extends State<LabTestPage> {
               Text(
                 'Pay with money',
                 style: TextStyle(
-                  color: LightColor.lightblack,
+                  color: ColorResources.lightblack,
                   fontSize: 20,
                 ),
               )
@@ -390,10 +390,10 @@ class _LabTestPageState extends State<LabTestPage> {
           height: 50,
           width: MediaQuery.of(context).size.width,
           child: RaisedButton(onPressed: (){},
-            color: LightColor.themered,
+            color: ColorResources.themered,
             child: Text('Add to cart',
             style: TextStyle(
-              color: LightColor.white,
+              color: ColorResources.white,
               fontSize: 18
             ),),
           ),

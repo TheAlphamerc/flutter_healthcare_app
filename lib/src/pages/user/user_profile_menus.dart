@@ -42,7 +42,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.account_circle, color: LightColor.themered, size: 24,),
+                    Icon(Icons.account_circle, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Personal Details', style: TextStyle (fontSize: 18),),
@@ -60,7 +60,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.contact_mail, color: LightColor.themered, size: 24,),
+                    Icon(Icons.contact_mail, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Contact Information', style: TextStyle (fontSize: 18),),
@@ -78,7 +78,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.history, color: LightColor.themered, size: 24,),
+                    Icon(Icons.history, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Medical history', style: TextStyle (fontSize: 18),),
@@ -95,7 +95,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.payment, color: LightColor.themered, size: 24,),
+                    Icon(Icons.payment, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Payment', style: TextStyle (fontSize: 18),),
@@ -112,7 +112,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.shopping_cart, color: LightColor.themered, size: 24,),
+                    Icon(Icons.shopping_cart, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Purchase list', style: TextStyle (fontSize: 18),),
@@ -129,7 +129,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.verified_user, color: LightColor.themered, size: 24,),
+                    Icon(Icons.verified_user, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Active member code', style: TextStyle (fontSize: 18),),
@@ -146,7 +146,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
               padding: const EdgeInsets.only(left:20.0, top:50, bottom: 15),
               child: Row(
                   children:<Widget>[
-                    Icon(Icons.exit_to_app, color: LightColor.themered, size: 24,),
+                    Icon(Icons.exit_to_app, color: ColorResources.themered, size: 24,),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Logout', style: TextStyle (fontSize: 18),),
@@ -166,7 +166,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0,
-        title: Text('App Name', style: TextStyle (color: LightColor.themered),),
+        title: Text('App Name', style: TextStyle (color: ColorResources.themered),),
       ),
       body:
       CustomScrollView(

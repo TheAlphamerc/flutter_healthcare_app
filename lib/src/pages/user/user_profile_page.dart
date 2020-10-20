@@ -11,7 +11,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:  LightColor.themered,
+        backgroundColor:  ColorResources.themered,
         elevation: 0,
         leading: Icon(Icons.arrow_back_ios, color: Colors.white,),
         title:  Text('Profile', style: TextStyle (color: Colors.white, fontSize: 14),),
@@ -25,7 +25,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 50,
-              color: LightColor.themered,
+              color: ColorResources.themered,
 
             ),
             Positioned(
@@ -48,9 +48,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
     return Container(
       height: 100,
       decoration: BoxDecoration(
-        color: LightColor.white,
+        color: ColorResources.white,
         borderRadius: BorderRadius.all(Radius.circular(100)),
-        border: Border.all(color: LightColor.themered, width: 3)
+        border: Border.all(color: ColorResources.themered, width: 3)
       ) ,
     );
   }
@@ -68,120 +68,120 @@ class _UserProfilePageState extends State<UserProfilePage> {
               Text('First name',
               style: TextStyle(
                 fontSize: 16,
-                color: LightColor.lightblack
+                color: ColorResources.lightblack
               ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('Md',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),
               Text('Last name',
                 style: TextStyle(
                     fontSize: 16,
-                    color: LightColor.lightblack
+                    color: ColorResources.lightblack
                 ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('Arafat',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),
               Text('Email',
                 style: TextStyle(
                     fontSize: 16,
-                    color: LightColor.lightblack
+                    color: ColorResources.lightblack
                 ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('arafat@gmail.com',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),
               Text('Date of birth',
                 style: TextStyle(
                     fontSize: 16,
-                    color: LightColor.lightblack
+                    color: ColorResources.lightblack
                 ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('11 FEb, 1985',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),
               Text('Address',
                 style: TextStyle(
                     fontSize: 16,
-                    color: LightColor.lightblack
+                    color: ColorResources.lightblack
                 ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('Dhanmondi',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),
               Text('Identification card',
                 style: TextStyle(
                     fontSize: 16,
-                    color: LightColor.lightblack
+                    color: ColorResources.lightblack
                 ),),
               Padding(
                 padding: const EdgeInsets.only(top:4.0),
                 child: Text('',
                   style: TextStyle(
                       fontSize: 18,
-                      color: LightColor.black
+                      color: ColorResources.black
                   ),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
                 child: Divider(
-                  color: LightColor.lightblack.withOpacity(0.5),
+                  color: ColorResources.lightblack.withOpacity(0.5),
                   thickness: 0.5,
                 ),
               ),

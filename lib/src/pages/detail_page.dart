@@ -66,7 +66,7 @@ class _DetailPageState extends State<DetailPage> {
     }
 
     return Scaffold(
-      backgroundColor: LightColor.extraLightBlue,
+      backgroundColor: ColorResources.extraLightBlue,
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -121,7 +121,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         Divider(
                           thickness: .3,
-                          color: LightColor.grey,
+                          color: ColorResources.grey,
                         ),
                         Text(
                           'Available on',
@@ -167,7 +167,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         Divider(
                           thickness: .3,
-                          color: LightColor.grey,
+                          color: ColorResources.grey,
                         ),
                         Text(
                           'Education',
@@ -179,7 +179,7 @@ class _DetailPageState extends State<DetailPage> {
                         ).vP4,
                         Divider(
                           thickness: .3,
-                          color: LightColor.grey,
+                          color: ColorResources.grey,
                         ),
                         Text("About", style: titleStyle).vP16,
                         Text(
@@ -196,10 +196,10 @@ class _DetailPageState extends State<DetailPage> {
                                   width: 45,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: LightColor.grey.withAlpha(50)),
+                                      color: ColorResources.grey.withAlpha(50)),
                                   child: Icon(
                                     Icons.call,
-                                    color: LightColor.themered,
+                                    color: ColorResources.themered,
                                   ),
                                 ).ripple(
                                   () {},
@@ -218,10 +218,10 @@ class _DetailPageState extends State<DetailPage> {
                                   width: 45,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: LightColor.grey.withAlpha(50)),
+                                      color: ColorResources.grey.withAlpha(50)),
                                   child: Icon(
                                     Icons.chat_bubble,
-                                    color: LightColor.themered,
+                                    color: ColorResources.themered,
                                   ),
                                 ).ripple(
                                   () {},
@@ -236,7 +236,7 @@ class _DetailPageState extends State<DetailPage> {
                             Column(
                               children: [
                                 FlatButton(
-                                  color: LightColor.themered,
+                                  color: ColorResources.themered,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   onPressed: () {

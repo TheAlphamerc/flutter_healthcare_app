@@ -38,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [LightColor.purpleExtraLight, LightColor.purple],
+                      colors: [ColorResources.purpleExtraLight, ColorResources.purple],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       tileMode: TileMode.mirror,

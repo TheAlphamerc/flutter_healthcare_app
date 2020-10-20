@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LightColor {
+class ColorResources {
   static const Color background = Color(0XFFfefefe);
 
   static const Color titleTextColor = const Color(0xff1b1718);

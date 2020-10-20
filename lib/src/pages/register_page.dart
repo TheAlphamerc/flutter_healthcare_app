@@ -72,18 +72,18 @@ class _RegisterPageState extends State<RegisterPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
-              color: LightColor.white.withOpacity(0.3),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
                 child: SizedBox(
                   width: 120,
                   height: 120,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: LightColor.white,
+                        color: ColorResources.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: LightColor.lightBlue.withOpacity(0.2),
+                            color: ColorResources.lightBlue.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 15,
                             offset: Offset(0, 1), // changes position of shadow
@@ -149,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Text("Login",
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    color: LightColor.themered,
+                    color: ColorResources.themered,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   )),
@@ -173,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -191,7 +191,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   suffixIcon: SizedBox(
                       width: 55,
                       child:
-                          Icon(Icons.account_circle, color: LightColor.themered)
+                          Icon(Icons.account_circle, color: ColorResources.themered)
                               .alignCenter
                               .ripple(() {},
                                   borderRadius: BorderRadius.circular(13))),
@@ -207,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -225,7 +225,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   suffixIcon: SizedBox(
                       width: 55,
                       child:
-                          Icon(Icons.account_circle, color: LightColor.themered)
+                          Icon(Icons.account_circle, color: ColorResources.themered)
                               .alignCenter
                               .ripple(() {},
                                   borderRadius: BorderRadius.circular(13))),
@@ -242,7 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -259,7 +259,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child: Icon(Icons.phone, color: LightColor.themered)
+                      child: Icon(Icons.phone, color: ColorResources.themered)
                           .alignCenter
                           .ripple(() {},
                               borderRadius: BorderRadius.circular(13))),
@@ -276,7 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -293,7 +293,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child: Icon(Icons.email, color: LightColor.themered)
+                      child: Icon(Icons.email, color: ColorResources.themered)
                           .alignCenter
                           .ripple(() {},
                               borderRadius: BorderRadius.circular(13))),
@@ -310,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -328,7 +328,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child: Icon(Icons.lock, color: LightColor.themered)
+                      child: Icon(Icons.lock, color: ColorResources.themered)
                           .alignCenter
                           .ripple(() {},
                               borderRadius: BorderRadius.circular(13))),
@@ -346,7 +346,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -362,7 +362,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                     width: 55,
-                    child: Icon(Icons.my_location, color: LightColor.themered)
+                    child: Icon(Icons.my_location, color: ColorResources.themered)
                         .alignCenter
                         .ripple(() {}, borderRadius: BorderRadius.circular(13)),
                   ),
@@ -405,7 +405,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.all(Radius.circular(13)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: LightColor.grey.withOpacity(.3),
+                    color: ColorResources.grey.withOpacity(.3),
                     blurRadius: 15,
                     offset: Offset(3, 3),
                   )
@@ -422,7 +422,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   suffixIcon: SizedBox(
                       width: 55,
                       child:
-                          Icon(Icons.filter_vintage, color: LightColor.themered)
+                          Icon(Icons.filter_vintage, color: ColorResources.themered)
                               .alignCenter
                               .ripple(() {},
                                   borderRadius: BorderRadius.circular(13))),
@@ -439,7 +439,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: BorderRadius.all(Radius.circular(13)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: LightColor.grey.withOpacity(.3),
+                      color: ColorResources.grey.withOpacity(.3),
                       blurRadius: 15,
                       offset: Offset(3, 3),
                     )
@@ -540,9 +540,9 @@ class _RegisterPageState extends State<RegisterPage> {
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
-                    side: BorderSide(color: LightColor.themered)),
+                    side: BorderSide(color: ColorResources.themered)),
                 onPressed: getTextInputData,
-                color: LightColor.themered,
+                color: ColorResources.themered,
                 textColor: Colors.white,
                 child: Text("Register".toUpperCase(),
                     style:
@@ -633,10 +633,10 @@ class _RegisterPageState extends State<RegisterPage> {
   void showSnakbar(BuildContext context, String message) {
     print('lkasda');
     scaffoldKey.currentState.showSnackBar(new SnackBar(
-        backgroundColor: LightColor.themered,
+        backgroundColor: ColorResources.themered,
         content: new Text(
           message,
-          style: TextStyle(color: LightColor.white),
+          style: TextStyle(color: ColorResources.white),
         )));
   }
 
