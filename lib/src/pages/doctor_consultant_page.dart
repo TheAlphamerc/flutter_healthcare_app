@@ -36,6 +36,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   var isSelectFilter = false;
   var gender = 'Male';
   var isFirst = true;
+  var isLoading = true;
   double _rating = 5;
 
   final GlobalKey<ScaffoldState> _scaffoldKey_home =
@@ -66,21 +67,28 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey_home,
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _header(),
-                //  _navLinks(),
+      body: Stack(
+        children: [
+          Container(
+            child: CustomScrollView(
+              slivers: <Widget>[
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      _header(),
+                      //  _navLinks(),
 
-                _searchField(),
-                _basedOnField(),
-                //_category(),
+                      _searchField(),
+                      _basedOnField(),
+                      //_category(),
+                    ],
+                  ),
+                ),
+                _doctorsList()
               ],
             ),
           ),
-          _doctorsList()
+          loading(context)
         ],
       ),
     );
@@ -899,7 +907,50 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       }
       setState(() {
         doctorDataList;
+        isLoading = false;
       });
     }
+  }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: ColorResources.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorResources.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorResources.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
   }
 }
