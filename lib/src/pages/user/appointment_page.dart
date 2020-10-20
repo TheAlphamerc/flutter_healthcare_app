@@ -46,7 +46,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           itemBuilder: (context,index){
         return Container(
           width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
+          margin: EdgeInsets.fromLTRB(15, 0, 15, 15),
           decoration: BoxDecoration(
             color: ColorResources.skyBlue.withOpacity(0.5),
             borderRadius: BorderRadius.all(Radius.circular(10)),

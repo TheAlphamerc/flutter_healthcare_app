@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -34,10 +35,12 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   var selectDay = 'Day';
   var showDate = 'Select appointment date';
   var time = 'Schdule';
+  var timeId;
   var isFirst = true;
   var isLoading = false;
   List<String> availableDays = new List();
   List<String> availableTimes = new List();
+  Map<String, Object> availableTimesMap = HashMap<String, Object>();
   RegExp exp = RegExp(r"\r\n", multiLine: true, caseSensitive: true);
   var id;
 
@@ -278,7 +281,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                             underline: Text(''),
                             style: TextStyle(
                                 color: ColorResources.black, fontSize: 18),
-                            items: availableTimes.map(
+                            items: availableTimesMap.keys.map(
                               (val) {
                                 return DropdownMenuItem<String>(
                                   value: val,
@@ -290,6 +293,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                               setState(
                                 () {
                                   time = val;
+                                  timeId = availableTimesMap[time];
+                                  print(timeId);
                                 },
                               );
                             },
@@ -488,7 +493,9 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
         availableTimes.clear();
         setState(() {
           time = element.timeList[0].times;
+          timeId = element.timeList[0].id;
           element.timeList.forEach((time) {
+            availableTimesMap['${time.times}'] = time.id;
             availableTimes.add(time.times);
           });
         });
@@ -522,7 +529,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       setState(() {
         isLoading = true;
       });
-      Appointment appointment = new Appointment(id,widget.doctor.id,showDate,'bf9e2ab6-f137-47a9-9380-91acc8f899d2',_problemController.text,
+      Appointment appointment = new Appointment(id,widget.doctor.id,showDate,timeId,_problemController.text,
       'Money');
       sendAppointmentRequest(context,appointment);
     }
