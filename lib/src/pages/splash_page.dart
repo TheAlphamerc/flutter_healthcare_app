@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/login_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   SplashPage({Key key}) : super(key: key);
@@ -12,11 +14,13 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+
+  var id;
+
   @override
   void initState() {
-     Future.delayed(Duration(seconds: 2)).then((_) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
-    });
+    getCustomerInfo();
+
     super.initState();
   }
   @override
@@ -73,5 +77,17 @@ class _SplashPageState extends State<SplashPage> {
         ],
       ),
     );
+  }
+
+  void getCustomerInfo() async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    setState(() {
+      id = customerInfo.getString('id');
+    });
+      Future.delayed(Duration(seconds: 2)).then((_) {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>id != null ?DashboardScreen():LoginPage()));
+      });
+
+
   }
 }

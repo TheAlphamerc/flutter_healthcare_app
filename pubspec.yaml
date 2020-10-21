@@ -38,6 +38,7 @@ dependencies:
   provider: ^4.3.2+2
   shared_preferences: ^0.5.8
   ff_navigation_bar: ^0.1.4
+  convex_bottom_bar: ^2.6.0
 
 dev_dependencies:
   flutter_test:

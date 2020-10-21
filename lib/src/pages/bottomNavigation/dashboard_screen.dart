@@ -1,11 +1,9 @@
-import 'package:ff_navigation_bar/ff_navigation_bar.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/user/appointment_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/home_Page.dart';
-import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/user_profile_menus.dart';
-import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -26,40 +24,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[currentPage],
-      bottomNavigationBar: FFNavigationBar(
-        theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.white,
-          selectedItemBorderColor: Colors.white,
-          selectedItemBackgroundColor: ColorResources.themered,
-          selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: ColorResources.themered,
-        ),
-        selectedIndex: currentPage,
-        onSelectTab: (index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-        items: [
-          FFNavigationBarItem(
-            iconData: Icons.home,
-            label: 'Home',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.date_range,
-            label: 'Appointment',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.description,
-            label: 'History',
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.account_box,
-            label: 'Profile',
-          ),
-        ],
-      ),
+        body: _children[currentPage],
+        bottomNavigationBar: ConvexAppBar(
+          activeColor: Colors.white,
+          backgroundColor: ColorResources.themered,
+          color: ColorResources.lightblack,
+          height: 50,
+          items: [
+            TabItem(icon: Icons.home, title: 'Home'),
+            TabItem(icon: Icons.date_range, title: 'Appointment'),
+            TabItem(icon: Icons.description, title: 'History'),
+            TabItem(icon: Icons.account_box, title: 'Profile'),
+          ],
+          initialActiveIndex: currentPage, //optional, default as 0
+          onTap: (int position) {
+            setState(() {
+              currentPage = position;
+            });
+          },
+        )
+//        items: [
+//          FFNavigationBarItem(
+//            iconData: Icons.home,
+//            label: 'Home',
+//          ),
+//          FFNavigationBarItem(
+//            iconData: Icons.date_range,
+//            label: 'Appointment',
+//          ),
+//          FFNavigationBarItem(
+//            iconData: Icons.description,
+//            label: 'History',
+//          ),
+//          FFNavigationBarItem(
+//            iconData: Icons.account_box,
+//            label: 'Profile',
+//          ),
+//        ],
 
 //      BottomNavigationBar(
 //        showSelectedLabels: true,
