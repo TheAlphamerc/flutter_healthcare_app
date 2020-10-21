@@ -21,6 +21,7 @@ class ViewAppointment {
     this.doctorName,
     this.speciality,
     this.doctorDept,
+    this.appointmentTime,
     this.queryFlag,
   });
 
@@ -39,6 +40,7 @@ class ViewAppointment {
   String doctorName;
   String speciality;
   String doctorDept;
+  String appointmentTime;
   dynamic queryFlag;
 
   factory ViewAppointment.fromJson(Map<String, dynamic> json) => ViewAppointment(
@@ -57,6 +59,7 @@ class ViewAppointment {
     doctorName: json["doctorName"],
     speciality: json["speciality"],
     doctorDept: json["doctorDept"],
+    appointmentTime: json["appointmentTime"],
     queryFlag: json["QueryFlag"],
   );
 
@@ -76,6 +79,7 @@ class ViewAppointment {
     "doctorName": doctorName,
     "speciality": speciality,
     "doctorDept": doctorDept,
+    "appointmentTime": appointmentTime,
     "QueryFlag": queryFlag,
   };
 }

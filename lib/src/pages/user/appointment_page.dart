@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/model/view_appointment.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +14,9 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
+
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   AppointmentViewModel appointmentViewModel;
   var isFirst = true;
   var id;
@@ -29,6 +34,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
   Widget build(BuildContext context) {
     appointmentViewModel = Provider.of<AppointmentViewModel>(context);
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: ColorResources.themered,
         leading: Text(''),
@@ -81,7 +87,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top:20.0),
+                  padding: const EdgeInsets.only(top:30.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -127,15 +133,15 @@ class _AppointmentPageState extends State<AppointmentPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.alarm,
-                            color: ColorResources.lightblack,),
+                            color: ColorResources.themered,),
                             Text('${appointmentList[index].dates != null ? appointmentList[index].dates:'Not found'}',
                             style: TextStyle(
-                              color: ColorResources.lightblack,
+                              color: ColorResources.themered,
                               fontSize: 14
                             ),),
-                            Text('${appointmentList[index].timeid != null ? appointmentList[index].timeid:'Not found'}',
+                            Text('${appointmentList[index].appointmentTime != null ? appointmentList[index].appointmentTime:'Not found'}',
                               style: TextStyle(
-                                  color: ColorResources.lightblack,
+                                  color: ColorResources.themered,
                                   fontSize: 14
                               ),),
 
@@ -147,7 +153,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                 ),
                 Positioned(
                   top: 4,
-                    right: 4,
+                    left: 4,
                     child: Container(
                       decoration: BoxDecoration(
                         color: definceColor('${appointmentList[index].status != null ? appointmentList[index].status:'Not found'}'),
@@ -163,7 +169,30 @@ class _AppointmentPageState extends State<AppointmentPage> {
                           ),),
                         ),
                       ),
-                    ))
+                    )),
+                Positioned(
+                    top: 4,
+                    right: 4,
+                    child:  appointmentList[index].status != null && appointmentList[index].status == 'Upcoming' ?
+                    GestureDetector(
+                      onTap:()=> openConfirmationDialog(context,appointmentList[index].id),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            border: Border.all(
+                              color: ColorResources.grey
+                            )
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Center(
+                            child: Icon(Icons.clear,
+                            size: 20,
+                            color: ColorResources.grey,),
+                          ),
+                        ),
+                      ),
+                    ):Text(''))
               ],
             ),
           );
@@ -184,7 +213,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
     List<ViewAppointment> viewAppointment = await appointmentViewModel.getAllAppointment(id);
 
     if(viewAppointment != null){
-
+      appointmentList.clear();
       if(viewAppointment.length > 0) {
         setState(() {
           viewAppointment.forEach((element) {
@@ -300,5 +329,96 @@ class _AppointmentPageState extends State<AppointmentPage> {
       color = ColorResources.white;
     }
     return color;
+  }
+
+  void openConfirmationDialog(BuildContext context, String id) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: ColorResources.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text('Do you want to cancel the appointment?',
+                        style: TextStyle(
+                          color: ColorResources.lightblack,
+                        ),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: ColorResources.themered,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>Navigator.pop(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('No',
+                                    style: TextStyle(
+                                      color: ColorResources.lightOrange
+                                    ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>cancelAppointment(context,id),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('Yes',
+                                      style: TextStyle(
+                                          color: ColorResources.themered
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void cancelAppointment(BuildContext context, String id) async{
+    Navigator.pop(context);
+    setState(() {
+      isLoading = true;
+    });
+
+    RegistrationResponse response = await appointmentViewModel.cancelAppointment(id);
+
+    if(response != null){
+      getAllAppointment(context);
+    }
+
+
+
   }
 }

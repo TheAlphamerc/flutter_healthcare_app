@@ -11,11 +11,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AppointmentViewModel extends ChangeNotifier {
-
-
   Future<RegistrationResponse> saveAppointment(Appointment appointment) async {
-    final response =
-        await http.get('http://172.16.61.221:8059/admins.asmx/userAppointment?Patientuid=${appointment.patientuid}&Doctorid=${appointment.doctorid}&Dates=${appointment.dates}&Timeid=${appointment.timeid}&Reasons=${appointment.reasons}&payment=${appointment.paymen}');
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/userAppointment?Patientuid=${appointment.patientuid}&Doctorid=${appointment.doctorid}&Dates=${appointment.dates}&Timeid=${appointment.timeid}&Reasons=${appointment.reasons}&payment=${appointment.paymen}');
 
     if (response.statusCode == 200) {
       return RegistrationResponse.fromJson(jsonDecode(response.body));
@@ -26,23 +24,31 @@ class AppointmentViewModel extends ChangeNotifier {
   }
 
   Future<List<ViewAppointment>> getAllAppointment(String id) async {
-
-    final response =
-    await http.get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id');
+    final response = await http
+        .get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id');
 
     print(response.body);
     if (response.statusCode == 200) {
       List<ViewAppointment> appointment;
 
       Iterable list = json.decode(response.body);
-      appointment = list.map((model) => ViewAppointment.fromJson(model)).toList();
+      appointment =
+          list.map((model) => ViewAppointment.fromJson(model)).toList();
       return appointment;
     } else {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
 
+  Future<RegistrationResponse> cancelAppointment(String id) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/cancelAppointment?appointmentId=$id');
 
-
-
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
 }
