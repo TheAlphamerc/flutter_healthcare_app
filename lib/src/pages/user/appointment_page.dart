@@ -65,9 +65,9 @@ class _AppointmentPageState extends State<AppointmentPage> {
             itemBuilder: (context,index){
           return Container(
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.fromLTRB(15, 0, 15, 15),
+            margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
             decoration: BoxDecoration(
-              color: ColorResources.themered.withOpacity(0.5),
+              color: ColorResources.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
                 boxShadow: [
                   BoxShadow(
@@ -150,7 +150,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     right: 4,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: ColorResources.themered,
+                        color: definceColor('${appointmentList[index].status != null ? appointmentList[index].status:'Not found'}'),
                         borderRadius: BorderRadius.only( topRight:Radius.circular(10),bottomLeft: Radius.circular(10))
                       ),
                       child: Padding(
@@ -286,5 +286,19 @@ class _AppointmentPageState extends State<AppointmentPage> {
       ),
     )
         : Text('');
+  }
+
+  Color definceColor(String status) {
+    Color color;
+    if(status == 'Upcoming'){
+      color = ColorResources.skyBlue;
+    }else if(status == 'Cancelled'){
+      color = ColorResources.lightOrange;
+    }else if(status == 'Completed'){
+      color = ColorResources.themered;
+    }else {
+      color = ColorResources.white;
+    }
+    return color;
   }
 }

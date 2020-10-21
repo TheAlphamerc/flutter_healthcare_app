@@ -529,6 +529,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       setState(() {
         isLoading = true;
       });
+      print(id);
       Appointment appointment = new Appointment(id,widget.doctor.id,showDate,timeId,_problemController.text,
       'Money');
       sendAppointmentRequest(context,appointment);
@@ -554,7 +555,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
 
   void getCustomerInfo(BuildContext context) async{
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
-    customerInfo.getString('id');
+    setState(() {
+      id = customerInfo.getString('id');
+    });
+
   }
 
   Widget loading(BuildContext context) {

@@ -26,6 +26,7 @@ class AppointmentViewModel extends ChangeNotifier {
   }
 
   Future<List<ViewAppointment>> getAllAppointment(String id) async {
+
     final response =
     await http.get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id');
 

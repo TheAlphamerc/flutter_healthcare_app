@@ -1,3 +1,4 @@
+import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/user/appointment_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
@@ -13,7 +14,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-
   var currentPage = 0;
   final List<Widget> _children = [
     HomePage(),
@@ -27,41 +27,75 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-            size: 24,),
-            title: Text('Home '),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.date_range,
-            size: 24,),
-            title: Text('Appoinment'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.description,
-            size: 24,),
-            title: Text('History'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box,
-            size: 24,),
-            title: Text('Profile'),
-          ),
-        ],
-        currentIndex: currentPage,
-        selectedItemColor: ColorResources.themered,
-        unselectedItemColor: ColorResources.lightblack.withOpacity(0.5),
-        type: BottomNavigationBarType.fixed,
-        onTap: (position) {
+      bottomNavigationBar: FFNavigationBar(
+        theme: FFNavigationBarTheme(
+          barBackgroundColor: Colors.white,
+          selectedItemBorderColor: Colors.white,
+          selectedItemBackgroundColor: ColorResources.themered,
+          selectedItemIconColor: Colors.white,
+          selectedItemLabelColor: ColorResources.themered,
+        ),
+        selectedIndex: currentPage,
+        onSelectTab: (index) {
           setState(() {
-            currentPage = position;
+            currentPage = index;
           });
         },
+        items: [
+          FFNavigationBarItem(
+            iconData: Icons.home,
+            label: 'Home',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.date_range,
+            label: 'Appointment',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.description,
+            label: 'History',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.account_box,
+            label: 'Profile',
+          ),
+        ],
       ),
+
+//      BottomNavigationBar(
+//        showSelectedLabels: true,
+//        showUnselectedLabels: true,
+//        items: const <BottomNavigationBarItem>[
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.home,
+//            size: 24,),
+//            title: Text('Home '),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.date_range,
+//            size: 24,),
+//            title: Text('Appoinment'),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.description,
+//            size: 24,),
+//            title: Text('History'),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.account_box,
+//            size: 24,),
+//            title: Text('Profile'),
+//          ),
+//        ],
+//        currentIndex: currentPage,
+//        selectedItemColor: ColorResources.themered,
+//        unselectedItemColor: ColorResources.lightblack.withOpacity(0.5),
+//        type: BottomNavigationBarType.fixed,
+//        onTap: (position) {
+//          setState(() {
+//            currentPage = position;
+//          });
+//        },
+//      ),
     );
   }
 }
