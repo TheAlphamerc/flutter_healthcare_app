@@ -28,7 +28,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         bottomNavigationBar: ConvexAppBar(
           activeColor: Colors.white,
           backgroundColor: ColorResources.themered,
-          color: ColorResources.lightblack,
+          color: ColorResources.white,
           height: 50,
           items: [
             TabItem(icon: Icons.home, title: 'Home'),

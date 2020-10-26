@@ -5,6 +5,7 @@ import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart
 import 'package:flutter_healthcare_app/src/viewModel/auth_view_model.dart';
 import 'package:flutter_healthcare_app/src/viewModel/doctor_view_model.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
+import 'package:flutter_healthcare_app/src/viewModel/lab_test_view_model.dart';
 import 'package:flutter_healthcare_app/src/viewModel/service_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,10 @@ void main() {
       ChangeNotifierProvider(
         create: (context) => AppointmentViewModel(),
       ),
+      ChangeNotifierProvider(
+        create: (context) => LabTestViewModel(),
+      ),
+
 
 
     ],

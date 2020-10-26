@@ -1,8 +1,13 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
+import 'package:flutter_healthcare_app/src/model/labtest.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/lab_test_view_model.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class LabTestPage extends StatefulWidget {
 
@@ -11,17 +16,30 @@ class LabTestPage extends StatefulWidget {
 }
 
 class _LabTestPageState extends State<LabTestPage> {
+  LabTestViewModel labTestViewModel;
   TextEditingController _problemController = TextEditingController();
 
   var cashpayment = false;
   var selectDate = 'Satuday';
   var selectTestCategory = 'Comprehensive Metabolic Panel';
-  var selectTest = 'Lipid panel';
+  var selectTest;
+  var labtestId;
+  List<LabTest> labTestList = new List();
+  var isFirst = true;
+  Map<String, Object> labTestMap = HashMap<String, Object>();
 
   var time= '00:00 AM';
 
   @override
   Widget build(BuildContext context) {
+    labTestViewModel = Provider.of<LabTestViewModel>(context);
+    if(isFirst){
+      getAllLabtest(context);
+
+      setState(() {
+        isFirst = false;
+      });
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorResources.themered,
@@ -165,7 +183,7 @@ class _LabTestPageState extends State<LabTestPage> {
                   padding: const EdgeInsets.only(left:10.0),
                   child: DropdownButton(
                     hint: Text(
-                      selectTest,
+                      selectTest != null ? selectTest:'',
                       style: TextStyle(color: ColorResources.black,
                           fontSize: 16),
                     ),
@@ -173,7 +191,7 @@ class _LabTestPageState extends State<LabTestPage> {
                     iconSize: 30.0,
                     underline: Text(''),
                     style: TextStyle(color: ColorResources.black,fontSize: 18),
-                    items: ['Comprehensive Metabolic Panel', 'Lipid Panel', 'Liver Panel','Urinalysis','Cultures'].map(
+                    items: labTestMap.keys.map(
                           (val) {
                         return DropdownMenuItem<String>(
                           value: val,
@@ -185,6 +203,7 @@ class _LabTestPageState extends State<LabTestPage> {
                       setState(
                             () {
                           selectTest = val;
+                          labtestId = labTestMap['$val'];
                         },
                       );
                     },
@@ -416,6 +435,27 @@ class _LabTestPageState extends State<LabTestPage> {
             time = DateFormat('hh:mm aa').format(date);
           });
         }, currentTime: DateTime.now(), locale: LocaleType.en);
+
+
+  }
+
+  void getAllLabtest(BuildContext context)async {
+    List<LabTest> labtests = await labTestViewModel.getAllLabtest();
+
+    if(labtests != null){
+      print(labtests.length);
+
+      labtests.forEach((lab) {
+        setState(() {
+          labTestList.add(lab);
+          labTestMap['${lab.testname}'] = lab.id;
+        });
+      });
+      setState(() {
+        selectTest =labTestList[0].testname;
+        labtestId =labTestList[0].id;
+      });
+    }
 
 
   }
