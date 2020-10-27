@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/pages/lab_test_view_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
 import 'package:flutter_healthcare_app/src/profile/contat_information.dart';
 import 'package:flutter_healthcare_app/src/profile/medical_history.dart';
@@ -133,6 +134,24 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Text('Active member code', style: TextStyle (fontSize: 18),),
+                    ),
+                  ]
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => LabTestViewPage()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
+              child: Row(
+                  children:<Widget>[
+                    Icon(Icons.history_edu, color: ColorResources.themered, size: 24,),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25.0),
+                      child: Text('Lab Test Summary', style: TextStyle (fontSize: 18),),
                     ),
                   ]
               ),

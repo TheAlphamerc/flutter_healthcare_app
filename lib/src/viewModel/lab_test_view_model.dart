@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_healthcare_app/src/model/available.dart';
 import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_by_category.dart';
+import 'package:flutter_healthcare_app/src/model/lab_test_by_user.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_category.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'dart:async';
@@ -24,6 +25,35 @@ class LabTestViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
+  Future<List<LabTestByUser>> getAllLabTestByUser(String testFor) async {
+    final response =
+        await http.get('http://172.16.61.221:8059/admins.asmx/viewLabtestbyUser?TestFor=$testFor');
+
+    if (response.statusCode == 200) {
+      List<LabTestByUser> labTests;
+
+      Iterable list = json.decode(response.body);
+      labTests = list.map((model) => LabTestByUser.fromJson(model)).toList();
+      return labTests;
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+  Future<RegistrationResponse> cancelLabtest(String id,String userId,String status,String testId,String testCatId) async {
+    print('<><><><$id <><><><><$userId');
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/updateLabTestStatus?Id=$id&userid=$userId&Status=$status&testId=$testId&testCatId=$testCatId');
+
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+
 
   Future<List<LabTestByCategory>> getLabTestByCategory(String testId) async {
     final response =
