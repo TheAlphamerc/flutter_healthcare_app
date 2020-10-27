@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-List<LabTest> labTestFromJson(String str) => List<LabTest>.from(json.decode(str).map((x) => LabTest.fromJson(x)));
+List<LabTestByCategory> labTestByCategoryFromJson(String str) => List<LabTestByCategory>.from(json.decode(str).map((x) => LabTestByCategory.fromJson(x)));
 
-String labTestToJson(List<LabTest> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String labTestByCategoryToJson(List<LabTestByCategory> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class LabTest {
-  LabTest({
+class LabTestByCategory {
+  LabTestByCategory({
     this.id,
     this.testid,
     this.testname,
@@ -31,7 +31,7 @@ class LabTest {
   dynamic updatedate;
   String catTestName;
 
-  factory LabTest.fromJson(Map<String, dynamic> json) => LabTest(
+  factory LabTestByCategory.fromJson(Map<String, dynamic> json) => LabTestByCategory(
     id: json["Id"],
     testid: json["Testid"],
     testname: json["Testname"],
