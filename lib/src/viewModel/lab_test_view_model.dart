@@ -85,6 +85,22 @@ class LabTestViewModel extends ChangeNotifier {
     }
   }
 
+  Future<RegistrationResponse> updateLabtest(String id, String testId,String testCatId, String testFor,String testAmount,
+      String sampleCollectDate,String sampleCollectTime,String paymentType) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/updateFullLabTest?Id=$id&testId=$testId&userid=$testFor&testCatId=$testCatId&testFor=$testFor&testAmount=$testAmount'
+            '&sampleCollectDate=$sampleCollectDate&sampleCollectTime=$sampleCollectTime&paymentType=$paymentType'
+    );
+
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+
 
 
 

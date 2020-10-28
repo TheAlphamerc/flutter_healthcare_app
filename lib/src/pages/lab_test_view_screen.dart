@@ -3,6 +3,7 @@ import 'package:flutter_healthcare_app/src/model/lab_test_by_user.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/model/view_appointment.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/lab_test_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart';
@@ -179,7 +180,8 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
                     Row(
                       children: [
                         GestureDetector(
-                          onTap:()=> openConfirmationDialog(context,labTestByUserList[index].id,labTestByUserList[index].testid,labTestByUserList[index].testcatid),
+                          onTap:()=> openModificationDialog(context,labTestByUserList[index].id,labTestByUserList[index].testid,labTestByUserList[index].testcatid,
+                              labTestByUserList[index].testamount,labTestByUserList[index].samplecollectdate,labTestByUserList[index].samplecollecttime,labTestByUserList[index].paymenttype),
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -434,6 +436,81 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
         });
   }
 
+  void openModificationDialog(BuildContext context, String id, String testid, String testcatid, String testamount, String samplecollectdate, String samplecollecttime, String paymenttype,) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: ColorResources.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text('Do you want to edit the labtest?',
+                          style: TextStyle(
+                            color: ColorResources.lightblack,
+                          ),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: ColorResources.themered,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>Navigator.pop(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('No',
+                                      style: TextStyle(
+                                          color: ColorResources.lightOrange
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>modfifyAppointment(context,id,testid,testcatid,testamount,samplecollectdate,samplecollecttime,paymenttype),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('Yes',
+                                      style: TextStyle(
+                                          color: ColorResources.themered
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
   void cancelAppointment(BuildContext context, String id, String testid, String testcatid,) async{
     Navigator.pop(context);
     setState(() {
@@ -445,8 +522,19 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
     if(response != null){
       getAllLabTest(context);
     }
-
-
-
   }
+  void modfifyAppointment(BuildContext context, String id, String testid, String testcatid, String testamount, String samplecollectdate, String samplecollecttime, String paymenttype,) async{
+    Navigator.pop(context);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => LabTestPage(
+      labTestId: id,
+      testId: testid,
+      testCatId: testcatid,
+      testAmount: testamount,
+      sampleCollectDate: samplecollectdate,
+      sampleCollectTime: samplecollecttime,
+      paymentType: paymenttype,)));
+  }
+
+
 }
