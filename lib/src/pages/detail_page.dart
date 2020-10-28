@@ -8,6 +8,7 @@ import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
   final Doctor doctor;
@@ -202,7 +203,9 @@ class _DetailPageState extends State<DetailPage> {
                                     color: ColorResources.themered,
                                   ),
                                 ).ripple(
-                                  () {},
+                                  () {
+                                    launch("tel:${model.phone}");
+                                  },
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 Text('')
@@ -224,7 +227,9 @@ class _DetailPageState extends State<DetailPage> {
                                     color: ColorResources.themered,
                                   ),
                                 ).ripple(
-                                  () {},
+                                  () {
+                                    launch("sms:${model.phone}");
+                                  },
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 Text('')
@@ -308,6 +313,6 @@ class _DetailPageState extends State<DetailPage> {
         availableList;
       });
     }
-
   }
+
 }

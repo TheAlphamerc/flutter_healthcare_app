@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^0.5.8
   ff_navigation_bar: ^0.1.4
   convex_bottom_bar: ^2.6.0
+  url_launcher: ^5.7.8
 
 dev_dependencies:
   flutter_test:

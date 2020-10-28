@@ -31,6 +31,10 @@ class Doctor {
     this.isview,
     this.viewby,
     this.viewtime,
+    this.doctroRating,
+    this.location,
+    this.latitude,
+    this.longitude,
     this.jsonDetails,
     this.queryFlag,
   });
@@ -56,6 +60,10 @@ class Doctor {
   dynamic isview;
   dynamic viewby;
   dynamic viewtime;
+  String doctroRating;
+  String location;
+  String latitude;
+  String longitude;
   dynamic jsonDetails;
   dynamic queryFlag;
 
@@ -81,6 +89,10 @@ class Doctor {
     isview: json["Isview"],
     viewby: json["Viewby"],
     viewtime: json["Viewtime"],
+    doctroRating: json["DoctroRating"],
+    location: json["Location"],
+    latitude: json["Latitude"],
+    longitude: json["Longitude"],
     jsonDetails: json["JsonDetails"],
     queryFlag: json["QueryFlag"],
   );
@@ -107,6 +119,10 @@ class Doctor {
     "Isview": isview,
     "Viewby": viewby,
     "Viewtime": viewtime,
+    "DoctroRating": doctroRating,
+    "Location": location,
+    "Latitude": latitude,
+    "Longitude": longitude,
     "JsonDetails": jsonDetails,
     "QueryFlag": queryFlag,
   };

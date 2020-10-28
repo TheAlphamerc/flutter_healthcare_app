@@ -12,6 +12,7 @@ import 'package:flutter_healthcare_app/src/widgets/DrawerWidget.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:provider/provider.dart';
 import 'package:rating_bar/rating_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/light_color.dart';
 
@@ -26,6 +27,9 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   DoctorViewModel doctorViewModel;
 
   List<Doctor> doctorDataList;
+  List<Doctor> _searchResult = [];
+
+  TextEditingController _searchController = new TextEditingController();
 
   var selected = 'DOCTOR';
   var selectedField = 'Near by';
@@ -34,6 +38,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   var isFirst = true;
   var isLoading = true;
   double _rating = 5;
+  var firstName;
+  var lastName;
 
   final GlobalKey<ScaffoldState> _scaffoldKey_home =
       new GlobalKey<ScaffoldState>();
@@ -44,6 +50,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   void initState() {
     super.initState();
     doctorDataList = new List();
+    getCustomerInfo(context);
   }
 
   @override
@@ -57,7 +64,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
     }
 
     return Scaffold(
-      appBar: _appBar(),
+      // appBar: _appBar(),
       backgroundColor: Theme.of(context).backgroundColor,
       key: _scaffoldKey_home,
       drawer: DrawerWidget(
@@ -65,23 +72,25 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       ),
       body: Stack(
         children: [
-          Container(
-            child: CustomScrollView(
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      _header(),
-                      //  _navLinks(),
+          SafeArea(
+            child: Container(
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        _header(),
+                        //  _navLinks(),
 
-                      _searchField(),
-                      _basedOnField(),
-                      //_category(),
-                    ],
+                        _searchField(),
+                        _basedOnField(),
+                        //_category(),
+                      ],
+                    ),
                   ),
-                ),
-                _doctorsList()
-              ],
+                  _doctorsList()
+                ],
+              ),
             ),
           ),
           loading(context)
@@ -137,7 +146,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       children: <Widget>[
         Text("Hello,", style: TextStyles.title.subTitleColor),
         Text(
-          "Peter Parker",
+          "$firstName $lastName",
           style: TextStyles.title,
         ),
       ],
@@ -155,7 +164,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             // do what you need to do when "Click here" gets clicked
             setState(() {
               selected = 'DOCTOR';
-              print("DOCTOR");
             });
           },
           child: Text("DOCTOR",
@@ -171,7 +179,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             setState(() {
               selected = 'LAB TEST';
             });
-            print("LAB TEST");
           },
           child: Text("LAB TEST",
               style: TextStyle(
@@ -187,7 +194,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             setState(() {
               selected = 'MEDICINE';
             });
-            print("MEDICINE");
           },
           child: Text("MEDICINE",
               style: TextStyle(
@@ -203,7 +209,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             setState(() {
               selected = 'E-SHOP';
             });
-            print("E-SHOP");
           },
           child: Text("E-SHOP",
               style: TextStyle(
@@ -238,6 +243,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
           SizedBox(
             width: MediaQuery.of(context).size.width - 120,
             child: TextField(
+              controller: _searchController,
+              onChanged: onSearchTextChanged,
               decoration: InputDecoration(
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -260,7 +267,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                           isSelectFilter = true;
                         }
                       });
-                      print(isSelectFilter);
                     },
                     child: Icon(Icons.filter_list, color: ColorResources.themered)),
               ),
@@ -386,12 +392,12 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text("Top Doctors", style: TextStyles.title.bold),
-              IconButton(
-                  icon: Icon(
-                    Icons.sort,
-                    color: ColorResources.themered,
-                  ),
-                  onPressed: () {})
+              // IconButton(
+              //     icon: Icon(
+              //       Icons.sort,
+              //       color: ColorResources.themered,
+              //     ),
+              //     onPressed: () {})
               // .p(12).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(20))),
             ],
           ).hP16,
@@ -404,12 +410,11 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   Widget getdoctorWidgetList() {
     return doctorDataList != null
         ? SizedBox(
-            height: MediaQuery.of(context).size.height - 300,
+            height: MediaQuery.of(context).size.height - 200,
             child: ListView.builder(
-                itemCount: doctorDataList.length,
+                itemCount: _searchResult.length >0 ? _searchResult.length: doctorDataList.length,
                 itemBuilder: (context, index) {
-                  print(doctorDataList.length);
-                  return _doctorTile(doctorDataList[index]);
+                  return _doctorTile(_searchResult.length >0? _searchResult[index]: doctorDataList[index]);
                 }),
           )
         : SizedBox(height: 100, width: 100, child: CircularProgressIndicator());
@@ -496,7 +501,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                   // do what you need to do when "Click here" gets clicked
                   setState(() {
                     selectedField = 'Near by';
-                    print("Near by");
                   });
                   openNearByDialog(context);
                 },
@@ -516,7 +520,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                     selectedField = 'Gender';
                   });
                   openGenderDialog(context);
-                  print("Gender");
                 },
                 child: Text("Gender",
                     style: TextStyle(
@@ -533,7 +536,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                     selectedField = 'Rating';
                   });
                   openRatingDialog(context);
-                  print("Rating");
                 },
                 child: Text("Rating",
                     style: TextStyle(
@@ -550,7 +552,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                     selectedField = 'Experience';
                   });
                   openExperienceDialog(context);
-                  print("Experience");
+
                 },
                 child: Text("Experience",
                     style: TextStyle(
@@ -948,5 +950,35 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
       ),
     )
         : Text('');
+  }
+
+  void getCustomerInfo(BuildContext context) async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    setState(() {
+      firstName = customerInfo.getString('firstName');
+      lastName = customerInfo.getString('lastName');
+    });
+  }
+
+  onSearchTextChanged(String text) async {
+    _searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
+    }
+
+    print(text);
+    doctorDataList.forEach((doctor) {
+      if (doctor.name.toLowerCase().contains(text.toLowerCase()) ||
+          doctor.specialist.toLowerCase().contains(text.toLowerCase()) ||
+          doctor.department.toLowerCase().contains(text.toLowerCase()) ||
+          doctor.education.toLowerCase().contains(text.toLowerCase()))
+        _searchResult.add(doctor);
+    });
+    print(_searchResult.length);
+
+    setState(() {
+      _searchResult;
+    });
   }
 }
