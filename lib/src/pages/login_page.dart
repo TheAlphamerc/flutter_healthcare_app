@@ -27,7 +27,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   AuthViewModel authViewModel;
-
+  var isLoading = false;
+  static GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -40,28 +41,41 @@ class _LoginPageState extends State<LoginPage> {
   String user = "";
   String password = "";
 
+  checkUserField() {
+    if (userValueHolder.text.isEmpty) {
+      showSnakbar(context, 'Please input your email');
+    } else if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(userValueHolder.text)) {
+      showSnakbar(context, 'Please input valid email');
+    } else if (passValueHolder.text.isEmpty) {
+      showSnakbar(context, 'Please input your password');
+    } else {
+      getTextInputData();
+    }
+  }
+
   getTextInputData() {
     setState(() {
       user = userValueHolder.text;
       password = passValueHolder.text;
       print(user + password);
 
-      checkUser(user,password);
+      checkUser(user, password);
 
-      if(userValueHolder.text == 'doc' && passValueHolder.text =='doc'){
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
+      if (userValueHolder.text == 'doc' && passValueHolder.text == 'doc') {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
       }
-      if(userValueHolder.text == 'user' && passValueHolder.text =='user'){
+      if (userValueHolder.text == 'user' && passValueHolder.text == 'user') {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => DashboardScreen()));
       }
-      if(userValueHolder.text == 'delivery' && passValueHolder.text =='delivery'){
+      if (userValueHolder.text == 'delivery' &&
+          passValueHolder.text == 'delivery') {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => DeliveryHomePage()));
       }
-
-
     });
   }
 
@@ -144,11 +158,11 @@ class _LoginPageState extends State<LoginPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child:
-                          Icon(Icons.account_circle, color: ColorResources.themered)
-                              .alignCenter
-                              .ripple(() {},
-                                  borderRadius: BorderRadius.circular(13))),
+                      child: Icon(Icons.account_circle,
+                              color: ColorResources.themered)
+                          .alignCenter
+                          .ripple(() {},
+                              borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -194,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13.0),
                     side: BorderSide(color: ColorResources.themered)),
-                onPressed: getTextInputData,
+                onPressed: checkUserField,
                 color: ColorResources.themered,
                 textColor: Colors.white,
                 child:
@@ -208,46 +222,126 @@ class _LoginPageState extends State<LoginPage> {
 
     // TODO: implement build
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _Bgap(),
-                _head(),
-                _LoginInputs(),
-                _Sgap(),
-                _helpText(),
-                //  _loginForm(),
+      body: Stack(
+        children: [
+          Container(
+            child: CustomScrollView(
+              slivers: <Widget>[
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      _Bgap(),
+                      _head(),
+                      _LoginInputs(),
+                      _Sgap(),
+                      _helpText(),
+                      //  _loginForm(),
+                    ],
+                  ),
+                ),
+                //_doctorsList()
               ],
             ),
           ),
-          //_doctorsList()
+          loading(context)
         ],
       ),
     );
   }
 
-  void checkUser(String user, String password) async {
-    List<LoginResponse> loginResponse = await authViewModel.getlogin(user, password);
-
-    if(loginResponse != null){
-      saveDataIntoSharedPref(loginResponse[0]);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => DashboardScreen()));
-    }
-
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              color: ColorResources.white.withOpacity(0.3),
+              child: Center(
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
+        : Text('');
   }
 
-  void saveDataIntoSharedPref(LoginResponse loginResponse) async{
+  void checkUser(String user, String password) async {
+    setState(() {
+      isLoading = true;
+    });
+
+    List<LoginResponse> loginResponse =
+        await authViewModel.getlogin(user, password);
+
+    if (loginResponse != null) {
+      setState(() {
+        isLoading = false;
+      });
+
+      if(loginResponse[0].id.isNotEmpty){
+        saveDataIntoSharedPref(loginResponse[0]);
+
+        if (loginResponse[0].usertype == 'Patient') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => DashboardScreen()));
+        } else {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (_) => DoctorDashboardScreen()));
+        }
+      }else{
+        showSnakbar(context, 'Invalid username or password');
+      }
+
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      showSnakbar(context, 'Invalid username or password');
+    }
+  }
+
+  void showSnakbar(BuildContext context, String message) {
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+        backgroundColor: ColorResources.themered,
+        content: new Text(
+          message,
+          style: TextStyle(color: ColorResources.white),
+        )));
+  }
+
+  void saveDataIntoSharedPref(LoginResponse loginResponse) async {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     customerInfo.setString('id', loginResponse.id);
     customerInfo.setString('firstName', loginResponse.firstName);
     customerInfo.setString('lastName', loginResponse.lastName);
     customerInfo.setString('userType', loginResponse.usertype);
-
-
-
   }
 }

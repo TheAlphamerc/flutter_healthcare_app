@@ -43,60 +43,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             });
           },
         )
-//        items: [
-//          FFNavigationBarItem(
-//            iconData: Icons.home,
-//            label: 'Home',
-//          ),
-//          FFNavigationBarItem(
-//            iconData: Icons.date_range,
-//            label: 'Appointment',
-//          ),
-//          FFNavigationBarItem(
-//            iconData: Icons.description,
-//            label: 'History',
-//          ),
-//          FFNavigationBarItem(
-//            iconData: Icons.account_box,
-//            label: 'Profile',
-//          ),
-//        ],
-
-//      BottomNavigationBar(
-//        showSelectedLabels: true,
-//        showUnselectedLabels: true,
-//        items: const <BottomNavigationBarItem>[
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.home,
-//            size: 24,),
-//            title: Text('Home '),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.date_range,
-//            size: 24,),
-//            title: Text('Appoinment'),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.description,
-//            size: 24,),
-//            title: Text('History'),
-//          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.account_box,
-//            size: 24,),
-//            title: Text('Profile'),
-//          ),
-//        ],
-//        currentIndex: currentPage,
-//        selectedItemColor: ColorResources.themered,
-//        unselectedItemColor: ColorResources.lightblack.withOpacity(0.5),
-//        type: BottomNavigationBarType.fixed,
-//        onTap: (position) {
-//          setState(() {
-//            currentPage = position;
-//          });
-//        },
-//      ),
     );
   }
 }
