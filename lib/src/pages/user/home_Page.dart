@@ -6,6 +6,7 @@ import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/lab_test_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +14,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  var firstName = '';
+  var lastName = '';
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCustomerInfo(context);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +39,7 @@ class _HomePageState extends State<HomePage> {
               color: ColorResources.themered,
               child: Center(
                 child: Text(
-                  'Welcome, Arafat',
+                  'Welcome, $firstName $lastName',
                   style: TextStyle(color: ColorResources.white, fontSize: 18),
                 ),
               ),
@@ -391,5 +403,13 @@ class _HomePageState extends State<HomePage> {
        
 
     );
+  }
+
+  void getCustomerInfo(BuildContext context) async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    setState(() {
+      firstName = customerInfo.getString('firstName');
+      lastName = customerInfo.getString('lastName');
+    });
   }
 }
