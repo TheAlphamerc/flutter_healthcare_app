@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0, bottom: 10),
                                   child: Image.asset(
-                                    'assets/icon-doctor.png',
+                                    'assets/ic_doctor.png',
                                     height: 40,
                                     width: 40,
                                     fit: BoxFit.fill,
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0, bottom: 10),
                                   child: Image.asset(
-                                    'assets/icon-medicine.png',
+                                    'assets/ic_marketplace.png',
                                     height: 40,
                                     width: 40,
                                     fit: BoxFit.fill,
@@ -304,7 +304,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0, bottom: 10),
                                   child: Image.asset(
-                                    'assets/icon-labtest.png',
+                                    'assets/ic_labtest.png',
                                     height: 40,
                                     width: 40,
                                     fit: BoxFit.fill,
@@ -355,7 +355,7 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0, bottom: 10),
                                   child: Image.asset(
-                                    'assets/icon_service.png',
+                                    'assets/ic_service.png',
                                     height: 40,
                                     width: 40,
                                     fit: BoxFit.fill,
