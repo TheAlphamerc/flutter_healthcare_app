@@ -176,24 +176,50 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
                     top: 8,
                     right: 8,
                     child:  labTestByUserList[index].status != null && labTestByUserList[index].status == 'Pending' ?
-                    GestureDetector(
-                      onTap:()=> openConfirmationDialog(context,labTestByUserList[index].id,labTestByUserList[index].testid,labTestByUserList[index].testcatid),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            border: Border.all(
-                              color: ColorResources.grey
-                            )
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Center(
-                            child: Icon(Icons.clear,
-                            size: 20,
-                            color: ColorResources.grey,),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap:()=> openConfirmationDialog(context,labTestByUserList[index].id,labTestByUserList[index].testid,labTestByUserList[index].testcatid),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                                border: Border.all(
+                                    color: ColorResources.grey
+                                )
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Center(
+                                child: Icon(Icons.edit,
+                                  size: 20,
+                                  color: ColorResources.grey,),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(left:10.0),
+                          child: GestureDetector(
+                            onTap:()=> openConfirmationDialog(context,labTestByUserList[index].id,labTestByUserList[index].testid,labTestByUserList[index].testcatid),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  border: Border.all(
+                                    color: ColorResources.grey
+                                  )
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Center(
+                                  child: Icon(Icons.clear,
+                                  size: 20,
+                                  color: ColorResources.grey,),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ):Text(''))
               ],
             ),

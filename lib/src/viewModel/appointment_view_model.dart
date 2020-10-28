@@ -23,9 +23,9 @@ class AppointmentViewModel extends ChangeNotifier {
     }
   }
 
-  Future<List<ViewAppointment>> getAllAppointment(String id) async {
+  Future<List<ViewAppointment>> getAllAppointment(String id, String userType) async {
     final response = await http
-        .get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id');
+        .get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id&userType=$userType');
 
     print(response.body);
     if (response.statusCode == 200) {

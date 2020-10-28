@@ -20,6 +20,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
   AppointmentViewModel appointmentViewModel;
   var isFirst = true;
   var id;
+  var userType;
   var isLoading = true;
   var isNotFound = false;
   List<ViewAppointment> appointmentList = new List();
@@ -203,6 +204,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
   void getCustomerInfo(BuildContext context) async{
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     id = customerInfo.getString('id');
+    userType = customerInfo.getString('userType');
+
     if(id != null){
       getAllAppointment(context);
     }
@@ -210,7 +213,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
 
   void getAllAppointment(BuildContext context) async{
     print(id);
-    List<ViewAppointment> viewAppointment = await appointmentViewModel.getAllAppointment(id);
+    List<ViewAppointment> viewAppointment = await appointmentViewModel.getAllAppointment(id,userType);
 
     if(viewAppointment != null){
       appointmentList.clear();

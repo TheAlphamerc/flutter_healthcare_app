@@ -245,6 +245,8 @@ class _LoginPageState extends State<LoginPage> {
     customerInfo.setString('id', loginResponse.id);
     customerInfo.setString('firstName', loginResponse.firstName);
     customerInfo.setString('lastName', loginResponse.lastName);
+    customerInfo.setString('userType', loginResponse.usertype);
+
 
 
   }
