@@ -28,6 +28,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
 
   List<Doctor> doctorDataList;
   List<Doctor> _searchResult = [];
+  List<Doctor> filterList = [];
+
 
   TextEditingController _searchController = new TextEditingController();
 
@@ -57,7 +59,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   Widget build(BuildContext context) {
     doctorViewModel = Provider.of<DoctorViewModel>(context);
     if (isFirst) {
-      getDoctor(context);
+      getDoctor(context,'','','','','','');
       setState(() {
         isFirst = false;
       });
@@ -772,6 +774,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             groupValue: gender,
                             onChanged: (value) => setState(() {
                               gender = value;
+                              print(value);
                             }),
                             items: _genderList,
                             itemBuilder: (item) => RadioButtonBuilder(
@@ -784,12 +787,20 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text(
-                            'OK',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorResources.white,
-                                fontSize: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.pop(context);
+                              openLoading(context);
+                              print(gender);
+                              getDoctor(context, '', '', '', gender, '','');
+                            },
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorResources.white,
+                                  fontSize: 20),
+                            ),
                           ),
                         ),
                       ),
@@ -893,13 +904,13 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
         });
   }
 
-  void getDoctor(BuildContext context) async {
-    List<Doctor> doctors = await doctorViewModel.getAllDoctor();
-    if (doctorDataList != null) {
-      doctorDataList.clear;
-    }
+  void getDoctor(BuildContext context, String docName, String latitude,String longitude,String gernder, String rating, String exp) async {
+    List<Doctor> doctors = await doctorViewModel.getAllDoctor(docName,latitude,longitude,gernder,rating,exp);
+
+
 
     if (doctors != null) {
+      doctorDataList.clear();
       for (Doctor doctor in doctors) {
         doctorDataList.add(doctor);
       }
@@ -979,6 +990,27 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
 
     setState(() {
       _searchResult;
+    });
+  }
+
+  void filterGenderList(String gender) {
+    _searchResult.clear();
+
+    doctorDataList.forEach((doctor) {
+      if (doctor.gender.toLowerCase().contains(gender.toLowerCase()))
+        _searchResult.add(doctor);
+    });
+
+    setState(() {
+      _searchResult;
+    });
+
+
+  }
+
+  void openLoading(BuildContext context) {
+    setState(() {
+      isLoading = true;
     });
   }
 }

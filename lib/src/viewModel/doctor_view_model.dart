@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 
 class DoctorViewModel extends ChangeNotifier {
 
-  Future<List<Doctor>> getAllDoctor() async {
+  Future<List<Doctor>> getAllDoctor(String docName, String latitude,String longitude,String gernder, String rating, String exp) async {
     final response =
-        await http.get('http://172.16.61.221:8059/admins.asmx/getDoctors');
+        await http.get('http://172.16.61.221:8059/admins.asmx/getDoctors?DocName=$docName&latitude=$latitude&longitude=$longitude&Gender=$gernder&exp=$exp&rating=$rating');
 
     if (response.statusCode == 200) {
       List<Doctor> doctors;
