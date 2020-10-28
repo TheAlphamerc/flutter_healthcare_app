@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
-import 'package:smart_select/smart_select.dart';
 
 import 'Features.dart';
 

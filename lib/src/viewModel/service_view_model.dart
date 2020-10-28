@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_healthcare_app/src/model/available.dart';
-import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/model/service.dart';
 import 'dart:async';
 import 'dart:convert';

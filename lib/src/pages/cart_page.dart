@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/lab_cart_tab.dart';
-import 'package:flutter_healthcare_app/src/pages/user/history_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
-import 'package:responsive_grid/responsive_grid.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class CartPage extends StatefulWidget {

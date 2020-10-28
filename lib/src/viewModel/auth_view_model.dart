@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_healthcare_app/src/model/available.dart';
-import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/model/login_response.dart';
 import 'package:flutter_healthcare_app/src/model/registration.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';

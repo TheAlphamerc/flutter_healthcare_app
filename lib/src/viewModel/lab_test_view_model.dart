@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_healthcare_app/src/model/available.dart';
-import 'package:flutter_healthcare_app/src/model/doctor.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_by_category.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_by_user.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_category.dart';

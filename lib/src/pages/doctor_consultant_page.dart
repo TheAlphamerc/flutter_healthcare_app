@@ -14,8 +14,6 @@ import 'package:provider/provider.dart';
 import 'package:rating_bar/rating_bar.dart';
 
 import '../theme/light_color.dart';
-import '../theme/light_color.dart';
-import '../theme/light_color.dart';
 
 class DoctorConsultantPage extends StatefulWidget {
   DoctorConsultantPage({Key key}) : super(key: key);
