@@ -381,10 +381,13 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Text('Do you want to cancel the labtest?',
-                        style: TextStyle(
-                          color: ColorResources.lightblack,
-                        ),),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Do you want to cancel the labtest?',
+                          style: TextStyle(
+                            color: ColorResources.lightblack,
+                          ),),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -456,10 +459,13 @@ class _LabTestViewPageState extends State<LabTestViewPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Text('Do you want to edit the labtest?',
-                          style: TextStyle(
-                            color: ColorResources.lightblack,
-                          ),),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Do you want to edit the labtest?',
+                            style: TextStyle(
+                              color: ColorResources.lightblack,
+                            ),),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),

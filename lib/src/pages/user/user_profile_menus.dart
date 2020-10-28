@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/lab_test_view_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/splash_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
 import 'package:flutter_healthcare_app/src/profile/contat_information.dart';
 import 'package:flutter_healthcare_app/src/profile/medical_history.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class UserProfileMenu extends StatefulWidget {
   @override
   _UserProfileMenuState createState() => _UserProfileMenuState();
@@ -159,7 +161,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
           ),
           GestureDetector(
             onTap: (){
-              print('You clicked in Purchase Info details');
+              openConfirmationDialog(context);
             },
             child: Padding(
               padding: const EdgeInsets.only(left:20.0, top:50, bottom: 15),
@@ -206,5 +208,93 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
       ),
 
     );
+  }
+
+
+  void openConfirmationDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: ColorResources.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Do you want to logout?',
+                            style: TextStyle(
+                              color: ColorResources.lightblack,
+                            ),),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: ColorResources.themered,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>Navigator.pop(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('No',
+                                      style: TextStyle(
+                                          color: ColorResources.lightOrange
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>logOutFuntion(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('Yes',
+                                      style: TextStyle(
+                                          color: ColorResources.themered
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  logOutFuntion(BuildContext context) async{
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    customerInfo.clear();
+
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) =>
+            SplashPage()), (Route<dynamic> route) => false);
+
   }
 }
