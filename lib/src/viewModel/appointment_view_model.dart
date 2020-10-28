@@ -19,6 +19,18 @@ class AppointmentViewModel extends ChangeNotifier {
     }
   }
 
+  Future<RegistrationResponse> updateAppointment(Appointment appointment,String appointmentId) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/updateAppointment?appointmentId=$appointmentId&userid=${appointment.patientuid}&docid=${appointment.doctorid}&appointmentDate=${appointment.dates}&timeId=${appointment.timeid}&reason=${appointment.reasons}&paymenthod=${appointment.paymen}');
+
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      print(response.body);
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
   Future<List<ViewAppointment>> getAllAppointment(String id, String userType) async {
     final response = await http
         .get('http://172.16.61.221:8059/admins.asmx/getAppointment?userId=$id&userType=$userType');

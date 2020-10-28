@@ -17,8 +17,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class BookAppointmentPage extends StatefulWidget {
   Doctor doctor;
   List<Available> availableList;
+  String appointmentId;
+  String timeId;
+  String appointmentDate;
+  String reason;
+  String paymenthod;
 
-  BookAppointmentPage(this.doctor, this.availableList);
+  BookAppointmentPage(this.doctor, this.availableList,{this.appointmentId, this.timeId, this.appointmentDate,
+    this.reason, this.paymenthod});
 
   @override
   _BookAppointmentPageState createState() => _BookAppointmentPageState();
@@ -48,12 +54,16 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
     // TODO: implement initState
     super.initState();
     getCustomerInfo(context);
+    saveBasicData(context);
   }
   @override
   Widget build(BuildContext context) {
     appointmentViewModel = Provider.of<AppointmentViewModel>(context);
     if (isFirst) {
       creatDateList();
+      if(widget.appointmentId != null){
+        timeList(context, DateFormat('EEEE').format(DateFormat("dd/MM/yyyy").parse(widget.appointmentDate)));
+      }
       setState(() {
         isFirst = false;
       });
@@ -292,7 +302,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                                 () {
                                   time = val;
                                   timeId = availableTimesMap[time];
-                                  print(timeId);
+
                                 },
                               );
                             },
@@ -443,7 +453,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             },
             color: ColorResources.themered,
             child: Text(
-              'Book appointment',
+              widget.appointmentId == null ? 'Book appointment':'Update appointment',
               style: TextStyle(color: ColorResources.white, fontSize: 18),
             ),
           ),
@@ -497,6 +507,16 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
             availableTimes.add(time.times);
           });
         });
+
+       widget.availableList.forEach((element) {
+          if(element.timeList[0].id == widget.timeId){
+            setState(() {
+              time = element.timeList[0].times;
+            });
+          }
+        });
+
+
       }
     });
   }
@@ -527,17 +547,24 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       setState(() {
         isLoading = true;
       });
-      print(id);
       Appointment appointment = new Appointment(id,widget.doctor.id,showDate,timeId,_problemController.text,
       'Money');
+
       sendAppointmentRequest(context,appointment);
     }
   }
 
   void sendAppointmentRequest(BuildContext context, Appointment appointment) async{
 
+    RegistrationResponse response;
 
-    RegistrationResponse response = await appointmentViewModel.saveAppointment(appointment);
+    if(widget.appointmentId != null){
+      response = await appointmentViewModel.updateAppointment(appointment,widget.appointmentId);
+    }else{
+       response = await appointmentViewModel.saveAppointment(appointment);
+    }
+
+
     if(response != null){
       setState(() {
         isLoading = false;
@@ -599,5 +626,17 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       ),
     )
         : Text('');
+  }
+
+  void saveBasicData(BuildContext context) {
+    if(widget.appointmentId != null){
+      setState(() {
+        timeId = widget.timeId;
+        showDate = widget.appointmentDate;
+        _problemController.text = widget.reason;
+        cashpayment = true;
+        selectDay = DateFormat('EEEE').format(DateFormat("dd/MM/yyyy").parse(widget.appointmentDate));
+      });
+    }
   }
 }

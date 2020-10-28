@@ -301,7 +301,6 @@ class _DetailPageState extends State<DetailPage> {
       if(availableList != null){
         availableList.clear();
       }
-
       for (Available available in availables) {
         availableList.add(available);
       }
