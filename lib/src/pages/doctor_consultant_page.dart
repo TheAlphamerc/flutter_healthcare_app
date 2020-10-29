@@ -32,6 +32,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
 
 
   TextEditingController _searchController = new TextEditingController();
+  TextEditingController _experieceController = new TextEditingController();
+
 
   var selected = 'DOCTOR';
   var selectedField = 'Near by';
@@ -625,6 +627,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                               child: TextField(
                                 maxLength: 2,
                                 keyboardType: TextInputType.number,
+                                controller: _experieceController,
                                 decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
@@ -656,12 +659,19 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text(
-                            'OK',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorResources.white,
-                                fontSize: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.pop(context);
+                              openLoading(context);
+                              getDoctor(context, '', '', '', '', '',_experieceController.text);
+                            },
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorResources.white,
+                                  fontSize: 20),
+                            ),
                           ),
                         ),
                       ),
@@ -725,7 +735,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                               Navigator.pop(context);
                               openLoading(context);
                               print(gender);
-                              getDoctor(context, '', '', '', '', _rating.toStringAsFixed(0),'');
+                              getDoctor(context, '', '', '', '', _rating.toStringAsFixed(1),'');
                             },
                             child: Text(
                               'OK',
@@ -799,7 +809,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                             onTap: (){
                               Navigator.pop(context);
                               openLoading(context);
-                              print(gender);
                               getDoctor(context, '', '', '', gender, '','');
                             },
                             child: Text(
