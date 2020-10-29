@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
+import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
 import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
@@ -18,6 +19,8 @@ class _EshopHomePageState extends State<EshopHomePage> {
 
   var fileName = 'File';
   List<Medicine> medicineListdata;
+  List<MedicineType> medicineTypeList;
+
   var isFirst = true;
   var isLoading = true;
 
@@ -26,6 +29,8 @@ class _EshopHomePageState extends State<EshopHomePage> {
     // TODO: implement initState
     super.initState();
     medicineListdata = new List();
+    medicineTypeList = new List();
+
   }
 
   @override
@@ -34,6 +39,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
     if(isFirst){
 
       getAllMedicine(context);
+      getAllMedicineType(context);
 
       setState(() {
         isFirst = false;
@@ -145,7 +151,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
               padding: const EdgeInsets.only(left:15.0),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
+                  itemCount: medicineTypeList != null ? medicineTypeList.length :0,
                   itemBuilder:(context,index){
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
@@ -162,7 +168,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                               )
                             ]
                         ),
-                        child: Center(child: Text('Cancer',
+                        child: Center(child: Text('${medicineTypeList[index].medicinetypename}',
                         style: TextStyle(
                           fontSize: 16,
                           color: ColorResources.lightblack.withOpacity(0.7)
@@ -362,6 +368,23 @@ class _EshopHomePageState extends State<EshopHomePage> {
     }
 
 
+  }
+
+  void getAllMedicineType(BuildContext context) async{
+    List<MedicineType> medicineTypes = await eShopViewModel.getAllMedicineType();
+
+    if(medicineTypes != null){
+      medicineTypeList.clear();
+      setState(() {
+        isLoading = false;
+      });
+      medicineTypes.forEach((type) {
+        setState(() {
+          medicineTypeList.add(type);
+        });
+
+      });
+    }
   }
 
 }

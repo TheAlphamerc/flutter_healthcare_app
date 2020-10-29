@@ -203,7 +203,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Padding(
           padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
           child: Text(
-            'Category name',
+            '${widget.medicineListdata.productcategoryname}',
             style: TextStyle(
               color: ColorResources.lightblack,
               fontSize: 18,
@@ -224,7 +224,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Padding(
           padding: const EdgeInsets.only(bottom:10.0),
           child: Text(
-            'About',
+            'Description',
             style: TextStyle(
               color: ColorResources.lightblack,
               fontSize: 18,
@@ -234,27 +234,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Padding(
           padding: const EdgeInsets.only(bottom:10.0),
           child: Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl eros. Cras a nisi enim. Etiam vitae convallis ante. ',
-            style: TextStyle(
-              color: ColorResources.lightblack.withOpacity(0.5),
-              fontSize: 14,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom:10.0),
-          child: Text(
-            'Benifits',
-            style: TextStyle(
-              color: ColorResources.lightblack,
-              fontSize: 18,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom:10.0),
-          child: Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl eros. Cras a nisi enim. Etiam vitae convallis ante. ',
+            '${widget.medicineListdata.medicineDesc}',
             style: TextStyle(
               color: ColorResources.lightblack.withOpacity(0.5),
               fontSize: 14,

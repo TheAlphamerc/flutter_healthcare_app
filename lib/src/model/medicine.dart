@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final medicine = medicineFromJson(jsonString);
+
 import 'dart:convert';
 
 List<Medicine> medicineFromJson(String str) => List<Medicine>.from(json.decode(str).map((x) => Medicine.fromJson(x)));
@@ -23,6 +27,7 @@ class Medicine {
     this.updatedat,
     this.status,
     this.queryFlag,
+    this.medicineDesc,
   });
 
   String id;
@@ -42,6 +47,7 @@ class Medicine {
   dynamic updatedat;
   dynamic status;
   dynamic queryFlag;
+  String medicineDesc;
 
   factory Medicine.fromJson(Map<String, dynamic> json) => Medicine(
     id: json["Id"],
@@ -61,6 +67,7 @@ class Medicine {
     updatedat: json["Updatedat"],
     status: json["Status"],
     queryFlag: json["QueryFlag"],
+    medicineDesc: json["MedicineDesc"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -81,5 +88,6 @@ class Medicine {
     "Updatedat": updatedat,
     "Status": status,
     "QueryFlag": queryFlag,
+    "MedicineDesc": medicineDesc,
   };
 }
