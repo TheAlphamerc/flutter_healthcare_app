@@ -5,6 +5,7 @@ import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop_cart_screen.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
@@ -24,7 +25,7 @@ class EshopDetailPage extends StatefulWidget {
 
 class _EshopDetailPageState extends State<EshopDetailPage> {
 
-  static GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  static GlobalKey<ScaffoldState> scaffoldKeys = new GlobalKey<ScaffoldState>();
 
   var isLoading = false;
   var isFirst = true;
@@ -56,7 +57,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
     }
     return Scaffold(
-      key: scaffoldKey,
+      key: scaffoldKeys,
       backgroundColor: ColorResources.white,
       body: WillPopScope(
         onWillPop:()=> Navigator.push(context,
@@ -157,7 +158,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
               child: GestureDetector(
                 onTap: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => CartPage()));
+                      MaterialPageRoute(builder: (_) => EshopCartScreen()));
 
                 },
                 child: SizedBox(
@@ -370,7 +371,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         : Text('');
   }
   void showSnakbar(BuildContext context, String message) {
-    scaffoldKey.currentState.showSnackBar(new SnackBar(
+    scaffoldKeys.currentState.showSnackBar(new SnackBar(
         backgroundColor: ColorResources.themered,
         content: new Text(
           message,

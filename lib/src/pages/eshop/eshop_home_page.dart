@@ -6,6 +6,7 @@ import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
 import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop_cart_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
@@ -67,7 +68,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
             child: GestureDetector(
               onTap: (){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => CartPage()));
+                    MaterialPageRoute(builder: (_) => EshopCartScreen()));
 
               },
               child: SizedBox(

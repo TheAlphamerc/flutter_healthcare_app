@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_healthcare_app/src/pages/lab_cart_tab.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop_cart_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
@@ -97,9 +97,9 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                                   child: TabBarView(
                                     controller: _tabController,
                                     children: [
-                                      LabTab(),
-                                      LabTab(),
-                                      LabTab(),
+                                      EshopCartScreen(),
+                                      EshopCartScreen(),
+                                      EshopCartScreen(),
                                     ],
                                   ),
                                 ),
