@@ -24,6 +24,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
 
   var isFirst = true;
   var isLoading = true;
+  var notFound = false;
 
   @override
   void initState() {
@@ -39,7 +40,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
     eShopViewModel = Provider.of<EShopViewModel>(context);
     if(isFirst){
 
-      getAllMedicine(context);
+      getAllMedicine(context,'','','','');
       getAllMedicineType(context);
 
       setState(() {
@@ -101,7 +102,8 @@ class _EshopHomePageState extends State<EshopHomePage> {
               Expanded(child: _medicineList(context))
             ],
           ),
-          loading(context)
+          notFoundWidget(context),
+          loading(context),
         ],
       ),
     );
@@ -138,12 +140,6 @@ class _EshopHomePageState extends State<EshopHomePage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right:15,bottom: 10),
-                child: Icon(Icons.more_vert,
-                color: ColorResources.white,
-                size: 25,),
-              )
             ],
           ),
           SizedBox(
@@ -156,29 +152,32 @@ class _EshopHomePageState extends State<EshopHomePage> {
                   itemBuilder:(context,index){
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        width: 100,
-                        child: Center(child: Column(
-                          children: [
-                            CachedNetworkImage(
-                              imageUrl: "http://172.16.61.221:8059${medicineTypeList[index].imageUrl}",
-                              height: 24,
-                              width: 24,
-                              fit: BoxFit.fill,
-                              placeholder: (context, url) => CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => Icon(Icons.error),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top:6.0),
-                              child: Text('${medicineTypeList[index].medicinetypename}',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: ColorResources.white
+                      child: GestureDetector(
+                        onTap: ()=>getAllMedicine(context,'','',medicineTypeList[index].id,''),
+                        child: Container(
+                          width: 70,
+                          child: Center(child: Column(
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: "http://172.16.61.221:8059${medicineTypeList[index].imageUrl}",
+                                height: 24,
+                                width: 24,
+                                fit: BoxFit.fill,
+                                // placeholder: (context, url) => CircularProgressIndicator(),
+                                errorWidget: (context, url, error) => Icon(Icons.error),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top:6.0),
+                                child: Text('${medicineTypeList[index].medicinetypename}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: ColorResources.white
 
-                              ),),
-                            ),
-                          ],
-                        )),
+                                ),),
+                              ),
+                            ],
+                          )),
+                        ),
                       ),
                     );
 
@@ -232,7 +231,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                     BoxShadow(
                       color: ColorResources.black.withOpacity(0.2),
                       spreadRadius: 1,
-                      blurRadius: 15,
+                      blurRadius: 5,
                       offset: Offset(0, 1), // changes position of shadow
                     ),
                   ],
@@ -256,7 +255,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(10)),
-                            color: ColorResources.themered.withOpacity(0.7)),
+                            color: ColorResources.themered.withOpacity(0.9)),
                         child: Column(
                           children: [
                             Padding(
@@ -356,20 +355,60 @@ class _EshopHomePageState extends State<EshopHomePage> {
         : Text('');
   }
 
-  void getAllMedicine(BuildContext context)async {
-    List<Medicine> medicines = await eShopViewModel.getAllMedicine('','','','');
+  Widget notFoundWidget(BuildContext context) {
+    return notFound
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              child: Center(
+                child: Image.asset(
+                  'assets/not_found.png',
+                  height: 300,
+                  width: 300,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
+
+  void getAllMedicine(BuildContext context,String medicineId, String medCompany,
+      String medType, String productCategoryId)async {
+    setState(() {
+      isLoading = true;
+    });
+
+    List<Medicine> medicines = await eShopViewModel.getAllMedicine(medicineId,medCompany,medType,productCategoryId);
 
     if(medicines != null){
       medicineListdata.clear();
-      setState(() {
-        isLoading = false;
-      });
-      medicines.forEach((medicine) {
+      if(medicines.length >0) {
+        medicineListdata.clear();
         setState(() {
-          medicineListdata.add(medicine);
+          isLoading = false;
+          notFound =false;
         });
-
-      });
+        medicines.forEach((medicine) {
+          setState(() {
+            medicineListdata.add(medicine);
+          });
+        });
+      }else{
+        setState(() {
+          isLoading = false;
+          notFound = true;
+        });
+      }
     }
 
 
