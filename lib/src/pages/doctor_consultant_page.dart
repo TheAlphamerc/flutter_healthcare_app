@@ -720,12 +720,20 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text(
-                            'OK',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorResources.white,
-                                fontSize: 20),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.pop(context);
+                              openLoading(context);
+                              print(gender);
+                              getDoctor(context, '', '', '', '', _rating.toStringAsFixed(0),'');
+                            },
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorResources.white,
+                                  fontSize: 20),
+                            ),
                           ),
                         ),
                       ),
