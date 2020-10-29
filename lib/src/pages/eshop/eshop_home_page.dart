@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
@@ -80,7 +81,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                   },
                   child: Center(
                     child: Icon(
-                      Icons.notifications_none,
+                      Icons.add_shopping_cart,
                       color: ColorResources.themered,
                       size: 20,
                     ),
@@ -146,7 +147,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
             ],
           ),
           SizedBox(
-            height: 100,
+            height: 70,
             child: Padding(
               padding: const EdgeInsets.only(left:15.0),
               child: ListView.builder(
@@ -157,23 +158,27 @@ class _EshopHomePageState extends State<EshopHomePage> {
                       padding: const EdgeInsets.all(4.0),
                       child: Container(
                         width: 100,
-                        decoration: BoxDecoration(
-                          color: ColorResources.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: ColorResources.lightblack.withOpacity(.3),
-                                blurRadius: 15,
-                                offset: Offset(5, 5),
-                              )
-                            ]
-                        ),
-                        child: Center(child: Text('${medicineTypeList[index].medicinetypename}',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ColorResources.lightblack.withOpacity(0.7)
+                        child: Center(child: Column(
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: "http://172.16.61.221:8059${medicineTypeList[index].imageUrl}",
+                              height: 24,
+                              width: 24,
+                              fit: BoxFit.fill,
+                              placeholder: (context, url) => CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top:6.0),
+                              child: Text('${medicineTypeList[index].medicinetypename}',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: ColorResources.white
 
-                        ),)),
+                              ),),
+                            ),
+                          ],
+                        )),
                       ),
                     );
 
