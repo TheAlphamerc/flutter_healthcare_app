@@ -1,14 +1,11 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
-import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
+import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
 import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
-import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
+import 'package:provider/provider.dart';
 
 class EshopHomePage extends StatefulWidget {
   @override
@@ -17,19 +14,31 @@ class EshopHomePage extends StatefulWidget {
 
 class _EshopHomePageState extends State<EshopHomePage> {
   TextEditingController _problemController = TextEditingController();
+  EShopViewModel eShopViewModel;
 
   var fileName = 'File';
   List<Medicine> medicineListdata;
+  var isFirst = true;
+  var isLoading = true;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    medicineListdata = medicineList.map((x) => Medicine.fromJson(x)).toList();
+    medicineListdata = new List();
   }
 
   @override
   Widget build(BuildContext context) {
+    eShopViewModel = Provider.of<EShopViewModel>(context);
+    if(isFirst){
+
+      getAllMedicine(context);
+
+      setState(() {
+        isFirst = false;
+      });
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorResources.themered,
@@ -76,11 +85,16 @@ class _EshopHomePageState extends State<EshopHomePage> {
           ),
         ],
       ),
-      body: Column(
+      body: Stack(
         children: [
-          headerpart(context),
-          medicineTitle(context),
-          Expanded(child: _medicineList(context))
+          Column(
+            children: [
+              headerpart(context),
+              medicineTitle(context),
+              Expanded(child: _medicineList(context))
+            ],
+          ),
+          loading(context)
         ],
       ),
     );
@@ -188,7 +202,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget _medicineList(BuildContext context) {
     return GridView.builder(
         shrinkWrap: true,
-        itemCount: medicineListdata.length,
+        itemCount: medicineListdata != null ? medicineListdata.length:0,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) {
@@ -237,18 +251,18 @@ class _EshopHomePageState extends State<EshopHomePage> {
                             Padding(
                               padding: const EdgeInsets.only(top:5.0),
                               child: Text(
-                                '${medicineListdata[index].medicineName}',
+                                '${medicineListdata[index].medicinename}',
                                 style: TextStyle(
                                     color: ColorResources.white, fontSize: 16,fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              '${medicineListdata[index].companyName}',
+                              '${medicineListdata[index].medicinecompany}',
                               style: TextStyle(
                                   color: ColorResources.white, fontSize: 16),
                             ),
                             Text(
-                              '${medicineListdata[index].genericName}',
+                              '${medicineListdata[index].medicinetypename}',
                               style: TextStyle(
                                   color: ColorResources.white, fontSize: 16),
                             ),
@@ -262,7 +276,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10,bottom:5.0),
                                   child: Text(
-                                    '10 pices',
+                                    '${medicineListdata[index].uom}',
                                     style: TextStyle(
                                         color: ColorResources.white, fontSize: 16),
                                   ),
@@ -270,7 +284,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                 Padding(
                                   padding: const EdgeInsets.only(right:15.0,bottom: 5),
                                   child: Text(
-                                    '\$${medicineListdata[index].price}',
+                                    '\$${medicineListdata[index].medicineprice}',
                                     style: TextStyle(
                                         color: ColorResources.white, fontSize: 16),
                                   ),
@@ -288,4 +302,66 @@ class _EshopHomePageState extends State<EshopHomePage> {
           );
         });
   }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: ColorResources.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorResources.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorResources.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
+
+  void getAllMedicine(BuildContext context)async {
+    List<Medicine> medicines = await eShopViewModel.getAllMedicine('','','','');
+
+    if(medicines != null){
+      medicineListdata.clear();
+      setState(() {
+        isLoading = false;
+      });
+      medicines.forEach((medicine) {
+        setState(() {
+          medicineListdata.add(medicine);
+        });
+
+      });
+    }
+
+
+  }
+
 }

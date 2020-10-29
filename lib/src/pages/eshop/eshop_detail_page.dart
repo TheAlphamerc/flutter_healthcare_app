@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
-import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
+import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
-import 'package:flutter_healthcare_app/src/model/dactor_model.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
 import 'package:flutter_healthcare_app/src/theme/extention.dart';
-import 'package:flutter_healthcare_app/src/widgets/progress_widget.dart';
-import 'package:flutter_healthcare_app/src/widgets/rating_start.dart';
 
 class EshopDetailPage extends StatefulWidget {
   Medicine medicineListdata;
@@ -172,7 +168,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Align(
           alignment: Alignment.topRight,
           child: Text(
-            '${widget.medicineListdata.price} \$',
+            '${widget.medicineListdata.medicineprice} \$',
             style: TextStyle(
                 fontSize: 20,
                 color: ColorResources.lightblack.withOpacity(0.7),
@@ -182,7 +178,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         Align(
           alignment: Alignment.topRight,
           child: Text(
-            '12 / box',
+            '${widget.medicineListdata.uom}',
             style: TextStyle(
               fontSize: 16,
               color: ColorResources.lightblack.withOpacity(0.7),
@@ -198,7 +194,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${widget.medicineListdata.medicineName}',
+          '${widget.medicineListdata.medicinename}',
           style: TextStyle(
               color: ColorResources.lightblack,
               fontSize: 20,
@@ -215,7 +211,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           ),
         ),
         Text(
-          '${widget.medicineListdata.genericName}',
+          '${widget.medicineListdata.medicinetypename}',
           style: TextStyle(
             color: ColorResources.lightblack,
             fontSize: 18,

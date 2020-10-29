@@ -1,7 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
-import 'package:flutter_healthcare_app/src/model/medicine_model.dart';
+import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 
@@ -20,7 +20,7 @@ class _MedicationPageState extends State<MedicationPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    medicineListdata = medicineList.map((x) => Medicine.fromJson(x)).toList();
+    medicineListdata = new List();
   }
 
   @override
@@ -267,20 +267,20 @@ class _MedicationPageState extends State<MedicationPage> {
                           Padding(
                             padding: const EdgeInsets.only(top:5.0),
                             child: Text(
-                              '${medicineListdata[index].medicineName}',
+                              '${medicineListdata[index].medicinename}',
                               style: TextStyle(
                                   color: ColorResources.black, fontSize: 16,fontWeight: FontWeight.bold),
                             ),
                           ),
                           Text(
-                            '${medicineListdata[index].companyName}',
+                            '${medicineListdata[index].medicinecompany}',
                             style: TextStyle(
                                 color: ColorResources.black, fontSize: 16),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom:5.0),
                             child: Text(
-                              '\$${medicineListdata[index].price}/each',
+                              '\$${medicineListdata[index].medicineprice}/each',
                               style: TextStyle(
                                   color: ColorResources.black, fontSize: 16),
                             ),
