@@ -27,6 +27,7 @@ class Medicine {
     this.updatedat,
     this.status,
     this.queryFlag,
+    this.imageUrl,
     this.medicineDesc,
   });
 
@@ -47,6 +48,7 @@ class Medicine {
   dynamic updatedat;
   dynamic status;
   dynamic queryFlag;
+  String imageUrl;
   String medicineDesc;
 
   factory Medicine.fromJson(Map<String, dynamic> json) => Medicine(
@@ -67,6 +69,7 @@ class Medicine {
     updatedat: json["Updatedat"],
     status: json["Status"],
     queryFlag: json["QueryFlag"],
+    imageUrl: json["ImageUrl"],
     medicineDesc: json["MedicineDesc"],
   );
 
@@ -88,6 +91,7 @@ class Medicine {
     "Updatedat": updatedat,
     "Status": status,
     "QueryFlag": queryFlag,
+    "ImageUrl": imageUrl,
     "MedicineDesc": medicineDesc,
   };
 }

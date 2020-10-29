@@ -1,13 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/cart.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
+import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
 import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EshopHomePage extends StatefulWidget {
   @override
@@ -21,15 +24,18 @@ class _EshopHomePageState extends State<EshopHomePage> {
   var fileName = 'File';
   List<Medicine> medicineListdata;
   List<MedicineType> medicineTypeList;
+  List<Cart> cartList = new List();
 
   var isFirst = true;
   var isLoading = true;
   var notFound = false;
+  var userId;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getCustomerInfo(context);
     medicineListdata = new List();
     medicineTypeList = new List();
 
@@ -57,43 +63,64 @@ class _EshopHomePageState extends State<EshopHomePage> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 15.0, top: 12, bottom: 12),
+            padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(100)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightblack.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => CartPage()));
+
+              },
+              child: SizedBox(
+                width: 40,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(100)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightblack.withOpacity(0.3),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.add_shopping_cart,
+                          color: ColorResources.themered,
+                          size: 20,
+                        ),
+                      ),
                     ),
+                    Positioned(
+                      right: 0,
+                      child:cartList != null  && cartList.length >0? Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            color: ColorResources.themered,
+                            borderRadius: BorderRadius.all(Radius.circular(30))
+                        ),
+                        child: Center(
+                            child: Text('${cartList != null ? cartList.length :0}',
+                              style: TextStyle(
+                                  color: ColorResources.white
+                              ),)),
+                      ):Text(''),
+                    )
                   ],
-                ),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => NotificationPage()));
-                  },
-                  child: Center(
-                    child: Icon(
-                      Icons.add_shopping_cart,
-                      color: ColorResources.themered,
-                      size: 20,
-                    ),
-                  ),
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
-      body: Stack(
+      body:Stack(
         children: [
           Column(
             children: [
@@ -225,7 +252,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: ColorResources.themered,
+                  color: ColorResources.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
@@ -240,11 +267,13 @@ class _EshopHomePageState extends State<EshopHomePage> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      child: Image.asset(
-                        'assets/medicine_box.jpg',
-                        width: MediaQuery.of(context).size.width,
+                      child: CachedNetworkImage(
+                        imageUrl: "http://172.16.61.221:8059${medicineListdata[index].imageUrl}",
                         height: MediaQuery.of(context).size.height,
-                        fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
+                        // placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                     Positioned(
@@ -255,7 +284,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(10)),
-                            color: ColorResources.themered.withOpacity(0.9)),
+                            color: ColorResources.white.withOpacity(0.9)),
                         child: Column(
                           children: [
                             Padding(
@@ -263,22 +292,22 @@ class _EshopHomePageState extends State<EshopHomePage> {
                               child: Text(
                                 '${medicineListdata[index].medicinename}',
                                 style: TextStyle(
-                                    color: ColorResources.white, fontSize: 16,fontWeight: FontWeight.bold),
+                                    color: ColorResources.black, fontSize: 16,fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
                               '${medicineListdata[index].medicinecompany}',
                               style: TextStyle(
-                                  color: ColorResources.white, fontSize: 16),
+                                  color: ColorResources.black, fontSize: 16),
                             ),
                             Text(
                               '${medicineListdata[index].medicinetypename}',
                               style: TextStyle(
-                                  color: ColorResources.white, fontSize: 16),
+                                  color: ColorResources.black, fontSize: 16),
                             ),
                             Divider(
                               thickness: 1,
-                              color: ColorResources.white,
+                              color: ColorResources.black,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -288,7 +317,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                   child: Text(
                                     '${medicineListdata[index].uom}',
                                     style: TextStyle(
-                                        color: ColorResources.white, fontSize: 16),
+                                        color: ColorResources.black, fontSize: 16),
                                   ),
                                 ),
                                 Padding(
@@ -296,7 +325,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                                   child: Text(
                                     '\$${medicineListdata[index].medicineprice}',
                                     style: TextStyle(
-                                        color: ColorResources.white, fontSize: 16),
+                                        color: ColorResources.black, fontSize: 16),
                                   ),
                                 ),
                               ],
@@ -429,6 +458,28 @@ class _EshopHomePageState extends State<EshopHomePage> {
 
       });
     }
+  }
+  void getCartProduct(BuildContext context) async{
+    List<Cart> carts = await eShopViewModel.getCart(userId);
+
+    if(carts != null){
+
+      cartList.clear();
+      carts.forEach((cart) {
+        setState(() {
+          cartList.add(cart);
+        });
+      });
+    }
+
+  }
+  void getCustomerInfo(BuildContext context) async {
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    userId = customerInfo.getString('id');
+    if(userId != null){
+      getCartProduct(context);
+    }
+
   }
 
 }
