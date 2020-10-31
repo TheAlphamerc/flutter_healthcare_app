@@ -551,6 +551,7 @@ class _LabTestPageState extends State<LabTestPage> {
         await labTestViewModel.getLabTestByCategory(id);
 
     if (labtestByCat != null) {
+      labTestByCategoryList.clear();
       labtestByCat.forEach((lab) {
         setState(() {
           labTestByCategoryList.add(lab);

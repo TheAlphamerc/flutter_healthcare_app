@@ -398,9 +398,6 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       });
 
     }
-
-
-
   }
 
   void getCustomerInfo(BuildContext context) async {

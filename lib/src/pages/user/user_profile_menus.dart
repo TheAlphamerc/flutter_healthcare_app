@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/lab_test_view_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/splash_page.dart';
-import 'package:flutter_healthcare_app/src/pages/user/user_profile_page.dart';
+import 'package:flutter_healthcare_app/src/pages/user/profile_screen.dart';
 import 'package:flutter_healthcare_app/src/profile/contat_information.dart';
 import 'package:flutter_healthcare_app/src/profile/medical_history.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
@@ -15,7 +15,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
   var currentPage = 0;
   final List<Widget> _children = [
     //UserProfilePage(),
-    UserProfilePage(),
+    ProfileScreen(),
   ];
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
           GestureDetector(
             onTap: (){
               print('You clicked in Personal details');
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfilePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
             child: Padding(
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),

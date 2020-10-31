@@ -8,7 +8,7 @@ RegistrationResponse resgistrationResponseFromJson(String str) => RegistrationRe
 
 String resgistrationResponseToJson(RegistrationResponse data) => json.encode(data.toJson());
 
-class RegistrationResponse {
+class   RegistrationResponse {
   RegistrationResponse({
     this.success,
     this.message,

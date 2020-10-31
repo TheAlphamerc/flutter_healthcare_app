@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/view_appointment.dart';
 import 'package:flutter_healthcare_app/src/pages/all_service.dart';
 import 'package:flutter_healthcare_app/src/pages/book_appoint_page.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor/doctor_home_Page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_healthcare_app/src/pages/doctor_consultant_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/lab_test_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/appointment_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,8 +18,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+
+  AppointmentViewModel appointmentViewModel;
+
   var firstName = '';
   var lastName = '';
+  var userId;
+  var usertype;
+  var appointmentCount = 0;
+  List<ViewAppointment> viewAppointment = new List<ViewAppointment>();
+
 
 
   @override
@@ -27,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
+    appointmentViewModel = Provider.of<AppointmentViewModel>(context);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -159,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                               color: ColorResources.lightblack, fontSize: 14),
                         ),
                         Text(
-                          '9+',
+                          '$appointmentCount',
                           style: TextStyle(
                               color: ColorResources.lightblack, fontSize: 14),
                         )
@@ -408,8 +420,26 @@ class _HomePageState extends State<HomePage> {
   void getCustomerInfo(BuildContext context) async{
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     setState(() {
+      userId = customerInfo.getString('id');
       firstName = customerInfo.getString('firstName');
       lastName = customerInfo.getString('lastName');
+      usertype = customerInfo.getString('userType');
+      if(userId != null){
+        getAllAppointment(context);
+      }
     });
+  }
+
+  void getAllAppointment(BuildContext context) async {
+
+    List<ViewAppointment> viewAppointment =
+    await appointmentViewModel.getAllAppointment(userId, usertype);
+
+    if (viewAppointment != null) {
+      print(viewAppointment.length);
+      setState(() {
+        appointmentCount = viewAppointment.length;
+      });
+    }
   }
 }

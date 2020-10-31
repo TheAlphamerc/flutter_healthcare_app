@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_healthcare_app/src/model/cart.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
+import 'package:flutter_healthcare_app/src/model/place_order.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -69,5 +70,32 @@ class EShopViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
+
+  Future<RegistrationResponse> updateCart(String cartid,String productId,String productName,String productCategoryId,String productCategoryName,String productPrice,String productQnty,String createdBy) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/updateMyCart?cartid=$cartid&productId=$productId&productName=$productName&productCategoryId=$productCategoryId&productCategoryName=$productCategoryName&productPrice=$productPrice&productQnty=$productQnty&createdBy=$createdBy');
+
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+  Future<RegistrationResponse> saveOrder(PlaceOrder placeOrder) async {
+    var value = jsonEncode(placeOrder);
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/saveToOrder?cartobj=$value');
+
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+
 
 }

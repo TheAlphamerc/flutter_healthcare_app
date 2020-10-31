@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/cart.dart';
+import 'package:flutter_healthcare_app/src/model/place_order.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/pages/checkout_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
@@ -46,15 +48,12 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 15.0, right: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: cartListItem(context)),
-                  chargeBox(context)
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: cartListItem(context)),
+                chargeBox(context)
+              ],
             ),
           ),
           loading(context)
@@ -83,7 +82,7 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    '\$ ${totalPrice+5}',
+                    '\$ ${totalPrice}',
                     style: TextStyle(
                         color: ColorResources.themered,
                         fontSize: 18,
@@ -100,8 +99,9 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => CheckoutPage()));
+                      sendToCheckout(context);
+
+
                     },
                     child: Center(
                       child: Text(
@@ -127,18 +127,26 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
         itemBuilder: (context, index) {
 
           for(int i = 0 ;i<cartList.length;i++){
-            qunatityList.add(1);
+            qunatityList.add(int.parse(cartList[i].productqnty));
           }
           return Slidable(
             actionPane: SlidableDrawerActionPane(),
             actionExtentRatio: 0.25,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
+              padding: const EdgeInsets.only(bottom: 5.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: ColorResources.themered.withOpacity(0.1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))
+                  color: ColorResources.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorResources.lightblack.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 5,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ]
                 ),
+
                 child: Row(
                   children: [
                     Padding(
@@ -195,6 +203,9 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                         if(qunatityList[index] >1){
                           setState(() {
                             qunatityList[index] = qunatityList[index] -1;
+                            updateCart(context,cartList[index].id,cartList[index].productid,cartList[index].productname,
+                                cartList[index].productcategoryid,cartList[index].productcategoryname,cartList[index].productprice,
+                                qunatityList[index].toString(),userId);
                           });
                           getTotalPrice();
                         }
@@ -233,6 +244,9 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                       onTap: (){
                         setState(() {
                           qunatityList[index] = qunatityList[index]+1;
+                          updateCart(context,cartList[index].id,cartList[index].productid,cartList[index].productname,
+                              cartList[index].productcategoryid,cartList[index].productcategoryname,cartList[index].productprice,
+                              qunatityList[index].toString(),userId);
                         });
                         getTotalPrice();
                       },
@@ -358,7 +372,7 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
       var total =0.0;
       if(cartList != null){
         for(int i =0;i<cartList.length;i++){
-          total += double.parse(cartList[i].productprice);
+          total += double.parse(cartList[i].productprice) * int.parse(cartList[i].productqnty);
         }
         setState(() {
           totalPrice = total;
@@ -381,6 +395,43 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
           });
 
     }
+  }
+
+  void updateCart(BuildContext context,String cartid,String productId,String productName,String productCategoryId,String productCategoryName,String productPrice,String productQnty,String createdBy) async{
+    setState(() {
+      isLoading = false;
+    });
+    RegistrationResponse response = await eShopViewModel.updateCart(
+      cartid,
+    productId,
+    productName,
+    productCategoryId,
+    productCategoryName,
+    productPrice,
+    productQnty,
+    userId);
+
+    if(response != null){
+      setState(() {
+        isLoading = false;
+      });
+
+    }
+  }
+
+  void sendToCheckout(BuildContext context) async{
+    List<Cart> carts = await eShopViewModel.getCart(userId);
+
+    if(carts != null){
+      PlaceOrder placeOrder = new PlaceOrder(
+        userId: userId,
+        productList: carts
+      );
+      Navigator.push(context,
+          MaterialPageRoute(builder: (_) => CheckoutPage(placeOrder,totalPrice)));
+    }
+
+
   }
 
 }

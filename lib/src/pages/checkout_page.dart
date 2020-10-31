@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_healthcare_app/src/model/place_order.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
+
+  PlaceOrder placeOrder;
+  double totalPrice;
+
+  CheckoutPage(this.placeOrder, this.totalPrice);
+
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
   var cashpayment = false;
+  var isLoading = false;
+  EShopViewModel eShopViewModel;
   TextEditingController commentController = TextEditingController();
+  static GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    eShopViewModel = Provider.of<EShopViewModel>(context);
     return Scaffold(
+      key: scaffoldKey,
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: false,
       body: Container(
@@ -90,18 +105,24 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
-                      Text(
-                        'Pay Now',
-                        style: TextStyle(
-                            color: ColorResources.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
+                      GestureDetector(
+                        onTap:(){
+                          placeOrder();
+                        },
+                        child: Text(
+                          'Place Order',
+                          style: TextStyle(
+                              color: ColorResources.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-            )
+            ),
+            loading(context)
           ],
         ),
       ),
@@ -197,45 +218,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Labtest',
+                  'Product fee',
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
-                  '20.26 \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 8.0, right: 8, top: 8, bottom: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Medicine',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
-                ),
-                Text(
-                  '50.04 \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 8.0, right: 8, top: 8, bottom: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'E-shop',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
-                ),
-                Text(
-                  '20.40 \$',
+                  '${widget.totalPrice} \$',
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
@@ -252,7 +239,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
-                  '12.09 \$',
+                  '0.00 \$',
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
@@ -269,7 +256,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
-                  '0.0 \$',
+                  '0.00 \$',
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
@@ -286,7 +273,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
-                  '5.00 \$',
+                  '0.00 \$',
                   style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
@@ -320,5 +307,70 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
       ),
     );
+  }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: ColorResources.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorResources.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorResources.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
+  void showSnakbar(BuildContext context, String message) {
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+        backgroundColor: ColorResources.themered,
+        content: new Text(
+          message,
+          style: TextStyle(color: ColorResources.white),
+        )));
+  }
+
+  void placeOrder()async {
+    setState(() {
+      isLoading = true;
+    });
+
+    RegistrationResponse response = await eShopViewModel.saveOrder(widget.placeOrder);
+    if(response != null){
+      setState(() {
+      isLoading = false;
+    });
+      showSnakbar(context, response.message);
+    }
+
   }
 }
