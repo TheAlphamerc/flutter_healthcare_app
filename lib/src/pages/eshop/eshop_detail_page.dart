@@ -25,7 +25,6 @@ class EshopDetailPage extends StatefulWidget {
 
 class _EshopDetailPageState extends State<EshopDetailPage> {
 
-  static GlobalKey<ScaffoldState> scaffoldKeys = new GlobalKey<ScaffoldState>();
 
   var isLoading = false;
   var isFirst = true;
@@ -57,7 +56,6 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       titleStyle = TextStyles.title.copyWith(fontSize: 23).bold;
     }
     return Scaffold(
-      key: scaffoldKeys,
       backgroundColor: ColorResources.white,
       body: WillPopScope(
         onWillPop:()=> Navigator.push(context,
@@ -371,7 +369,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         : Text('');
   }
   void showSnakbar(BuildContext context, String message) {
-    scaffoldKeys.currentState.showSnackBar(new SnackBar(
+    Scaffold.of(context).showSnackBar(new SnackBar(
         backgroundColor: ColorResources.themered,
         content: new Text(
           message,

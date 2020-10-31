@@ -43,11 +43,10 @@ class EShopViewModel extends ChangeNotifier {
   }
 
   Future<List<Cart>> getCart(String userId) async {
-    final response =
-    await http.get('http://172.16.61.221:8059/admins.asmx/viewMyCart?userId=$userId');
+    final response = await http
+        .get('http://172.16.61.221:8059/admins.asmx/viewMyCart?userId=$userId');
 
     if (response.statusCode == 200) {
-
       List<Cart> carts;
 
       Iterable list = json.decode(response.body);
@@ -59,7 +58,14 @@ class EShopViewModel extends ChangeNotifier {
     }
   }
 
-  Future<RegistrationResponse> saveCart(String productId,String productName,String productCategoryId,String productCategoryName,String productPrice,String productQnty,String createdBy) async {
+  Future<RegistrationResponse> saveCart(
+      String productId,
+      String productName,
+      String productCategoryId,
+      String productCategoryName,
+      String productPrice,
+      String productQnty,
+      String createdBy) async {
     final response = await http.get(
         'http://172.16.61.221:8059/admins.asmx/saveMyCart?productId=$productId&productName=$productName&productCategoryId=$productCategoryId&productCategoryName=$productCategoryName&productPrice=$productPrice&productQnty=$productQnty&createdBy=$createdBy');
 
@@ -71,7 +77,15 @@ class EShopViewModel extends ChangeNotifier {
     }
   }
 
-  Future<RegistrationResponse> updateCart(String cartid,String productId,String productName,String productCategoryId,String productCategoryName,String productPrice,String productQnty,String createdBy) async {
+  Future<RegistrationResponse> updateCart(
+      String cartid,
+      String productId,
+      String productName,
+      String productCategoryId,
+      String productCategoryName,
+      String productPrice,
+      String productQnty,
+      String createdBy) async {
     final response = await http.get(
         'http://172.16.61.221:8059/admins.asmx/updateMyCart?cartid=$cartid&productId=$productId&productName=$productName&productCategoryId=$productCategoryId&productCategoryName=$productCategoryName&productPrice=$productPrice&productQnty=$productQnty&createdBy=$createdBy');
 
@@ -96,6 +110,15 @@ class EShopViewModel extends ChangeNotifier {
     }
   }
 
+  Future<RegistrationResponse> removeCartItem(String cartid) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/DeleteMyCart?cartid=$cartid');
 
-
+    print(response.body);
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
 }

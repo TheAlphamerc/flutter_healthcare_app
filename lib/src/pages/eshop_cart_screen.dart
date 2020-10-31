@@ -19,7 +19,7 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
   var isFirst = true;
   var isLoading = true;
   var userId;
-  var totalPrice =0.0;
+  var totalPrice = 0.0;
   List<Cart> cartList = new List();
   List<int> qunatityList = List<int>();
   EShopViewModel eShopViewModel;
@@ -66,14 +66,13 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
     return Align(
       alignment: Alignment.topRight,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 10.0,left:10,right:10),
+        padding: const EdgeInsets.only(bottom: 10.0, left: 10, right: 10),
         child: Container(
           height: 50,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              border: Border.all(color: ColorResources.themered,width: 1),
-              borderRadius: BorderRadius.all(
-                  Radius.circular(10))),
+              border: Border.all(color: ColorResources.themered, width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -94,21 +93,21 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    color: ColorResources.themered,
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(10),topRight: Radius.circular(10))
-                  ),
+                      color: ColorResources.themered,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(10),
+                          topRight: Radius.circular(10))),
                   child: GestureDetector(
                     onTap: () {
                       sendToCheckout(context);
-
-
                     },
                     child: Center(
                       child: Text(
                         'Checkout',
                         style: TextStyle(
-                            color: ColorResources.white,
-                            fontSize: 18,),
+                          color: ColorResources.white,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
@@ -125,8 +124,7 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
     return ListView.builder(
         itemCount: cartList != null ? cartList.length : 0,
         itemBuilder: (context, index) {
-
-          for(int i = 0 ;i<cartList.length;i++){
+          for (int i = 0; i < cartList.length; i++) {
             qunatityList.add(int.parse(cartList[i].productqnty));
           }
           return Slidable(
@@ -135,34 +133,33 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: Container(
-                decoration: BoxDecoration(
-                  color: ColorResources.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: ColorResources.lightblack.withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                        offset: Offset(0, 1), // changes position of shadow
-                      ),
-                    ]
-                ),
-
+                decoration:
+                    BoxDecoration(color: ColorResources.white, boxShadow: [
+                  BoxShadow(
+                    color: ColorResources.lightblack.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: Offset(0, 1), // changes position of shadow
+                  ),
+                ]),
                 child: Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: ColorResources.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))
-                        ),
+                            color: ColorResources.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
                         child: CachedNetworkImage(
-                          imageUrl: "http://172.16.61.221:8059${cartList[index].productimageurl}",
+                          imageUrl:
+                              "http://172.16.61.221:8059${cartList[index].productimageurl}",
                           height: 80,
                           width: 80,
                           fit: BoxFit.fill,
                           // placeholder: (context, url) => CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                     ),
@@ -176,16 +173,19 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                                 color: ColorResources.lightblack, fontSize: 18),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+                            padding:
+                                const EdgeInsets.only(top: 4.0, bottom: 4.0),
                             child: Text(
                               '${cartList[index].productcategoryname}',
                               style: TextStyle(
-                                  color: ColorResources.lightblack.withOpacity(0.5),
+                                  color: ColorResources.lightblack
+                                      .withOpacity(0.5),
                                   fontSize: 16),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+                            padding:
+                                const EdgeInsets.only(top: 4.0, bottom: 4.0),
                             child: Text(
                               '${cartList[index].productprice} \$',
                               style: TextStyle(
@@ -197,15 +197,21 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                         ],
                       ),
                     ),
-
                     GestureDetector(
-                      onTap: (){
-                        if(qunatityList[index] >1){
+                      onTap: () {
+                        if (qunatityList[index] > 1) {
                           setState(() {
-                            qunatityList[index] = qunatityList[index] -1;
-                            updateCart(context,cartList[index].id,cartList[index].productid,cartList[index].productname,
-                                cartList[index].productcategoryid,cartList[index].productcategoryname,cartList[index].productprice,
-                                qunatityList[index].toString(),userId);
+                            qunatityList[index] = qunatityList[index] - 1;
+                            updateCart(
+                                context,
+                                cartList[index].id,
+                                cartList[index].productid,
+                                cartList[index].productname,
+                                cartList[index].productcategoryid,
+                                cartList[index].productcategoryname,
+                                cartList[index].productprice,
+                                qunatityList[index].toString(),
+                                userId);
                           });
                           getTotalPrice();
                         }
@@ -214,58 +220,63 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                          border: Border.all(
-                            color: ColorResources.themered,
-                            width: 2
-                          )
-                        ),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            border: Border.all(
+                                color: ColorResources.themered, width: 2)),
                         child: Center(
-                          child:
-                          Padding(
-                            padding: const EdgeInsets.only(top:10.0),
-                            child: Icon(Icons.maximize,
-                            color: ColorResources.themered,),
-                          )),
+                            child: Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Icon(
+                            Icons.maximize,
+                            color: ColorResources.themered,
+                          ),
+                        )),
                       ),
                     ),
                     SizedBox(
                       width: 50,
                       child: Align(
-                        alignment: Alignment.center,
-                          child: Text('${qunatityList[index]}',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: ColorResources.lightblack,
-                            fontWeight: FontWeight.bold
-                          ),)),
+                          alignment: Alignment.center,
+                          child: Text(
+                            '${qunatityList[index]}',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: ColorResources.lightblack,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                          qunatityList[index] = qunatityList[index]+1;
-                          updateCart(context,cartList[index].id,cartList[index].productid,cartList[index].productname,
-                              cartList[index].productcategoryid,cartList[index].productcategoryname,cartList[index].productprice,
-                              qunatityList[index].toString(),userId);
+                          qunatityList[index] = qunatityList[index] + 1;
+                          updateCart(
+                              context,
+                              cartList[index].id,
+                              cartList[index].productid,
+                              cartList[index].productname,
+                              cartList[index].productcategoryid,
+                              cartList[index].productcategoryname,
+                              cartList[index].productprice,
+                              qunatityList[index].toString(),
+                              userId);
                         });
                         getTotalPrice();
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(right:5.0),
+                        padding: const EdgeInsets.only(right: 5.0),
                         child: Container(
                           width: 30,
                           height: 30,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
                               border: Border.all(
-                                  color: ColorResources.themered,
-                                  width: 2
-                              )
-                          ),
+                                  color: ColorResources.themered, width: 2)),
                           child: Center(
-                              child:
-                              Icon(Icons.add,
-                              color: ColorResources.themered,)),
+                              child: Icon(
+                            Icons.add,
+                            color: ColorResources.themered,
+                          )),
                         ),
                       ),
                     )
@@ -277,26 +288,31 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
               IconSlideAction(
                 onTap: () {},
                 color: Colors.transparent,
-                iconWidget: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: ColorResources.white,
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: ColorResources.lightblack.withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 15,
-                        offset: Offset(0, 1), // changes position of shadow
+                iconWidget: GestureDetector(
+                  onTap: () {
+                    openConfirmationDialog(context, cartList[index]);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: ColorResources.white,
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: ColorResources.lightblack.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 15,
+                          offset: Offset(0, 1), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.clear,
+                        color: ColorResources.themered,
+                        size: 20,
                       ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.clear,
-                      color: ColorResources.themered,
-                      size: 20,
                     ),
                   ),
                 ),
@@ -369,69 +385,161 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
           cartList.add(cart);
         });
       });
-      var total =0.0;
-      if(cartList != null){
-        for(int i =0;i<cartList.length;i++){
-          total += double.parse(cartList[i].productprice) * int.parse(cartList[i].productqnty);
+      var total = 0.0;
+      if (cartList != null) {
+        for (int i = 0; i < cartList.length; i++) {
+          total += double.parse(cartList[i].productprice) *
+              int.parse(cartList[i].productqnty);
         }
         setState(() {
           totalPrice = total;
         });
-
-
       }
     }
   }
 
-
-  void getTotalPrice(){
-    var total =0.0;
-    if(cartList != null){
-      for(int i =0;i<cartList.length;i++){
-          total += double.parse(cartList[i].productprice) * qunatityList[i];
+  void getTotalPrice() {
+    var total = 0.0;
+    if (cartList != null) {
+      for (int i = 0; i < cartList.length; i++) {
+        total += double.parse(cartList[i].productprice) * qunatityList[i];
       }
-          setState(() {
-            totalPrice = total;
-          });
-
+      setState(() {
+        totalPrice = total;
+      });
     }
   }
 
-  void updateCart(BuildContext context,String cartid,String productId,String productName,String productCategoryId,String productCategoryName,String productPrice,String productQnty,String createdBy) async{
+  void updateCart(
+      BuildContext context,
+      String cartid,
+      String productId,
+      String productName,
+      String productCategoryId,
+      String productCategoryName,
+      String productPrice,
+      String productQnty,
+      String createdBy) async {
     setState(() {
       isLoading = false;
     });
     RegistrationResponse response = await eShopViewModel.updateCart(
-      cartid,
-    productId,
-    productName,
-    productCategoryId,
-    productCategoryName,
-    productPrice,
-    productQnty,
-    userId);
+        cartid,
+        productId,
+        productName,
+        productCategoryId,
+        productCategoryName,
+        productPrice,
+        productQnty,
+        userId);
 
-    if(response != null){
+    if (response != null) {
       setState(() {
         isLoading = false;
       });
-
     }
   }
 
-  void sendToCheckout(BuildContext context) async{
+  void sendToCheckout(BuildContext context) async {
     List<Cart> carts = await eShopViewModel.getCart(userId);
 
-    if(carts != null){
-      PlaceOrder placeOrder = new PlaceOrder(
-        userId: userId,
-        productList: carts
-      );
-      Navigator.push(context,
-          MaterialPageRoute(builder: (_) => CheckoutPage(placeOrder,totalPrice)));
+    if (carts != null) {
+      PlaceOrder placeOrder =
+          new PlaceOrder(userId: userId, productList: carts);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => CheckoutPage(placeOrder, totalPrice)));
     }
-
-
   }
 
+  void openConfirmationDialog(BuildContext context, Cart cartitem) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: ColorResources.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Do you want to delete this item?',
+                            style: TextStyle(
+                              color: ColorResources.lightblack,
+                            ),),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: ColorResources.themered,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>Navigator.pop(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('No',
+                                      style: TextStyle(
+                                          color: ColorResources.lightOrange
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>removeItem(context,cartitem),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('Yes',
+                                      style: TextStyle(
+                                          color: ColorResources.themered
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void removeItem(BuildContext context, Cart cartitem) async {
+    setState(() {
+      isLoading = true;
+    });
+    RegistrationResponse response =
+        await eShopViewModel.removeCartItem(cartitem.id.toString());
+
+    if (response != null) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => EshopCartScreen()));
+    }
+  }
 }
