@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/lab_test_view_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/purchase_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/splash_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/profile_screen.dart';
 import 'package:flutter_healthcare_app/src/profile/contat_information.dart';
@@ -109,7 +110,8 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
           ),
           GestureDetector(
             onTap: (){
-              print('You clicked in Purchase Info details');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => PurchaseScreen()));
             },
             child: Padding(
               padding: const EdgeInsets.only(left:20.0, top:3, bottom: 15),
