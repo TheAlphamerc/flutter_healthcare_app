@@ -3,6 +3,7 @@ import 'package:flutter_healthcare_app/src/model/cart.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
 import 'package:flutter_healthcare_app/src/model/order.dart';
+import 'package:flutter_healthcare_app/src/model/orderDetails.dart';
 import 'package:flutter_healthcare_app/src/model/place_order.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'dart:async';
@@ -127,7 +128,7 @@ class EShopViewModel extends ChangeNotifier {
 
   Future<List<Order>> getAllOrder(String userId) async {
     final response = await http.get(
-        'http://172.16.61.221:8059/admins.asmx/viewMyOrder?userId=$userId&orderId=');
+        'http://172.16.61.221:8059/admins.asmx/viewMyOrder?userId=$userId');
 
     if (response.statusCode == 200) {
       List<Order> orders;
@@ -137,6 +138,18 @@ class EShopViewModel extends ChangeNotifier {
       orders = list.map((model) => Order.fromJson(model)).toList();
 
       return orders;
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+  Future<OrderDetails> getOrderDetails(String userId, String orderId) async {
+    print('$userId $orderId');
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/viewMyOrderDetails?userId=$userId&orderId=$orderId');
+
+    if (response.statusCode == 200) {
+      return OrderDetails.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Exception: ${response.statusCode}');
     }
