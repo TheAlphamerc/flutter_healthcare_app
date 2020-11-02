@@ -5,7 +5,7 @@ import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
-import 'package:flutter_healthcare_app/src/pages/eshop_cart_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop/eshop_cart_screen.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
 import 'package:flutter_healthcare_app/src/theme/theme.dart';
@@ -58,7 +58,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
     return Scaffold(
       backgroundColor: ColorResources.white,
       body: WillPopScope(
-        onWillPop:()=> Navigator.push(context,
+        onWillPop:()=> Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (_) => EshopHomePage())),
         child: SafeArea(
           bottom: false,

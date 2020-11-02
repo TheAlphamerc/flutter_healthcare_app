@@ -1,13 +1,12 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/cart.dart';
-import 'package:flutter_healthcare_app/src/model/data.dart';
 import 'package:flutter_healthcare_app/src/model/medicine.dart';
 import 'package:flutter_healthcare_app/src/model/medicine_type.dart';
-import 'package:flutter_healthcare_app/src/pages/cart_page.dart';
 import 'package:flutter_healthcare_app/src/pages/eshop/eshop_detail_page.dart';
-import 'package:flutter_healthcare_app/src/pages/eshop_cart_screen.dart';
-import 'package:flutter_healthcare_app/src/pages/notification_page.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop/eshop_cart_screen.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +19,7 @@ class EshopHomePage extends StatefulWidget {
 
 class _EshopHomePageState extends State<EshopHomePage> {
   TextEditingController _problemController = TextEditingController();
+  static GlobalKey<ScaffoldState> homePageScaffoldKey = new GlobalKey<ScaffoldState>();
   EShopViewModel eShopViewModel;
 
   var fileName = 'File';
@@ -46,29 +46,34 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget build(BuildContext context) {
     eShopViewModel = Provider.of<EShopViewModel>(context);
     if(isFirst){
-
       getAllMedicine(context,'','','','');
       getAllMedicineType(context);
-
       setState(() {
         isFirst = false;
       });
     }
     return Scaffold(
+      key: homePageScaffoldKey,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: ColorResources.themered,
         elevation: 0,
-        leading: Icon(
-          Icons.menu,
-          color: ColorResources.white,
-        ),
+        title: Text('E-shop',
+        style: TextStyle(
+          fontSize: 18,
+          color: ColorResources.white
+        ),),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => EshopCartScreen()));
+                if(cartList != null && cartList.length >0) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => EshopCartScreen()));
+                }else{
+                  showSnakbar(context, 'Cart is empty');
+                }
 
               },
               child: SizedBox(
@@ -144,16 +149,6 @@ class _EshopHomePageState extends State<EshopHomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0, left: 15, bottom: 10),
-            child: Text(
-              'E-shop',
-              style: TextStyle(
-                color: ColorResources.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -237,6 +232,15 @@ class _EshopHomePageState extends State<EshopHomePage> {
     );
   }
 
+  void showSnakbar(BuildContext context, String message) {
+    homePageScaffoldKey.currentState.showSnackBar(new SnackBar(
+        backgroundColor: ColorResources.themered,
+        content: new Text(
+          message,
+          style: TextStyle(color: ColorResources.white),
+        )));
+  }
+
   Widget _medicineList(BuildContext context) {
     return GridView.builder(
         shrinkWrap: true,
@@ -248,7 +252,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
             padding: const EdgeInsets.all(5.0),
             child: GestureDetector(
               onTap: (){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (_) => EshopDetailPage(medicineListdata[index])));
               },
               child: Container(

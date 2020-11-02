@@ -4,6 +4,7 @@ import 'package:flutter_healthcare_app/src/model/cart.dart';
 import 'package:flutter_healthcare_app/src/model/place_order.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
 import 'package:flutter_healthcare_app/src/pages/checkout_page.dart';
+import 'package:flutter_healthcare_app/src/pages/eshop/eshop_home_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -376,6 +377,9 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
     List<Cart> carts = await eShopViewModel.getCart(userId);
 
     if (carts != null) {
+
+
+
       setState(() {
         isLoading = false;
       });
@@ -395,6 +399,12 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
           totalPrice = total;
         });
       }
+
+      if(cartList.length ==0){
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (_) => EshopHomePage()));
+      }
+
     }
   }
 

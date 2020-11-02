@@ -15,6 +15,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
   List<Order> orderList = new List();
   var isLoading = true;
   var isFirst = true;
+  var notFound = false;
   var userId;
   EShopViewModel eShopViewModel;
 
@@ -121,7 +122,8 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
               );
             }),
           ),
-          loading(context)
+          loading(context),
+          notFoundWidget(context)
         ],
       ),
     );
@@ -168,17 +170,52 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
     )
         : Text('');
   }
+  Widget notFoundWidget(BuildContext context) {
+    return notFound
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              child: Center(
+                child: Image.asset(
+                  'assets/not_found.png',
+                  height: 300,
+                  width: 300,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
 
   void getAllOrder(BuildContext context) async{
     List<Order> orders = await eShopViewModel.getAllOrder(userId);
     if(orders != null){
-      orders.forEach((element) {
-        setState(() {
-          orderList.add(element);
-          isLoading =false;
-        });
 
-      });
+      if(orders.length >0) {
+        orders.forEach((element) {
+          setState(() {
+            orderList.add(element);
+            isLoading = false;
+            notFound = false;
+
+          });
+        });
+      }else{
+        setState(() {
+          notFound = true;
+          isLoading = false;
+        });
+      }
     }
   }
   void getCustomerInfo(BuildContext context) async {
