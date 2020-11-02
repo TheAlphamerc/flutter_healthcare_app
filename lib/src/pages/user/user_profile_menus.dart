@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/lab_test_view_screen.dart';
-import 'package:flutter_healthcare_app/src/pages/purchase_detail_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/purchase_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/splash_page.dart';
 import 'package:flutter_healthcare_app/src/pages/user/profile_screen.dart';

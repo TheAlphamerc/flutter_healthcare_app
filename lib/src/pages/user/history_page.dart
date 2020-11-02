@@ -11,26 +11,22 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorResources.themered,
+        title: Text('History',
+        style: TextStyle(
+          color: ColorResources.white,
+          fontSize: 18
+        ),),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 150,
-              color: ColorResources.themered,
-              child: Center(
-                child: Text(
-                  'History',
-                  style: TextStyle(color: ColorResources.white, fontSize: 18),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 150,
-              child: body(context),
-            ),
+            body(context),
           ],
         ),
       ),
