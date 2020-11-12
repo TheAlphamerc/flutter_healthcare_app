@@ -154,4 +154,15 @@ class EShopViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
+
+  Future<RegistrationResponse> deleteOrder(String orderId,String userId) async {
+    final response = await http.get(
+        'http://172.16.61.221:8059/admins.asmx/DeleteMyOrder?orderId=$orderId&userId=$userId');
+
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
 }

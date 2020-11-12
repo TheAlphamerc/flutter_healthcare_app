@@ -187,9 +187,9 @@ class _UserProfileMenuState extends State<UserProfileMenu> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        elevation: 0,
-        title: Text('App Name', style: TextStyle (color: ColorResources.themered),),
+        backgroundColor: ColorResources.themered,
+        centerTitle: true,
+        title: Text('M Care ', style: TextStyle (color: ColorResources.white),),
       ),
       body:
       CustomScrollView(

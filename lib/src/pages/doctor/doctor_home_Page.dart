@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/appointment_model.dart';
 import 'package:flutter_healthcare_app/src/model/data.dart';
+import 'package:flutter_healthcare_app/src/model/patient_appointment.dart';
 import 'package:flutter_healthcare_app/src/pages/doctor/all_patient_details.dart';
-import 'package:flutter_healthcare_app/src/pages/doctor/patient_details_page.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
+import 'package:flutter_healthcare_app/src/viewModel/patient_appointment_View_model.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DoctorHomePage extends StatefulWidget {
   @override
@@ -11,19 +15,33 @@ class DoctorHomePage extends StatefulWidget {
 }
 
 class _DoctorHomePageState extends State<DoctorHomePage> {
+
+  PatientAppointmentViewModel patientAppointmentViewModel;
+
+
   var selected = 'Upcoming';
-  List<Appointment> appointmentDataList;
+  var isFirst = true;
+  var isLoading = true;
+  var isNotFound = false;
+  var id;
+  var userType;
+  var firstName ='';
+  var lastName ='';
+
+  List<PatientAppointment> patientAppointmentList = new List();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    appointmentDataList =
-        appointmentList.map((x) => Appointment.fromJson(x)).toList();
+    getCustomerInfo(context);
+
   }
 
   @override
   Widget build(BuildContext context) {
+    patientAppointmentViewModel = Provider.of<PatientAppointmentViewModel>(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -76,7 +94,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
               ],
             ),
           ),
-          getAppointmentList(context)
+          patientAppointmentList != null? getAppointmentList(context):Container()
         ],
       ),
     );
@@ -93,7 +111,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
             style: TextStyle(fontSize: 20, color: ColorResources.grey),
           ),
           Text(
-            'Dr. Kuneil keep',
+            '${firstName != null ? firstName:''}${lastName != null ? lastName:''}',
             style: TextStyle(
               fontSize: 20,
               color: ColorResources.black,
@@ -128,7 +146,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                     style: TextStyle(
                       decoration: TextDecoration.none,
                       color: selected == 'Upcoming'
-                          ? Colors.redAccent
+                          ? ColorResources.themered
                           : Colors.black54,
                       fontSize: 14,
                     )),
@@ -144,7 +162,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Re-schedule'
-                            ? Colors.redAccent
+                            ? ColorResources.themered
                             : Colors.black54,
                         fontSize: 14)),
               ),
@@ -159,7 +177,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Canceld'
-                            ? Colors.redAccent
+                            ? ColorResources.themered
                             : Colors.black54,
                         fontSize: 14)),
               ),
@@ -174,7 +192,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                     style: TextStyle(
                         decoration: TextDecoration.none,
                         color: selected == 'Completed'
-                            ? Colors.redAccent
+                            ? ColorResources.themered
                             : Colors.black54,
                         fontSize: 14)),
               ),
@@ -266,7 +284,7 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
         return GestureDetector(
           onTap: (){
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => ALlPatientDetails(appointmentDataList,index)));
+                context, MaterialPageRoute(builder: (_) => ALlPatientDetails(patientAppointmentList,index)));
 
           },
           child: Container(
@@ -283,21 +301,16 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                           padding: const EdgeInsets.all(15.0),
                           child: Column(
                             children: [
-                              Text('Today',
-                                style: TextStyle(
-                                  color: ColorResources.grey,
-                                  fontSize: 14,
-                                ),),
                               Padding(
                                 padding: const EdgeInsets.only(top:10.0,bottom: 10.0),
-                                child: Text(appointmentDataList[index].date,
+                                child: Text('${DateFormat('dd MMM yyyy').format(DateFormat("dd/MM/yyyy").parse(patientAppointmentList[index].dates))}' ,
                                   style: TextStyle(
                                       color: ColorResources.themered,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),),
                               ),
-                              Text(appointmentDataList[index].time,
+                              Text(patientAppointmentList[index].appointmentTime,
                                 style: TextStyle(
                                   color: ColorResources.black,
                                   fontSize: 12,
@@ -316,24 +329,24 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(appointmentDataList[index].name,
+                                Text(patientAppointmentList[index].patientName,
                                   style: TextStyle(
                                     color: ColorResources.black,
                                     fontSize: 18,
                                   ),),
-                                Text('#${appointmentDataList[index].appointmentId}',
+                                Text('#${patientAppointmentList[index].id}',
                                   style: TextStyle(
                                     color: ColorResources.themered,
                                     fontSize: 14,
                                   ),),
-                                Text('${appointmentDataList[index].gender}. ${appointmentDataList[index].age} years',
+                                Text('${patientAppointmentList[index].gender}. ${patientAppointmentList[index].age} years',
                                   style: TextStyle(
                                     color: ColorResources.grey,
                                     fontSize: 14,
                                   ),),
                                 Padding(
                                   padding: const EdgeInsets.only(bottom:10.0),
-                                  child: Text('Reason to get appointed',
+                                  child: Text('${patientAppointmentList[index].reasons != null ?patientAppointmentList[index].reasons:''}',
                                     style: TextStyle(
                                       color: ColorResources.black,
                                       fontSize: 14,
@@ -390,8 +403,128 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
           ),
         );
       },
-      childCount: appointmentDataList.length,
+      childCount: patientAppointmentList.length,
     ));
+  }
+
+  Widget loading(BuildContext context) {
+    return isLoading
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: ColorResources.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorResources.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorResources.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/loading.gif',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
+
+  Widget notFound(BuildContext context) {
+    return isNotFound
+        ? Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Container(
+        color: ColorResources.white.withOpacity(0.3),
+        child: Center(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorResources.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorResources.lightBlue.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/no_item.png',
+                    height: 80,
+                    width: 80,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    )
+        : Text('');
+  }
+
+  void getCustomerInfo(BuildContext context) async {
+    SharedPreferences customerInfo = await SharedPreferences.getInstance();
+    id = customerInfo.getString('id');
+    userType = customerInfo.getString('userType');
+    firstName = customerInfo.getString('firstName');
+    lastName = customerInfo.getString('lastName');
+
+    if (id != null) {
+      getAllPatientAppointment(context);
+    }
+  }
+
+  void getAllPatientAppointment(BuildContext context) async{
+
+      List<PatientAppointment> viewAppointment =
+      await patientAppointmentViewModel.getAllPatientAppointment(id.toString());
+
+      if (viewAppointment != null) {
+        appointmentList.clear();
+        if (viewAppointment.length > 0) {
+          setState(() {
+            viewAppointment.forEach((element) {
+              patientAppointmentList.add(element);
+            });
+            isLoading = false;
+          });
+        } else {
+          setState(() {
+            isLoading = false;
+            isNotFound = true;
+          });
+        }
+      }
+
   }
 
 }

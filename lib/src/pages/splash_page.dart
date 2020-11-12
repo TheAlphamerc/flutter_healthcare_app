@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
+import 'package:flutter_healthcare_app/src/pages/bottomNavigation/doctor_dashboard_screen.dart';
 import 'package:flutter_healthcare_app/src/pages/login_page.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/theme/text_styles.dart';
@@ -16,6 +17,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
 
   var id;
+  var userType;
 
   @override
   void initState() {
@@ -83,9 +85,16 @@ class _SplashPageState extends State<SplashPage> {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     setState(() {
       id = customerInfo.getString('id');
+      userType = customerInfo.getString('userType');
     });
       Future.delayed(Duration(seconds: 2)).then((_) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>id != null ?DashboardScreen():LoginPage()));
+        if(id != null){
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>userType=='Patient' ?DashboardScreen():DoctorDashboardScreen()));
+        }else {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>LoginPage()));
+        }
+
+
       });
 
 

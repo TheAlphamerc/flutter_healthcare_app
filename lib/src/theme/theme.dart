@@ -7,7 +7,7 @@ class AppTheme {
   const AppTheme();
   static ThemeData lightTheme = ThemeData(
     backgroundColor: ColorResources.background,
-    primaryColor: ColorResources.purple,
+    primaryColor: ColorResources.themered,
     cardTheme: CardTheme(color: ColorResources.background),
     textTheme: TextTheme(display1: TextStyle(color: ColorResources.black)),
     iconTheme: IconThemeData(color: ColorResources.iconColor),

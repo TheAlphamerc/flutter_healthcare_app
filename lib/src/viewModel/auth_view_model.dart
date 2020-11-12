@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_healthcare_app/src/model/contact_details.dart';
+import 'package:flutter_healthcare_app/src/model/emergency_contact.dart';
 import 'package:flutter_healthcare_app/src/model/login_response.dart';
 import 'package:flutter_healthcare_app/src/model/registration.dart';
 import 'package:flutter_healthcare_app/src/model/registration_response.dart';
@@ -38,5 +40,31 @@ class AuthViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
+
+  Future<RegistrationResponse> saveEmergencyContact(Emergency emergency) async {
+    var cartObj = jsonEncode(emergency);
+    final response =
+    await http.get('${url.BASE_URL}saveToContact?cartobj=$cartObj');
+
+    if (response.statusCode == 200) {
+      return RegistrationResponse.fromJson(jsonDecode(response.body));
+    } else {
+      print(response.body);
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+  Future<ContactDetails> getContactDetails(String userId) async {
+    final response = await http.get(
+        '${url.BASE_URL}getContactDetails?userId=$userId');
+
+    if (response.statusCode == 200) {
+      return ContactDetails.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Exception: ${response.statusCode}');
+    }
+  }
+
+
 
 }

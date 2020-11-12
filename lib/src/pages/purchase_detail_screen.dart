@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/order.dart';
 import 'package:flutter_healthcare_app/src/model/orderDetails.dart';
+import 'package:flutter_healthcare_app/src/model/registration_response.dart';
+import 'package:flutter_healthcare_app/src/pages/purchase_screen.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
 import 'package:provider/provider.dart';
@@ -114,18 +116,23 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         ),
         Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Container(
-            width: 100,
-            height: 30,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                border:
-                    Border.all(color: ColorResources.lightOrange, width: 2)),
-            child: Center(
-              child: Text(
-                'Cancel',
-                style:
-                    TextStyle(fontSize: 16, color: ColorResources.lightOrange),
+          child: GestureDetector(
+            onTap: (){
+              openConfirmationDialog(context,order.orderId);
+            },
+            child: Container(
+              width: 100,
+              height: 30,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  border:
+                      Border.all(color: ColorResources.lightOrange, width: 2)),
+              child: Center(
+                child: Text(
+                  'Cancel',
+                  style:
+                      TextStyle(fontSize: 16, color: ColorResources.lightOrange),
+                ),
               ),
             ),
           ),
@@ -349,5 +356,94 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
     setState(() {
       subTotal = total;
     });
+  }
+
+  void openConfirmationDialog(BuildContext context,String orderId) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 16,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: ColorResources.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Do you want to delete this order?',
+                            style: TextStyle(
+                              color: ColorResources.lightblack,
+                            ),),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: ColorResources.themered,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>Navigator.pop(context),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('No',
+                                      style: TextStyle(
+                                          color: ColorResources.lightOrange
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: ()=>cancelOrder(orderId),
+                                child: Container(
+                                  child: Center(
+                                    child: Text('Yes',
+                                      style: TextStyle(
+                                          color: ColorResources.themered
+                                      ),),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  void cancelOrder(String orderId) async{
+    RegistrationResponse response = await eShopViewModel.deleteOrder(orderId, widget.userId);
+
+    if(response != null){
+      if(response.success){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => PurchaseScreen()));
+      }
+    }
+
   }
 }

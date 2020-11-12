@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_healthcare_app/src/model/appointment_model.dart';
+import 'package:flutter_healthcare_app/src/model/patient_appointment.dart';
 import 'package:flutter_healthcare_app/src/theme/light_color.dart';
 
 class PatientDetailsPage extends StatefulWidget {
-  Appointment appointment;
+  PatientAppointment appointment;
 
   PatientDetailsPage( this.appointment);
 
@@ -114,7 +115,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(widget.appointment.appointmentId,
+                Text(widget.appointment.id,
                 style: TextStyle(
                   color: ColorResources.themered,
                   fontSize: 12
@@ -139,7 +140,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(left:15.0),
-            child: Text(widget.appointment.name,
+            child: Text(widget.appointment.patientName,
             style: TextStyle(
               color: ColorResources.lightblack,
               fontSize: 16,
@@ -264,7 +265,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
 
         Padding(
           padding: const EdgeInsets.only(top:5.0,bottom: 10),
-          child: Text(widget.appointment.reason,style: TextStyle(
+          child: Text(widget.appointment.reasons,style: TextStyle(
               color: ColorResources.lightblack.withOpacity(0.5),
               fontSize: 14
           ),),
@@ -276,7 +277,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
 
           Padding(
             padding: const EdgeInsets.only(top:5.0,bottom: 10),
-            child: Text(widget.appointment.reason,style: TextStyle(
+            child: Text(widget.appointment.reasons,style: TextStyle(
                 color: ColorResources.lightblack.withOpacity(0.5),
                 fontSize: 14
             ),),

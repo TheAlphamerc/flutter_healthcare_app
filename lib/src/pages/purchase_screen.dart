@@ -207,8 +207,10 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
             orderList.add(element);
             isLoading = false;
             notFound = false;
-
           });
+        });
+        setState(() {
+          orderList.toSet();
         });
       }else{
         setState(() {
