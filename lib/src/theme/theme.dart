@@ -6,20 +6,20 @@ import 'light_color.dart';
 class AppTheme {
   const AppTheme();
   static ThemeData lightTheme = ThemeData(
-    backgroundColor: LightColor.background,
-    primaryColor: LightColor.purple,
-    cardTheme: CardTheme(color: LightColor.background),
-    textTheme: TextTheme(display1: TextStyle(color: LightColor.black)),
-    iconTheme: IconThemeData(color: LightColor.iconColor),
-    bottomAppBarColor: LightColor.background,
-    dividerColor: LightColor.grey,
+    backgroundColor: ColorResources.background,
+    primaryColor: ColorResources.themered,
+    cardTheme: CardTheme(color: ColorResources.background),
+    textTheme: TextTheme(display1: TextStyle(color: ColorResources.black)),
+    iconTheme: IconThemeData(color: ColorResources.iconColor),
+    bottomAppBarColor: ColorResources.background,
+    dividerColor: ColorResources.grey,
     primaryTextTheme: TextTheme(
-      body1: TextStyle(color:LightColor.titleTextColor)
+      body1: TextStyle(color:ColorResources.titleTextColor)
     )
   );
 
-  static TextStyle titleStyle = const TextStyle(color: LightColor.titleTextColor, fontSize: 16);
-  static TextStyle subTitleStyle = const TextStyle(color: LightColor.subTitleTextColor, fontSize: 12);
+  static TextStyle titleStyle = const TextStyle(color: ColorResources.titleTextColor, fontSize: 16);
+  static TextStyle subTitleStyle = const TextStyle(color: ColorResources.subTitleTextColor, fontSize: 12);
 
   static TextStyle h1Style = const TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   static TextStyle h2Style = const TextStyle(fontSize: 22);

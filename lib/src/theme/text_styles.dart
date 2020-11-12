@@ -7,6 +7,7 @@ class FontSizes {
   static double get title => 16 * scale;
   static double get titleM => 18 * scale;
   static double get sizeXXl => 28 * scale;
+  static double get sizeNormal =>12 * scale;
 }
  
 class TextStyles {
@@ -18,4 +19,5 @@ class TextStyles {
  
   static TextStyle get body => TextStyle(fontSize: FontSizes.body, fontWeight: FontWeight.w300);
   static TextStyle get bodySm => body.copyWith(fontSize: FontSizes.bodySm);
+  static TextStyle get bodynormal  => TextStyle(fontSize: FontSizes.sizeNormal, fontWeight: FontWeight.normal);
 }

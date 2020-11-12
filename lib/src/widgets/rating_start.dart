@@ -19,7 +19,7 @@ class _RatingStarState extends State<RatingStar> {
     }
 
     return Icon(halfStar ? Icons.star_half : Icons.star,
-        color: index < widget.rating ? LightColor.orange : LightColor.grey);
+        color: index < widget.rating ? ColorResources.orange : ColorResources.grey);
   }
 
   @override
