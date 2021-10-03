@@ -7,10 +7,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ServiceViewModel extends ChangeNotifier {
-
   Future<List<Service>> getAllService() async {
-    final response =
-        await http.get('${url.BASE_URL}getServices');
+    final response = await http.get(Uri.tryParse('${url.BASE_URL}getServices'));
 
     if (response.statusCode == 200) {
       List<Service> services;
@@ -25,8 +23,8 @@ class ServiceViewModel extends ChangeNotifier {
   }
 
   Future<List<SubService>> getSubService(String serviceId) async {
-    final response =
-    await http.get('${url.BASE_URL}viewServiceCenter?serviceId=$serviceId');
+    final response = await http.get(
+        Uri.tryParse('${url.BASE_URL}viewServiceCenter?serviceId=$serviceId'));
 
     if (response.statusCode == 200) {
       List<SubService> services;
@@ -39,6 +37,4 @@ class ServiceViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
-
-
 }

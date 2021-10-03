@@ -117,8 +117,8 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         Padding(
           padding: const EdgeInsets.all(15.0),
           child: GestureDetector(
-            onTap: (){
-              openConfirmationDialog(context,order.orderId);
+            onTap: () {
+              openConfirmationDialog(context, order.orderId);
             },
             child: Container(
               width: 100,
@@ -130,8 +130,8 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
               child: Center(
                 child: Text(
                   'Cancel',
-                  style:
-                      TextStyle(fontSize: 16, color: ColorResources.lightOrange),
+                  style: TextStyle(
+                      fontSize: 16, color: ColorResources.lightOrange),
                 ),
               ),
             ),
@@ -143,7 +143,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
 
   itemList(BuildContext context) {
     return ListView.builder(
-        itemCount: order != null ? order.orderList.length :0,
+        itemCount: order != null ? order.orderList.length : 0,
         itemBuilder: (context, index) {
           return Container(
             width: MediaQuery.of(context).size.width,
@@ -156,8 +156,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: CachedNetworkImage(
-                          imageUrl:
-                          "http://172.16.61.221:8059${order.orderList[index].productimageurl}",
+                          imageUrl: "${order.orderList[index].productimageurl}",
                           height: 80,
                           width: 80,
                           fit: BoxFit.fill,
@@ -214,7 +213,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Order # ${order != null ? order.orderId : '0' }',
+              'Order # ${order != null ? order.orderId : '0'}',
               style: TextStyle(color: ColorResources.themered, fontSize: 16),
             ),
             Text(
@@ -283,7 +282,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                 style: TextStyle(fontSize: 12),
               ),
               Text(
-                '${order != null ? order.orderList.length : '0' } items,            \$$subTotal',
+                '${order != null ? order.orderList.length : '0'} items,            \$$subTotal',
                 style: TextStyle(fontSize: 12),
               )
             ],
@@ -296,42 +295,42 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
 
@@ -351,14 +350,15 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
   void getSubTotal(List<OrderList> orderList) {
     var total = 0.0;
     orderList.forEach((element) {
-      total += double.parse(element.productprice) * double.parse(element.productqnty);
+      total += double.parse(element.productprice) *
+          double.parse(element.productqnty);
     });
     setState(() {
       subTotal = total;
     });
   }
 
-  void openConfirmationDialog(BuildContext context,String orderId) {
+  void openConfirmationDialog(BuildContext context, String orderId) {
     showDialog(
         context: context,
         builder: (context) {
@@ -380,10 +380,12 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                         padding: const EdgeInsets.all(15.0),
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text('Do you want to delete this order?',
+                          child: Text(
+                            'Do you want to delete this order?',
                             style: TextStyle(
                               color: ColorResources.lightblack,
-                            ),),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -399,26 +401,28 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                           children: [
                             Expanded(
                               child: GestureDetector(
-                                onTap: ()=>Navigator.pop(context),
+                                onTap: () => Navigator.pop(context),
                                 child: Container(
                                   child: Center(
-                                    child: Text('No',
+                                    child: Text(
+                                      'No',
                                       style: TextStyle(
-                                          color: ColorResources.lightOrange
-                                      ),),
+                                          color: ColorResources.lightOrange),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                             Expanded(
                               child: GestureDetector(
-                                onTap: ()=>cancelOrder(orderId),
+                                onTap: () => cancelOrder(orderId),
                                 child: Container(
                                   child: Center(
-                                    child: Text('Yes',
+                                    child: Text(
+                                      'Yes',
                                       style: TextStyle(
-                                          color: ColorResources.themered
-                                      ),),
+                                          color: ColorResources.themered),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -435,15 +439,15 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         });
   }
 
-  void cancelOrder(String orderId) async{
-    RegistrationResponse response = await eShopViewModel.deleteOrder(orderId, widget.userId);
+  void cancelOrder(String orderId) async {
+    RegistrationResponse response =
+        await eShopViewModel.deleteOrder(orderId, widget.userId);
 
-    if(response != null){
-      if(response.success){
+    if (response != null) {
+      if (response.success) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => PurchaseScreen()));
       }
     }
-
   }
 }

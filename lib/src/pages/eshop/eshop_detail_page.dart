@@ -24,15 +24,12 @@ class EshopDetailPage extends StatefulWidget {
 }
 
 class _EshopDetailPageState extends State<EshopDetailPage> {
-
-
   var isLoading = false;
   var isFirst = true;
   var userId;
   var isFound = false;
   List<Cart> cartList = new List();
   EShopViewModel eShopViewModel;
-
 
   @override
   void initState() {
@@ -43,12 +40,10 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
   @override
   Widget build(BuildContext context) {
     eShopViewModel = Provider.of<EShopViewModel>(context);
-    if(isFirst){
-
+    if (isFirst) {
       setState(() {
         isFirst = false;
       });
-
     }
 
     TextStyle titleStyle = TextStyles.title.copyWith(fontSize: 25).bold;
@@ -58,8 +53,8 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
     return Scaffold(
       backgroundColor: ColorResources.white,
       body: WillPopScope(
-        onWillPop:()=> Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (_) => EshopHomePage())),
+        onWillPop: () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => EshopHomePage())),
         child: SafeArea(
           bottom: false,
           child: Stack(
@@ -67,7 +62,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
               Stack(
                 children: [
                   CachedNetworkImage(
-                    imageUrl: "http://172.16.61.221:8059${widget.medicineListdata.imageUrl}",
+                    imageUrl: "${widget.medicineListdata.imageUrl}",
                     height: 250,
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.cover,
@@ -154,10 +149,9 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => EshopCartScreen()));
-
                 },
                 child: SizedBox(
                   width: 40,
@@ -174,7 +168,8 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                               color: ColorResources.lightblack.withOpacity(0.3),
                               spreadRadius: 1,
                               blurRadius: 15,
-                              offset: Offset(0, 1), // changes position of shadow
+                              offset:
+                                  Offset(0, 1), // changes position of shadow
                             ),
                           ],
                         ),
@@ -188,19 +183,21 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
                       ),
                       Positioned(
                         right: 0,
-                        child:cartList != null  && cartList.length >0? Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            color: ColorResources.themered,
-                            borderRadius: BorderRadius.all(Radius.circular(30))
-                          ),
-                          child: Center(
-                              child: Text('${cartList != null ? cartList.length :0}',
-                              style: TextStyle(
-                                color: ColorResources.white
-                              ),)),
-                        ):Text(''),
+                        child: cartList != null && cartList.length > 0
+                            ? Container(
+                                height: 20,
+                                width: 20,
+                                decoration: BoxDecoration(
+                                    color: ColorResources.themered,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                                child: Center(
+                                    child: Text(
+                                  '${cartList != null ? cartList.length : 0}',
+                                  style: TextStyle(color: ColorResources.white),
+                                )),
+                              )
+                            : Text(''),
                       )
                     ],
                   ),
@@ -212,8 +209,6 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
       ],
     );
   }
-
-
 
   Widget priceText(BuildContext context) {
     return Column(
@@ -255,7 +250,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
               fontWeight: FontWeight.bold),
         ),
         Padding(
-          padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
+          padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
           child: Text(
             '${widget.medicineListdata.productcategoryname}',
             style: TextStyle(
@@ -276,7 +271,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           color: ColorResources.lightblack.withOpacity(0.7),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom:10.0),
+          padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
             'Description',
             style: TextStyle(
@@ -286,7 +281,7 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom:10.0),
+          padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
             '${widget.medicineListdata.medicineDesc}',
             style: TextStyle(
@@ -296,12 +291,12 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top:8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: GestureDetector(
-            onTap: (){
-              if(!isFound){
-              saveToDb(context);
-              }else{
+            onTap: () {
+              if (!isFound) {
+                saveToDb(context);
+              } else {
                 showSnakbar(context, 'Already added');
               }
             },
@@ -309,16 +304,14 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
               height: 50,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: isFound? ColorResources.grey:ColorResources.themered,
-                borderRadius: BorderRadius.all(Radius.circular(10
-                ))
-              ),
+                  color:
+                      isFound ? ColorResources.grey : ColorResources.themered,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Center(
-                child: Text('Add to cart',
-                style: TextStyle(
-                  color: ColorResources.white,
-                  fontSize: 16
-                ),),
+                child: Text(
+                  'Add to cart',
+                  style: TextStyle(color: ColorResources.white, fontSize: 16),
+                ),
               ),
             ),
           ),
@@ -330,44 +323,45 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
+
   void showSnakbar(BuildContext context, String message) {
     Scaffold.of(context).showSnackBar(new SnackBar(
         backgroundColor: ColorResources.themered,
@@ -377,51 +371,49 @@ class _EshopDetailPageState extends State<EshopDetailPage> {
         )));
   }
 
-  void saveToDb(BuildContext context) async{
+  void saveToDb(BuildContext context) async {
     setState(() {
       isLoading = false;
     });
-    RegistrationResponse response = await eShopViewModel.saveCart(widget.medicineListdata.id,
+    RegistrationResponse response = await eShopViewModel.saveCart(
+        widget.medicineListdata.id,
         widget.medicineListdata.medicinename,
         widget.medicineListdata.productcategory,
         widget.medicineListdata.productcategoryname,
         widget.medicineListdata.medicineprice,
-        '1', userId);
+        '1',
+        userId);
 
-    if(response != null){
+    if (response != null) {
       getCartProduct(context);
       showSnakbar(context, response.message);
       setState(() {
         isLoading = false;
       });
-
     }
   }
 
   void getCustomerInfo(BuildContext context) async {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     userId = customerInfo.getString('id');
-    if(userId != null){
+    if (userId != null) {
       getCartProduct(context);
     }
-
   }
 
-  void getCartProduct(BuildContext context) async{
+  void getCartProduct(BuildContext context) async {
     List<Cart> carts = await eShopViewModel.getCart(userId);
 
-    if(carts != null){
-
+    if (carts != null) {
       cartList.clear();
       carts.forEach((cart) {
         setState(() {
           cartList.add(cart);
-          if(cart.productid == widget.medicineListdata.id){
+          if (cart.productid == widget.medicineListdata.id) {
             isFound = true;
           }
         });
       });
     }
-
   }
 }

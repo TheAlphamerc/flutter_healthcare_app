@@ -19,7 +19,8 @@ class EshopHomePage extends StatefulWidget {
 
 class _EshopHomePageState extends State<EshopHomePage> {
   TextEditingController _problemController = TextEditingController();
-  static GlobalKey<ScaffoldState> homePageScaffoldKey = new GlobalKey<ScaffoldState>();
+  static GlobalKey<ScaffoldState> homePageScaffoldKey =
+      new GlobalKey<ScaffoldState>();
   EShopViewModel eShopViewModel;
 
   var fileName = 'File';
@@ -39,14 +40,13 @@ class _EshopHomePageState extends State<EshopHomePage> {
     getCustomerInfo(context);
     medicineListdata = new List();
     medicineTypeList = new List();
-
   }
 
   @override
   Widget build(BuildContext context) {
     eShopViewModel = Provider.of<EShopViewModel>(context);
-    if(isFirst){
-      getAllMedicine(context,'','','','');
+    if (isFirst) {
+      getAllMedicine(context, '', '', '', '');
       getAllMedicineType(context);
       setState(() {
         isFirst = false;
@@ -58,23 +58,21 @@ class _EshopHomePageState extends State<EshopHomePage> {
         centerTitle: true,
         backgroundColor: ColorResources.themered,
         elevation: 0,
-        title: Text('E-shop',
-        style: TextStyle(
-          fontSize: 18,
-          color: ColorResources.white
-        ),),
+        title: Text(
+          'E-shop',
+          style: TextStyle(fontSize: 18, color: ColorResources.white),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: (){
-                if(cartList != null && cartList.length >0) {
+              onTap: () {
+                if (cartList != null && cartList.length > 0) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => EshopCartScreen()));
-                }else{
+                } else {
                   showSnakbar(context, 'Cart is empty');
                 }
-
               },
               child: SizedBox(
                 width: 40,
@@ -105,19 +103,21 @@ class _EshopHomePageState extends State<EshopHomePage> {
                     ),
                     Positioned(
                       right: 0,
-                      child:cartList != null  && cartList.length >0? Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            color: ColorResources.themered,
-                            borderRadius: BorderRadius.all(Radius.circular(30))
-                        ),
-                        child: Center(
-                            child: Text('${cartList != null ? cartList.length :0}',
-                              style: TextStyle(
-                                  color: ColorResources.white
-                              ),)),
-                      ):Text(''),
+                      child: cartList != null && cartList.length > 0
+                          ? Container(
+                              height: 20,
+                              width: 20,
+                              decoration: BoxDecoration(
+                                  color: ColorResources.themered,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30))),
+                              child: Center(
+                                  child: Text(
+                                '${cartList != null ? cartList.length : 0}',
+                                style: TextStyle(color: ColorResources.white),
+                              )),
+                            )
+                          : Text(''),
                     )
                   ],
                 ),
@@ -126,7 +126,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
           )
         ],
       ),
-      body:Stack(
+      body: Stack(
         children: [
           Column(
             children: [
@@ -168,43 +168,46 @@ class _EshopHomePageState extends State<EshopHomePage> {
           SizedBox(
             height: 70,
             child: Padding(
-              padding: const EdgeInsets.only(left:15.0),
+              padding: const EdgeInsets.only(left: 15.0),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: medicineTypeList != null ? medicineTypeList.length :0,
-                  itemBuilder:(context,index){
+                  itemCount:
+                      medicineTypeList != null ? medicineTypeList.length : 0,
+                  itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: GestureDetector(
-                        onTap: ()=>getAllMedicine(context,'','',medicineTypeList[index].id,''),
+                        onTap: () => getAllMedicine(
+                            context, '', '', medicineTypeList[index].id, ''),
                         child: Container(
                           width: 70,
-                          child: Center(child: Column(
+                          child: Center(
+                              child: Column(
                             children: [
                               CachedNetworkImage(
-                                imageUrl: "http://172.16.61.221:8059${medicineTypeList[index].imageUrl}",
+                                imageUrl: "${medicineTypeList[index].imageUrl}",
                                 height: 24,
                                 width: 24,
                                 fit: BoxFit.fill,
                                 // placeholder: (context, url) => CircularProgressIndicator(),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top:6.0),
-                                child: Text('${medicineTypeList[index].medicinetypename}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: ColorResources.white
-
-                                ),),
+                                padding: const EdgeInsets.only(top: 6.0),
+                                child: Text(
+                                  '${medicineTypeList[index].medicinetypename}',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: ColorResources.white),
+                                ),
                               ),
                             ],
                           )),
                         ),
                       ),
                     );
-
-              }),
+                  }),
             ),
           ),
           SizedBox(
@@ -244,16 +247,19 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget _medicineList(BuildContext context) {
     return GridView.builder(
         shrinkWrap: true,
-        itemCount: medicineListdata != null ? medicineListdata.length:0,
+        itemCount: medicineListdata != null ? medicineListdata.length : 0,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => EshopDetailPage(medicineListdata[index])));
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            EshopDetailPage(medicineListdata[index])));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -273,7 +279,7 @@ class _EshopHomePageState extends State<EshopHomePage> {
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       child: CachedNetworkImage(
-                        imageUrl: "http://172.16.61.221:8059${medicineListdata[index].imageUrl}",
+                        imageUrl: "${medicineListdata[index].imageUrl}",
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width,
                         fit: BoxFit.fill,
@@ -293,11 +299,13 @@ class _EshopHomePageState extends State<EshopHomePage> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top:5.0),
+                              padding: const EdgeInsets.only(top: 5.0),
                               child: Text(
                                 '${medicineListdata[index].medicinename}',
                                 style: TextStyle(
-                                    color: ColorResources.black, fontSize: 16,fontWeight: FontWeight.bold),
+                                    color: ColorResources.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
@@ -318,19 +326,23 @@ class _EshopHomePageState extends State<EshopHomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10,bottom:5.0),
+                                  padding: const EdgeInsets.only(
+                                      left: 10, bottom: 5.0),
                                   child: Text(
                                     '${medicineListdata[index].uom}',
                                     style: TextStyle(
-                                        color: ColorResources.black, fontSize: 16),
+                                        color: ColorResources.black,
+                                        fontSize: 16),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right:15.0,bottom: 5),
+                                  padding: const EdgeInsets.only(
+                                      right: 15.0, bottom: 5),
                                   child: Text(
                                     '\$${medicineListdata[index].medicineprice}',
                                     style: TextStyle(
-                                        color: ColorResources.black, fontSize: 16),
+                                        color: ColorResources.black,
+                                        fontSize: 16),
                                   ),
                                 ),
                               ],
@@ -350,108 +362,108 @@ class _EshopHomePageState extends State<EshopHomePage> {
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
 
   Widget notFoundWidget(BuildContext context) {
     return notFound
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
               child: Center(
-                child: Image.asset(
-                  'assets/not_found.png',
-                  height: 300,
-                  width: 300,
-                  fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/not_found.png',
+                        height: 300,
+                        width: 300,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
 
-  void getAllMedicine(BuildContext context,String medicineId, String medCompany,
-      String medType, String productCategoryId)async {
+  void getAllMedicine(BuildContext context, String medicineId,
+      String medCompany, String medType, String productCategoryId) async {
     setState(() {
       isLoading = true;
     });
 
-    List<Medicine> medicines = await eShopViewModel.getAllMedicine(medicineId,medCompany,medType,productCategoryId);
+    List<Medicine> medicines = await eShopViewModel.getAllMedicine(
+        medicineId, medCompany, medType, productCategoryId);
 
-    if(medicines != null){
+    if (medicines != null) {
       medicineListdata.clear();
-      if(medicines.length >0) {
+      if (medicines.length > 0) {
         medicineListdata.clear();
         setState(() {
           isLoading = false;
-          notFound =false;
+          notFound = false;
         });
         medicines.forEach((medicine) {
           setState(() {
             medicineListdata.add(medicine);
           });
         });
-      }else{
+      } else {
         setState(() {
           isLoading = false;
           notFound = true;
         });
       }
     }
-
-
   }
 
-  void getAllMedicineType(BuildContext context) async{
-    List<MedicineType> medicineTypes = await eShopViewModel.getAllMedicineType();
+  void getAllMedicineType(BuildContext context) async {
+    List<MedicineType> medicineTypes =
+        await eShopViewModel.getAllMedicineType();
 
-    if(medicineTypes != null){
+    if (medicineTypes != null) {
       medicineTypeList.clear();
       setState(() {
         isLoading = false;
@@ -460,15 +472,14 @@ class _EshopHomePageState extends State<EshopHomePage> {
         setState(() {
           medicineTypeList.add(type);
         });
-
       });
     }
   }
-  void getCartProduct(BuildContext context) async{
+
+  void getCartProduct(BuildContext context) async {
     List<Cart> carts = await eShopViewModel.getCart(userId);
 
-    if(carts != null){
-
+    if (carts != null) {
       cartList.clear();
       carts.forEach((cart) {
         setState(() {
@@ -476,15 +487,13 @@ class _EshopHomePageState extends State<EshopHomePage> {
         });
       });
     }
-
   }
+
   void getCustomerInfo(BuildContext context) async {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     userId = customerInfo.getString('id');
-    if(userId != null){
+    if (userId != null) {
       getCartProduct(context);
     }
-
   }
-
 }

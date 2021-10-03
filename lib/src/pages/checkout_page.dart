@@ -6,7 +6,6 @@ import 'package:flutter_healthcare_app/src/viewModel/eshop_view_model.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
-
   PlaceOrder placeOrder;
   double totalPrice;
 
@@ -29,7 +28,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -60,7 +59,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         const EdgeInsets.only(left: 15, top: 20.0, bottom: 10),
                     child: Text(
                       'CheckOut',
-                      style: TextStyle(color: ColorResources.white, fontSize: 18),
+                      style:
+                          TextStyle(color: ColorResources.white, fontSize: 18),
                     ),
                   ),
                 ],
@@ -94,7 +94,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 width: MediaQuery.of(context).size.width,
                 color: ColorResources.themered,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(15,5,15,5),
+                  padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -106,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             fontSize: 16),
                       ),
                       GestureDetector(
-                        onTap:(){
+                        onTap: () {
                           placeOrder();
                         },
                         child: Text(
@@ -219,11 +219,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Product fee',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '${widget.totalPrice} \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -236,11 +238,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Vat',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '0.00 \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -253,11 +257,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Tax',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '0.00 \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -270,11 +276,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 Text(
                   'Service charge',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
                 Text(
                   '0.00 \$',
-                  style: TextStyle(color: ColorResources.lightblack, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorResources.lightblack, fontSize: 18),
                 ),
               ],
             ),
@@ -312,44 +320,45 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
+
   void showSnakbar(BuildContext context, String message) {
     scaffoldKey.currentState.showSnackBar(new SnackBar(
         backgroundColor: ColorResources.themered,
@@ -359,18 +368,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
         )));
   }
 
-  void placeOrder()async {
+  void placeOrder() async {
     setState(() {
       isLoading = true;
     });
 
-    RegistrationResponse response = await eShopViewModel.saveOrder(widget.placeOrder);
-    if(response != null){
+    RegistrationResponse response =
+        await eShopViewModel.saveOrder(widget.placeOrder);
+    if (response != null) {
       setState(() {
-      isLoading = false;
-    });
+        isLoading = false;
+      });
       showSnakbar(context, response.message);
     }
-
   }
 }

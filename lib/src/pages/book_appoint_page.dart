@@ -2,7 +2,7 @@ import 'dart:collection';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/appointment.dart';
 import 'package:flutter_healthcare_app/src/model/available.dart';
 import 'package:flutter_healthcare_app/src/model/doctor.dart';
@@ -23,8 +23,12 @@ class BookAppointmentPage extends StatefulWidget {
   String reason;
   String paymenthod;
 
-  BookAppointmentPage(this.doctor, this.availableList,{this.appointmentId, this.timeId, this.appointmentDate,
-    this.reason, this.paymenthod});
+  BookAppointmentPage(this.doctor, this.availableList,
+      {this.appointmentId,
+      this.timeId,
+      this.appointmentDate,
+      this.reason,
+      this.paymenthod});
 
   @override
   _BookAppointmentPageState createState() => _BookAppointmentPageState();
@@ -48,7 +52,6 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   RegExp exp = RegExp(r"\r\n", multiLine: true, caseSensitive: true);
   var id;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -56,13 +59,17 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
     getCustomerInfo(context);
     saveBasicData(context);
   }
+
   @override
   Widget build(BuildContext context) {
     appointmentViewModel = Provider.of<AppointmentViewModel>(context);
     if (isFirst) {
       creatDateList();
-      if(widget.appointmentId != null){
-        timeList(context, DateFormat('EEEE').format(DateFormat("dd/MM/yyyy").parse(widget.appointmentDate)));
+      if (widget.appointmentId != null) {
+        timeList(
+            context,
+            DateFormat('EEEE').format(
+                DateFormat("dd/MM/yyyy").parse(widget.appointmentDate)));
       }
       setState(() {
         isFirst = false;
@@ -156,7 +163,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                             ),
                           ),
                           Text(
-                            '${widget.doctor.specialist.replaceAll(exp,', ')}',
+                            '${widget.doctor.specialist.replaceAll(exp, ', ')}',
                             style: TextStyle(
                               color: ColorResources.lightblack,
                               fontSize: 12,
@@ -182,11 +189,10 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 openDayPicker(context);
               },
               child: Container(
@@ -207,21 +213,21 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text('$showDate',
-                        style: TextStyle(
-                          fontSize: 16
-                        ),),
+                        child: Text(
+                          '$showDate',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      Icon(Icons.calendar_today_outlined,
-                      color: ColorResources.lightblack,)
-
+                      Icon(
+                        Icons.calendar_today_outlined,
+                        color: ColorResources.lightblack,
+                      )
                     ],
                   ),
                 ),
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
             child: Row(
@@ -245,13 +251,13 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                             ),
                           ]),
                       child: Padding(
-                        padding: const EdgeInsets.only(left:8.0),
+                        padding: const EdgeInsets.only(left: 8.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('$selectDay',
-                          style: TextStyle(
-                            fontSize: 16
-                          ),),
+                          child: Text(
+                            '$selectDay',
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
                       ),
                     ),
@@ -302,7 +308,6 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                                 () {
                                   time = val;
                                   timeId = availableTimesMap[time];
-
                                 },
                               );
                             },
@@ -341,7 +346,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(
-                      color: ColorResources.lightblack.withOpacity(0.5), width: 2)),
+                      color: ColorResources.lightblack.withOpacity(0.5),
+                      width: 2)),
               child: TextField(
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
@@ -447,13 +453,13 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
           width: MediaQuery.of(context).size.width,
           child: RaisedButton(
             onPressed: () {
-
               checkValue(context);
-
             },
             color: ColorResources.themered,
             child: Text(
-              widget.appointmentId == null ? 'Book appointment':'Update appointment',
+              widget.appointmentId == null
+                  ? 'Book appointment'
+                  : 'Update appointment',
               style: TextStyle(color: ColorResources.white, fontSize: 18),
             ),
           ),
@@ -464,36 +470,35 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
 
   void openDayPicker(BuildContext context) {
     var isFound = false;
-    DatePicker.showDatePicker(context,
-        showTitleActions: true,
-        theme: DatePickerTheme(
-            doneStyle: TextStyle(color: ColorResources.themered, fontSize: 16),
-            cancelStyle: TextStyle(color: ColorResources.white, fontSize: 16)),
-        minTime: DateTime.now(),
-        maxTime: DateTime(2050, 12, 30),
-        onChanged: (date) {}, onConfirm: (date) {
-          String formattedDate = DateFormat('dd/MM/yyyy').format(date);
-          setState(() {
-            availableDays.forEach((element) { 
-              if(element.toLowerCase() == DateFormat('EEEE').format(date).toLowerCase()){
-                showDate = formattedDate;
-                selectDay = element;
-                isFound = true;
-                timeList(context, element);
-              }
-            });
-            if(!isFound){
-              showSnakbar(context, 'No schdule found');
-              selectDay = 'Day';
-              availableTimes.clear();
-              time = 'Schdule';
-              showDate = 'Select appointment date';
-            }
-            
-          });
-        }, currentTime: DateTime.now(), locale: LocaleType.en);
-  }
+    // DatePicker.showDatePicker(context,
+    //     showTitleActions: true,
+    //     theme: DatePickerTheme(
+    //         doneStyle: TextStyle(color: ColorResources.themered, fontSize: 16),
+    //         cancelStyle: TextStyle(color: ColorResources.white, fontSize: 16)),
+    //     minTime: DateTime.now(),
+    //     maxTime: DateTime(2050, 12, 30),
+    //     onChanged: (date) {}, onConfirm: (date) {
+    //       String formattedDate = DateFormat('dd/MM/yyyy').format(date);
+    //       setState(() {
+    //         availableDays.forEach((element) {
+    //           if(element.toLowerCase() == DateFormat('EEEE').format(date).toLowerCase()){
+    //             showDate = formattedDate;
+    //             selectDay = element;
+    //             isFound = true;
+    //             timeList(context, element);
+    //           }
+    //         });
+    //         if(!isFound){
+    //           showSnakbar(context, 'No schdule found');
+    //           selectDay = 'Day';
+    //           availableTimes.clear();
+    //           time = 'Schdule';
+    //           showDate = 'Select appointment date';
+    //         }
 
+    //       });
+    //     }, currentTime: DateTime.now(), locale: LocaleType.en);
+  }
 
   void timeList(BuildContext context, String val) {
     widget.availableList.forEach((element) {
@@ -508,15 +513,13 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
           });
         });
 
-       widget.availableList.forEach((element) {
-          if(element.timeList[0].id == widget.timeId){
+        widget.availableList.forEach((element) {
+          if (element.timeList[0].id == widget.timeId) {
             setState(() {
               time = element.timeList[0].times;
             });
           }
         });
-
-
       }
     });
   }
@@ -537,105 +540,104 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   }
 
   void checkValue(BuildContext context) {
-    if(showDate == 'Select appointment date'){
+    if (showDate == 'Select appointment date') {
       showSnakbar(context, 'Select appointment date');
-    }else if(_problemController.text.isEmpty){
+    } else if (_problemController.text.isEmpty) {
       showSnakbar(context, 'Tell your problem');
-    }else if(!cashpayment){
+    } else if (!cashpayment) {
       showSnakbar(context, 'Select payment method');
-    }else{
+    } else {
       setState(() {
         isLoading = true;
       });
-      Appointment appointment = new Appointment(id,widget.doctor.id,showDate,timeId,_problemController.text,
-      'Money');
+      Appointment appointment = new Appointment(id, widget.doctor.id, showDate,
+          timeId, _problemController.text, 'Money');
 
-      sendAppointmentRequest(context,appointment);
+      sendAppointmentRequest(context, appointment);
     }
   }
 
-  void sendAppointmentRequest(BuildContext context, Appointment appointment) async{
-
+  void sendAppointmentRequest(
+      BuildContext context, Appointment appointment) async {
     RegistrationResponse response;
 
-    if(widget.appointmentId != null){
-      response = await appointmentViewModel.updateAppointment(appointment,widget.appointmentId);
-    }else{
-       response = await appointmentViewModel.saveAppointment(appointment);
+    if (widget.appointmentId != null) {
+      response = await appointmentViewModel.updateAppointment(
+          appointment, widget.appointmentId);
+    } else {
+      response = await appointmentViewModel.saveAppointment(appointment);
     }
 
-
-    if(response != null){
+    if (response != null) {
       setState(() {
         isLoading = false;
       });
-      if(!response.success){
+      if (!response.success) {
         showSnakbar(context, response.message);
-      }else{
+      } else {
         showSnakbar(context, response.message);
       }
     }
-
   }
 
-  void getCustomerInfo(BuildContext context) async{
+  void getCustomerInfo(BuildContext context) async {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     setState(() {
       id = customerInfo.getString('id');
     });
-
   }
 
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
 
   void saveBasicData(BuildContext context) {
-    if(widget.appointmentId != null){
+    if (widget.appointmentId != null) {
       setState(() {
         timeId = widget.timeId;
         showDate = widget.appointmentDate;
         _problemController.text = widget.reason;
         cashpayment = true;
-        selectDay = DateFormat('EEEE').format(DateFormat("dd/MM/yyyy").parse(widget.appointmentDate));
+        selectDay = DateFormat('EEEE')
+            .format(DateFormat("dd/MM/yyyy").parse(widget.appointmentDate));
       });
     }
   }

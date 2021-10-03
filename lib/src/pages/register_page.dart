@@ -61,8 +61,6 @@ class _RegisterPageState extends State<RegisterPage> {
       sex = sexValueHolder.text;
 
       checkValue(context);
-
-
     });
   }
 
@@ -190,11 +188,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child:
-                          Icon(Icons.account_circle, color: ColorResources.themered)
-                              .alignCenter
-                              .ripple(() {},
-                                  borderRadius: BorderRadius.circular(13))),
+                      child: Icon(Icons.account_circle,
+                              color: ColorResources.themered)
+                          .alignCenter
+                          .ripple(() {},
+                              borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -224,11 +222,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child:
-                          Icon(Icons.account_circle, color: ColorResources.themered)
-                              .alignCenter
-                              .ripple(() {},
-                                  borderRadius: BorderRadius.circular(13))),
+                      child: Icon(Icons.account_circle,
+                              color: ColorResources.themered)
+                          .alignCenter
+                          .ripple(() {},
+                              borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -362,36 +360,37 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                     width: 55,
-                    child: Icon(Icons.my_location, color: ColorResources.themered)
+                    child: Icon(Icons.my_location,
+                            color: ColorResources.themered)
                         .alignCenter
                         .ripple(() {}, borderRadius: BorderRadius.circular(13)),
                   ),
                 ),
                 onTap: () {
                   // _getCurrentLocation();
-                  final Geolocator geolocator = Geolocator()
-                    ..forceAndroidLocationManager;
+                  // final Geolocator geolocator = Geolocator()
+                  //   ..forceAndroidLocationManager;
 
-                  geolocator
-                      .getCurrentPosition(
-                          desiredAccuracy: LocationAccuracy.best)
-                      .then((Position position) async {
-                    setState(() {
-                      _currentPosition = position;
-                    });
+                  // geolocator
+                  //     .getCurrentPosition(
+                  //         desiredAccuracy: LocationAccuracy.best)
+                  //     .then((Position position) async {
+                  //   setState(() {
+                  //     _currentPosition = position;
+                  //   });
 
-                    final coordinates = new Coordinates(
-                        _currentPosition.latitude, _currentPosition.longitude);
-                    var addresses = await Geocoder.local
-                        .findAddressesFromCoordinates(coordinates);
-                    var first = addresses.first;
-                    print("${first.featureName} : ${first.addressLine}");
-                    locationValueHolder.text = '${first.addressLine}';
-                    print(
-                        "LAT: ${_currentPosition.latitude}, LNG: ${_currentPosition.longitude}");
-                  }).catchError((e) {
-                    print(e);
-                  });
+                  //   final coordinates = new Coordinates(
+                  //       _currentPosition.latitude, _currentPosition.longitude);
+                  //   var addresses = await Geocoder.local
+                  //       .findAddressesFromCoordinates(coordinates);
+                  //   var first = addresses.first;
+                  //   print("${first.featureName} : ${first.addressLine}");
+                  //   locationValueHolder.text = '${first.addressLine}';
+                  //   print(
+                  //       "LAT: ${_currentPosition.latitude}, LNG: ${_currentPosition.longitude}");
+                  // }).catchError((e) {
+                  //   print(e);
+                  // });
                 },
               ),
             ),
@@ -421,11 +420,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintStyle: TextStyles.body.subTitleColor,
                   suffixIcon: SizedBox(
                       width: 55,
-                      child:
-                          Icon(Icons.filter_vintage, color: ColorResources.themered)
-                              .alignCenter
-                              .ripple(() {},
-                                  borderRadius: BorderRadius.circular(13))),
+                      child: Icon(Icons.filter_vintage,
+                              color: ColorResources.themered)
+                          .alignCenter
+                          .ripple(() {},
+                              borderRadius: BorderRadius.circular(13))),
                 ),
               ),
             ),
@@ -555,19 +554,19 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     //gettin current location
-    _getCurrentLocation() {
-      final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+    // _getCurrentLocation() {
+    //   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
 
-      geolocator
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
-          .then((Position position) {
-        setState(() {
-          _currentPosition = position;
-        });
-      }).catchError((e) {
-        print(e);
-      });
-    }
+    //   geolocator
+    //       .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+    //       .then((Position position) {
+    //     setState(() {
+    //       _currentPosition = position;
+    //     });
+    //   }).catchError((e) {
+    //     print(e);
+    //   });
+    // }
 
     // TODO: implement build
     return Scaffold(
@@ -625,7 +624,7 @@ class _RegisterPageState extends State<RegisterPage> {
       showSnakbar(context, 'Enter location');
     } else if (age.toString().isEmpty) {
       showSnakbar(context, 'Enter your age');
-    }else{
+    } else {
       sendDatatoDb();
     }
   }
@@ -640,21 +639,22 @@ class _RegisterPageState extends State<RegisterPage> {
         )));
   }
 
-  void sendDatatoDb() async{
+  void sendDatatoDb() async {
     setState(() {
       isLoading = true;
     });
-    
-    RegistrationResponse response = await authViewModel.saveRegistration(new Registration('$firstName $lastName', firstName, lastName, email, phone, password, location, gender, age));
-    if(response != null){
+
+    RegistrationResponse response = await authViewModel.saveRegistration(
+        new Registration('$firstName $lastName', firstName, lastName, email,
+            phone, password, location, gender, age));
+    if (response != null) {
       setState(() {
         isLoading = false;
       });
       showSnakbar(context, '${response.message}');
-      if(response.success){
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => LoginPage()));
-
+      if (response.success) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => LoginPage()));
       }
     }
   }

@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_by_category.dart';
 import 'package:flutter_healthcare_app/src/model/lab_test_category.dart';
 import 'package:flutter_healthcare_app/src/pages/bottomNavigation/dashboard_screen.dart';
@@ -485,35 +485,35 @@ class _LabTestPageState extends State<LabTestPage> {
   }
 
   void openTimePicker(BuildContext context) {
-    DatePicker.showTime12hPicker(context, showTitleActions: true,
-        onChanged: (date) {
-      setState(() {
-        time = DateFormat('hh:mm aa').format(date);
-      });
-    }, onConfirm: (date) {
-      setState(() {
-        time = DateFormat('hh:mm aa').format(date);
-      });
-    }, currentTime: DateTime.now(), locale: LocaleType.en);
+    // DatePicker.showTime12hPicker(context, showTitleActions: true,
+    //     onChanged: (date) {
+    //   setState(() {
+    //     time = DateFormat('hh:mm aa').format(date);
+    //   });
+    // }, onConfirm: (date) {
+    //   setState(() {
+    //     time = DateFormat('hh:mm aa').format(date);
+    //   });
+    // }, currentTime: DateTime.now(), locale: LocaleType.en);
   }
 
   void openDayPicker(BuildContext context) {
-    DatePicker.showDatePicker(context,
-        showTitleActions: true,
-        theme: DatePickerTheme(
-            doneStyle: TextStyle(color: ColorResources.themered, fontSize: 16),
-            cancelStyle: TextStyle(color: ColorResources.white, fontSize: 16)),
-        minTime: DateTime.now(),
-        maxTime: DateTime(2050, 12, 30),
-        onChanged: (date) {}, onConfirm: (date) {
-      String formattedDate = DateFormat('dd/MM/yyyy').format(date);
-      setState(() {
-        day = formattedDate;
-      });
-    },
-        currentTime: DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day + 1),
-        locale: LocaleType.en);
+    // DatePicker.showDatePicker(context,
+    //     showTitleActions: true,
+    //     theme: DatePickerTheme(
+    //         doneStyle: TextStyle(color: ColorResources.themered, fontSize: 16),
+    //         cancelStyle: TextStyle(color: ColorResources.white, fontSize: 16)),
+    //     minTime: DateTime.now(),
+    //     maxTime: DateTime(2050, 12, 30),
+    //     onChanged: (date) {}, onConfirm: (date) {
+    //   String formattedDate = DateFormat('dd/MM/yyyy').format(date);
+    //   setState(() {
+    //     day = formattedDate;
+    //   });
+    // },
+    //     currentTime: DateTime(
+    //         DateTime.now().year, DateTime.now().month, DateTime.now().day + 1),
+    //     locale: LocaleType.en);
   }
 
   void getAllLabtest(BuildContext context) async {
@@ -638,7 +638,7 @@ class _LabTestPageState extends State<LabTestPage> {
         isLoading = true;
       });
 
-        saveDataIntoDb(context);
+      saveDataIntoDb(context);
     }
   }
 
@@ -650,21 +650,14 @@ class _LabTestPageState extends State<LabTestPage> {
   }
 
   void saveDataIntoDb(BuildContext context) async {
-
     RegistrationResponse response;
 
-    if(widget.testId != null){
-      response = await labTestViewModel.updateLabtest(widget.labTestId,
-          testId, labtestId, id, amount, day, time, 'Cash');
-    }else {
+    if (widget.testId != null) {
+      response = await labTestViewModel.updateLabtest(
+          widget.labTestId, testId, labtestId, id, amount, day, time, 'Cash');
+    } else {
       response = await labTestViewModel.saveLabTest(
-          testId,
-          labtestId,
-          id,
-          amount,
-          day,
-          time,
-          'Cash');
+          testId, labtestId, id, amount, day, time, 'Cash');
     }
 
     if (response != null) {
@@ -677,11 +670,10 @@ class _LabTestPageState extends State<LabTestPage> {
           time = '00.00';
         });
         showSnakbar(context, response.message);
-      //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreen()));
+        //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreen()));
       } else {
         showSnakbar(context, response.message);
       }
-
     }
   }
 

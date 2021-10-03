@@ -153,8 +153,7 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: CachedNetworkImage(
-                          imageUrl:
-                              "http://172.16.61.221:8059${cartList[index].productimageurl}",
+                          imageUrl: "${cartList[index].productimageurl}",
                           height: 80,
                           width: 80,
                           fit: BoxFit.fill,
@@ -377,9 +376,6 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
     List<Cart> carts = await eShopViewModel.getCart(userId);
 
     if (carts != null) {
-
-
-
       setState(() {
         isLoading = false;
       });
@@ -400,11 +396,10 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
         });
       }
 
-      if(cartList.length ==0){
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (_) => EshopHomePage()));
+      if (cartList.length == 0) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => EshopHomePage()));
       }
-
     }
   }
 
@@ -485,10 +480,12 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                         padding: const EdgeInsets.all(15.0),
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text('Do you want to delete this item?',
+                          child: Text(
+                            'Do you want to delete this item?',
                             style: TextStyle(
                               color: ColorResources.lightblack,
-                            ),),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -504,26 +501,28 @@ class _EshopCartScreenState extends State<EshopCartScreen> {
                           children: [
                             Expanded(
                               child: GestureDetector(
-                                onTap: ()=>Navigator.pop(context),
+                                onTap: () => Navigator.pop(context),
                                 child: Container(
                                   child: Center(
-                                    child: Text('No',
+                                    child: Text(
+                                      'No',
                                       style: TextStyle(
-                                          color: ColorResources.lightOrange
-                                      ),),
+                                          color: ColorResources.lightOrange),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                             Expanded(
                               child: GestureDetector(
-                                onTap: ()=>removeItem(context,cartitem),
+                                onTap: () => removeItem(context, cartitem),
                                 child: Container(
                                   child: Center(
-                                    child: Text('Yes',
+                                    child: Text(
+                                      'Yes',
                                       style: TextStyle(
-                                          color: ColorResources.themered
-                                      ),),
+                                          color: ColorResources.themered),
+                                    ),
                                   ),
                                 ),
                               ),

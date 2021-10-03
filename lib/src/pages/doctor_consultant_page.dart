@@ -30,10 +30,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   List<Doctor> _searchResult = [];
   List<Doctor> filterList = [];
 
-
   TextEditingController _searchController = new TextEditingController();
   TextEditingController _experieceController = new TextEditingController();
-
 
   var selected = 'DOCTOR';
   var selectedField = 'Near by';
@@ -61,7 +59,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   Widget build(BuildContext context) {
     doctorViewModel = Provider.of<DoctorViewModel>(context);
     if (isFirst) {
-      getDoctor(context,'','','','','','');
+      getDoctor(context, '', '', '', '', '', '');
       setState(() {
         isFirst = false;
       });
@@ -84,11 +82,10 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                     delegate: SliverChildListDelegate(
                       [
                         _header(),
-                        //  _navLinks(),
-
+                        // _navLinks(),
                         _searchField(),
                         _basedOnField(),
-                        //_category(),
+                        _category(),
                       ],
                     ),
                   ),
@@ -272,7 +269,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         }
                       });
                     },
-                    child: Icon(Icons.filter_list, color: ColorResources.themered)),
+                    child: Icon(Icons.filter_list,
+                        color: ColorResources.themered)),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
@@ -298,8 +296,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
               Text("Category", style: TextStyles.title.bold),
               Text(
                 "See All",
-                style:
-                    TextStyles.titleNormal.copyWith(color: ColorResources.themered),
+                style: TextStyles.titleNormal
+                    .copyWith(color: ColorResources.themered),
               ).p(8).ripple(() {})
             ],
           ),
@@ -311,13 +309,17 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               _categoryCard("Cardiologists", "50+ doctors",
-                  color: ColorResources.green, lightColor: ColorResources.lightGreen),
+                  color: ColorResources.green,
+                  lightColor: ColorResources.lightGreen),
               _categoryCard("Dermatologists", "99+ Doctors",
-                  color: ColorResources.skyBlue, lightColor: ColorResources.lightBlue),
+                  color: ColorResources.skyBlue,
+                  lightColor: ColorResources.lightBlue),
               _categoryCard("Gastroenterologists", "50+ Doctors",
-                  color: ColorResources.orange, lightColor: ColorResources.lightOrange),
+                  color: ColorResources.orange,
+                  lightColor: ColorResources.lightOrange),
               _categoryCard("Anesthesiologists", "15+ Doctors",
-                  color: ColorResources.purple, lightColor: ColorResources.purpleLight)
+                  color: ColorResources.purple,
+                  lightColor: ColorResources.purpleLight)
             ],
           ),
         ),
@@ -365,6 +367,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
                       child: Text(title, style: titleStyle).hP8,
@@ -416,9 +419,13 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
         ? SizedBox(
             height: MediaQuery.of(context).size.height - 200,
             child: ListView.builder(
-                itemCount: _searchResult.length >0 ? _searchResult.length: doctorDataList.length,
+                itemCount: _searchResult.length > 0
+                    ? _searchResult.length
+                    : doctorDataList.length,
                 itemBuilder: (context, index) {
-                  return _doctorTile(_searchResult.length >0? _searchResult[index]: doctorDataList[index]);
+                  return _doctorTile(_searchResult.length > 0
+                      ? _searchResult[index]
+                      : doctorDataList[index]);
                 }),
           )
         : SizedBox(height: 100, width: 100, child: CircularProgressIndicator());
@@ -456,7 +463,7 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.network(
-                'http://172.16.61.221:8059${model.photo}',
+                '${model.photo}',
                 height: 50,
                 width: 50,
                 fit: BoxFit.fill,
@@ -475,10 +482,10 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                 model.education,
                 style: TextStyles.bodySm.subTitleColor,
               ),
-              Text(
-                ('\$${model.fees}'),
-                style: TextStyles.bodySm.subTitleColor,
-              ),
+              // Text(
+              //   ('\$${model.fees}'),
+              //   style: TextStyles.bodySm.subTitleColor,
+              // ),
             ],
           ),
           trailing: Icon(
@@ -556,7 +563,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                     selectedField = 'Experience';
                   });
                   openExperienceDialog(context);
-
                 },
                 child: Text("Experience",
                     style: TextStyle(
@@ -612,8 +618,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input the year of experience',
-                          style:
-                              TextStyle(color: ColorResources.white, fontSize: 18),
+                          style: TextStyle(
+                              color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -660,10 +666,11 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.pop(context);
                               openLoading(context);
-                              getDoctor(context, '', '', '', '', '',_experieceController.text);
+                              getDoctor(context, '', '', '', '', '',
+                                  _experieceController.text);
                             },
                             child: Text(
                               'OK',
@@ -706,8 +713,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input the rating',
-                          style:
-                              TextStyle(color: ColorResources.white, fontSize: 18),
+                          style: TextStyle(
+                              color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Padding(
@@ -731,11 +738,12 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.pop(context);
                               openLoading(context);
                               print(gender);
-                              getDoctor(context, '', '', '', '', _rating.toStringAsFixed(1),'');
+                              getDoctor(context, '', '', '', '',
+                                  _rating.toStringAsFixed(1), '');
                             },
                             child: Text(
                               'OK',
@@ -778,8 +786,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Select your gender',
-                          style:
-                              TextStyle(color: ColorResources.white, fontSize: 18),
+                          style: TextStyle(
+                              color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Padding(
@@ -806,10 +814,10 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.pop(context);
                               openLoading(context);
-                              getDoctor(context, '', '', '', gender, '','');
+                              getDoctor(context, '', '', '', gender, '', '');
                             },
                             child: Text(
                               'OK',
@@ -852,8 +860,8 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                         alignment: Alignment.center,
                         child: Text(
                           'Input your location',
-                          style:
-                              TextStyle(color: ColorResources.white, fontSize: 18),
+                          style: TextStyle(
+                              color: ColorResources.white, fontSize: 18),
                         ),
                       ),
                       Align(
@@ -870,16 +878,16 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ColorResources.white),
+                                      borderSide: BorderSide(
+                                          color: ColorResources.white),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ColorResources.white),
+                                      borderSide: BorderSide(
+                                          color: ColorResources.white),
                                     ),
                                     border: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ColorResources.white),
+                                      borderSide: BorderSide(
+                                          color: ColorResources.white),
                                     ),
                                     counterText: '',
                                     contentPadding: EdgeInsets.symmetric(
@@ -921,10 +929,10 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
         });
   }
 
-  void getDoctor(BuildContext context, String docName, String latitude,String longitude,String gernder, String rating, String exp) async {
-    List<Doctor> doctors = await doctorViewModel.getAllDoctor(docName,latitude,longitude,gernder,rating,exp);
-
-
+  void getDoctor(BuildContext context, String docName, String latitude,
+      String longitude, String gernder, String rating, String exp) async {
+    List<Doctor> doctors = await doctorViewModel.getAllDoctor(
+        docName, latitude, longitude, gernder, rating, exp);
 
     if (doctors != null) {
       doctorDataList.clear();
@@ -941,46 +949,46 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
   Widget loading(BuildContext context) {
     return isLoading
         ? Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Container(
-        color: ColorResources.white.withOpacity(0.3),
-        child: Center(
-          child: SizedBox(
-            width: 120,
-            height: 120,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Container(
-              decoration: BoxDecoration(
-                  color: ColorResources.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorResources.lightBlue.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ]),
+              color: ColorResources.white.withOpacity(0.3),
               child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/loading.gif',
-                    height: 300,
-                    width: 300,
-                    fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ColorResources.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorResources.lightBlue.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(
+                          'assets/loading.gif',
+                          height: 300,
+                          width: 300,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : Text('');
   }
 
-  void getCustomerInfo(BuildContext context) async{
+  void getCustomerInfo(BuildContext context) async {
     SharedPreferences customerInfo = await SharedPreferences.getInstance();
     setState(() {
       firstName = customerInfo.getString('firstName');
@@ -1021,8 +1029,6 @@ class _DoctorConsultantPageState extends State<DoctorConsultantPage> {
     setState(() {
       _searchResult;
     });
-
-
   }
 
   void openLoading(BuildContext context) {

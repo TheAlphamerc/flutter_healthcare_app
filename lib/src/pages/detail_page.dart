@@ -29,7 +29,13 @@ class _DetailPageState extends State<DetailPage> {
   void initState() {
     model = widget.doctor;
     super.initState();
-    availableList = new List();
+    availableList = [
+      Available.on("Mon"),
+      Available.on("Tue"),
+      Available.on("Web"),
+      Available.on("Thu"),
+      Available.on("Fri")
+    ];
   }
 
   Widget _appbar() {
@@ -72,7 +78,7 @@ class _DetailPageState extends State<DetailPage> {
         child: Stack(
           children: <Widget>[
             Image.network(
-              'http://172.16.61.221:8059${model.photo}',
+              '${model.photo}',
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2,
               fit: BoxFit.fill,

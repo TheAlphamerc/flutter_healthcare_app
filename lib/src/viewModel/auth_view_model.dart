@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_healthcare_app/src/model/contact_details.dart';
 import 'package:flutter_healthcare_app/src/model/emergency_contact.dart';
@@ -10,12 +12,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthViewModel extends ChangeNotifier {
-
-
-  Future<RegistrationResponse> saveRegistration(Registration registration) async {
-    final response =
-        await http.get('${url.BASE_URL}userRegistraion?username=${registration.firstname}${registration.lastname}&firstname=${registration.firstname}&lastname=${registration.lastname}&useremail=${registration.useremail}&userphone=${registration.userphone}&userpass=${registration.userpass}&address=${registration.address}&gender=${registration.gender}&dob=${registration.dob}');
-
+  Future<RegistrationResponse> saveRegistration(
+      Registration registration) async {
+    final response = await http.get(Uri.tryParse(
+        '${url.BASE_URL}userRegistraion?username=${registration.firstname}${registration.lastname}&firstname=${registration.firstname}&lastname=${registration.lastname}&useremail=${registration.useremail}&userphone=${registration.userphone}&userpass=${registration.userpass}&address=${registration.address}&gender=${registration.gender}&dob=${registration.dob}'));
 
     if (response.statusCode == 200) {
       return RegistrationResponse.fromJson(jsonDecode(response.body));
@@ -25,16 +25,19 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-
+  // ignore: dead_code
   Future<List<LoginResponse>> getlogin(String email, String password) async {
-    final response =
-    await http.get('${url.BASE_URL}userLogin?email=$email&pass=$password');
+    return await Future.value([LoginResponse.patient()]);
+    // throw Exception('Exception');
+    final response = await http.get(
+        Uri.tryParse('${url.BASE_URL}userLogin?email=$email&pass=$password'));
 
     if (response.statusCode == 200) {
       List<LoginResponse> loginResponseList;
 
       Iterable list = json.decode(response.body);
-      loginResponseList = list.map((model) => LoginResponse.fromJson(model)).toList();
+      loginResponseList =
+          list.map((model) => LoginResponse.fromJson(model)).toList();
       return loginResponseList;
     } else {
       throw Exception('Exception: ${response.statusCode}');
@@ -43,8 +46,8 @@ class AuthViewModel extends ChangeNotifier {
 
   Future<RegistrationResponse> saveEmergencyContact(Emergency emergency) async {
     var cartObj = jsonEncode(emergency);
-    final response =
-    await http.get('${url.BASE_URL}saveToContact?cartobj=$cartObj');
+    final response = await http
+        .get(Uri.tryParse('${url.BASE_URL}saveToContact?cartobj=$cartObj'));
 
     if (response.statusCode == 200) {
       return RegistrationResponse.fromJson(jsonDecode(response.body));
@@ -55,8 +58,8 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<ContactDetails> getContactDetails(String userId) async {
-    final response = await http.get(
-        '${url.BASE_URL}getContactDetails?userId=$userId');
+    final response = await http
+        .get(Uri.tryParse('${url.BASE_URL}getContactDetails?userId=$userId'));
 
     if (response.statusCode == 200) {
       return ContactDetails.fromJson(jsonDecode(response.body));
@@ -64,7 +67,4 @@ class AuthViewModel extends ChangeNotifier {
       throw Exception('Exception: ${response.statusCode}');
     }
   }
-
-
-
 }
