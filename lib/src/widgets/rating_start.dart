@@ -19,19 +19,24 @@ class _RatingStarState extends State<RatingStar> {
     }
 
     return Icon(halfStar ? Icons.star_half : Icons.star,
-        color: index < widget.rating ? LightColor.orange : LightColor.grey);
+        color: index < widget.rating
+            ? ColorResources.orange
+            : ColorResources.grey);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: TweenAnimationBuilder<double>(
-      tween: Tween<double>(begin: 0, end:5),
-      duration: Duration(milliseconds: 500),
-      builder: (context, value, child) {
-        return Wrap(
-            children: Iterable.generate(value.toInt(), (index) => _start(index)).toList());
-      },
-    ),);
+      child: TweenAnimationBuilder<double>(
+        tween: Tween<double>(begin: 0, end: 5),
+        duration: Duration(milliseconds: 500),
+        builder: (context, value, child) {
+          return Wrap(
+              children:
+                  Iterable.generate(value.toInt(), (index) => _start(index))
+                      .toList());
+        },
+      ),
+    );
   }
 }

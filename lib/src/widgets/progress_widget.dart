@@ -12,7 +12,8 @@ class ProgressWidget extends StatefulWidget {
       this.totalValue = 100,
       this.activeColor,
       this.backgroundColor,
-      this.title, this.durationTime})
+      this.title,
+      this.durationTime})
       : super(key: key);
   final double totalValue;
   final double value;
@@ -31,13 +32,11 @@ class _ProgressWidgetState extends State<ProgressWidget>
   Color backgroundColor;
   @override
   void initState() {
-   
     progress = (widget.value * 100) / widget.totalValue;
     progress = (progress / 100) * 360;
     activeColor = widget.activeColor;
     backgroundColor = widget.backgroundColor;
 
-    
     super.initState();
   }
 
@@ -62,7 +61,7 @@ class _ProgressWidgetState extends State<ProgressWidget>
             alignment: Alignment.center,
             children: <Widget>[
               TweenAnimationBuilder<double>(
-                tween: Tween<double>(begin: 0, end : progress),
+                tween: Tween<double>(begin: 0, end: progress),
                 duration: Duration(milliseconds: widget.durationTime),
                 builder: (context, value, child) {
                   // print(value);
@@ -84,7 +83,7 @@ class _ProgressWidgetState extends State<ProgressWidget>
           SizedBox(height: 40),
           Text(
             widget.title,
-            style: TextStyle(fontSize: 14, color: LightColor.grey),
+            style: TextStyle(fontSize: 14, color: ColorResources.grey),
           )
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LightColor {
+class ColorResources {
   static const Color background = Color(0XFFfefefe);
 
   static const Color titleTextColor = const Color(0xff1b1718);
@@ -25,4 +25,25 @@ class LightColor {
 
   static const Color black = Color(0xff20262C);
   static const Color lightblack = Color(0xff5F5F60);
+  // static const Color themered = Color(0xffff5A79);
+  static const Color themered = Color(0xff8BC73C);
+
+  static const Color white = Color(0xffffffff);
+
+  static const Map<int, Color> colorMap = {
+    50: Color(0x10FFFFFF),
+    100: Color(0x20FFFFFF),
+    200: Color(0x30FFFFFF),
+    300: Color(0x40FFFFFF),
+    400: Color(0x50FFFFFF),
+    500: Color(0x60FFFFFF),
+    600: Color(0x70FFFFFF),
+    700: Color(0x80FFFFFF),
+    800: Color(0x90FFFFFF),
+    900: Color(0xffFFFFFF),
+  };
+
+  static const MaterialColor MATERIAL_WHITE =
+      MaterialColor(0xffFFFFFF, colorMap);
+//FF5A79
 }
