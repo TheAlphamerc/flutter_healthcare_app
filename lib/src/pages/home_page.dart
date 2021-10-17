@@ -120,13 +120,13 @@ class _HomePageState extends State<HomePage> {
               _categoryCard("Chemist & Drugist", "350 + Stores",
                   color: LightColor.green, lightColor: LightColor.lightGreen),
               _categoryCard("Covid - 19 Specialist", "899 Doctors",
-                  color: LightColor.skyBlue, lightColor: LightColor.lightBlue),
+                  color: LightColor.skyBlue, lightColor: LightColor.lightGreen),
               _categoryCard("Cardiologists Specialist", "500 + Doctors",
-                  color: LightColor.orange, lightColor: LightColor.lightOrange),
+                  color: LightColor.orange, lightColor: LightColor.lightGreen),
               _categoryCard("Dermatologist", "300 + Doctors",
-                  color: LightColor.green, lightColor: LightColor.lightOrange),
+                  color: LightColor.green, lightColor: LightColor.lightGreen),
               _categoryCard("General Surgeon", "500 + Doctors",
-                  color: LightColor.skyBlue, lightColor: LightColor.lightOrange)
+                  color: LightColor.skyBlue, lightColor: LightColor.lightGreen)
 
 
             ],
