@@ -18,10 +18,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<DoctorModel> doctorDataList;
   @override
-  void initState() { 
-    doctorDataList = doctorMapList.map((x)=> DoctorModel.fromJson(x)).toList();
+  void initState() {
+    doctorDataList = doctorMapList.map((x) => DoctorModel.fromJson(x)).toList();
     super.initState();
   }
+
   Widget _appBar() {
     return AppBar(
       elevation: 0,
@@ -120,15 +121,13 @@ class _HomePageState extends State<HomePage> {
               _categoryCard("Chemist & Drugist", "350 + Stores",
                   color: LightColor.green, lightColor: LightColor.lightGreen),
               _categoryCard("Covid - 19 Specialist", "899 Doctors",
-                  color: LightColor.skyBlue, lightColor: LightColor.lightGreen),
+                  color: LightColor.skyBlue, lightColor: LightColor.lightBlue),
               _categoryCard("Cardiologists Specialist", "500 + Doctors",
-                  color: LightColor.orange, lightColor: LightColor.lightGreen),
+                  color: LightColor.orange, lightColor: LightColor.lightOrange),
               _categoryCard("Dermatologist", "300 + Doctors",
                   color: LightColor.green, lightColor: LightColor.lightGreen),
               _categoryCard("General Surgeon", "500 + Doctors",
-                  color: LightColor.skyBlue, lightColor: LightColor.lightGreen)
-
-
+                  color: LightColor.skyBlue, lightColor: LightColor.lightBlue)
             ],
           ),
         ),
@@ -136,13 +135,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _categoryCard(String title, String subtitle,{Color color, Color lightColor}) {
-     TextStyle titleStyle = TextStyles.title.bold.white;
-     TextStyle subtitleStyle = TextStyles.body.bold.white;
-     if(AppTheme.fullWidth(context) < 392){
-       titleStyle = TextStyles.body.bold.white;
-       subtitleStyle = TextStyles.bodySm.bold.white;
-     }
+  Widget _categoryCard(String title, String subtitle,
+      {Color color, Color lightColor}) {
+    TextStyle titleStyle = TextStyles.title.bold.white;
+    TextStyle subtitleStyle = TextStyles.body.bold.white;
+    if (AppTheme.fullWidth(context) < 392) {
+      titleStyle = TextStyles.body.bold.white;
+      subtitleStyle = TextStyles.bodySm.bold.white;
+    }
     return AspectRatio(
       aspectRatio: 6 / 8,
       child: Container(
@@ -177,14 +177,9 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Flexible(
-                      child: Text(
-                        title,
-                        style: titleStyle
-                      ).hP8,
+                      child: Text(title, style: titleStyle).hP8,
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10),
                     Flexible(
                       child: Text(
                         subtitle,
@@ -219,19 +214,18 @@ class _HomePageState extends State<HomePage> {
             ],
           ).hP16,
           getdoctorWidgetList()
-          
-          
         ],
       ),
     );
   }
-  Widget getdoctorWidgetList(){
-     return Column(
-       children: doctorDataList.map((x){
-            return  _doctorTile(x);
-          }).toList()
-     );
+
+  Widget getdoctorWidgetList() {
+    return Column(
+        children: doctorDataList.map((x) {
+      return _doctorTile(x);
+    }).toList());
   }
+
   Widget _doctorTile(DoctorModel model) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -274,7 +268,7 @@ class _HomePageState extends State<HomePage> {
           ),
           title: Text(model.name, style: TextStyles.title.bold),
           subtitle: Text(
-           model.type,
+            model.type,
             style: TextStyles.bodySm.subTitleColor.bold,
           ),
           trailing: Icon(
